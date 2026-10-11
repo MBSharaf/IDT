@@ -1,0 +1,12 @@
+<!doctype html><meta charset="utf-8"><title>to-png</title><base href="../">
+<!-- Dev helper: converts any browser-decodable image (e.g. WebP) to PNG via the dev server's /__save.
+     Usage: tools/to-png.html?src=<path>&name=<file.png>  → reference/_renders/<file.png> -->
+<script type="module">
+const q = new URLSearchParams(location.search);
+const img = new Image(); img.src = q.get('src'); await img.decode();
+const c = document.createElement('canvas'); c.width = img.naturalWidth; c.height = img.naturalHeight;
+c.getContext('2d').drawImage(img, 0, 0);
+const blob = await new Promise((r) => c.toBlob(r, 'image/png'));
+await fetch('/__save?name=' + encodeURIComponent(q.get('name')), { method: 'POST', body: blob });
+window.done = q.get('name');
+</script>

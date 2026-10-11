@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact &amp; Inquiry — IDT Integrated Dental Technologies</title>
+  <meta name="description" content="Request pricing, configuration and lead times for IDT dental laboratory equipment.">
+  <meta name="theme-color" content="#0A0A0A">
+  <link rel="icon" href="assets/images/brand/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script type="module" src="js/pages/contact.js"></script>
+</head>
+<body data-page="contact">
+<main id="main">
+  <header class="page-hero">
+    <div class="container">
+      <p class="eyebrow" data-reveal>Contact &amp; inquiry</p>
+      <h1 class="page-hero__title" data-reveal>Let's equip<br>your lab<span class="gold">.</span></h1>
+    </div>
+  </header>
+
+  <section class="section" style="padding-top:1rem" id="inquiry" aria-labelledby="form-title">
+    <div class="container contact-grid">
+      <aside class="contact-card" aria-label="Contact details">
+        <p class="eyebrow">Direct contact</p>
+        <dl data-contact></dl>
+        <p class="muted" style="font-size:.85rem">We'll reply with configuration options, pricing and lead times for the products you select.</p>
+      </aside>
+
+      <div class="form-panel">
+        <h2 id="form-title" style="font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:.6rem">Product inquiry</h2>
+        <p class="muted" style="margin-bottom:1.6rem;font-size:.95rem">Fields marked <span class="gold">*</span> are required.</p>
+
+        <form class="form" data-form novalidate>
+          <fieldset class="field" style="border:0;padding:0;margin:0">
+            <legend>Products of interest <span class="req">*</span></legend>
+            <div class="check-grid" data-products></div>
+            <span class="field__error" data-error-for="products" aria-live="polite"></span>
+          </fieldset>
+
+          <div class="form__row form__row--2">
+            <div class="field"><label for="f-name">Full name <span class="req">*</span></label><input class="input" id="f-name" name="name" autocomplete="name" required><span class="field__error" data-error-for="name"></span></div>
+            <div class="field"><label for="f-lab">Laboratory / company <span class="req">*</span></label><input class="input" id="f-lab" name="company" autocomplete="organization" required><span class="field__error" data-error-for="company"></span></div>
+          </div>
+          <div class="form__row form__row--2">
+            <div class="field"><label for="f-email">Email <span class="req">*</span></label><input class="input" id="f-email" name="email" type="email" autocomplete="email" required><span class="field__error" data-error-for="email"></span></div>
+            <div class="field"><label for="f-phone">Phone / WhatsApp</label><input class="input" id="f-phone" name="phone" type="tel" autocomplete="tel"><span class="field__error" data-error-for="phone"></span></div>
+          </div>
+          <div class="form__row form__row--2">
+            <div class="field"><label for="f-country">Country</label><input class="input" id="f-country" name="country" autocomplete="country-name"></div>
+            <div class="field">
+              <label for="f-timeline">Purchase timeline</label>
+              <select class="select" id="f-timeline" name="timeline">
+                <option value="">Select…</option>
+                <option>As soon as possible</option>
+                <option>Within 3 months</option>
+                <option>3–6 months</option>
+                <option>Just researching</option>
+              </select>
+            </div>
+          </div>
+          <div class="field"><label for="f-msg">Message</label><textarea class="textarea" id="f-msg" name="message" placeholder="Materials, daily case volume, current equipment, questions…"></textarea></div>
+          <label class="consent"><input type="checkbox" name="consent" required> <span>I agree that IDT may use these details to respond to my inquiry. <span class="req gold">*</span></span></label>
+          <span class="field__error" data-error-for="consent"></span>
+          <div class="visually-hidden" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></div>
+          <div><button class="btn" type="submit">Send inquiry <span class="arrow" aria-hidden="true">→</span></button></div>
+        </form>
+
+        <div class="form-result" data-result hidden tabindex="-1">
+          <div class="notice"><div><strong>Your inquiry is ready, but it hasn't been sent.</strong> <span>Online submission isn't connected yet. Send the inquiry by email using the button below, or copy the summary.</span></div></div>
+          <pre data-summary></pre>
+          <div class="hero__ctas">
+            <a class="btn" data-mailto href="#">Send by email <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost" data-wa href="#" target="_blank" rel="noopener">Send on WhatsApp</a>
+            <button class="btn btn--ghost" type="button" data-copy>Copy summary</button>
+            <button class="btn btn--ghost" type="button" data-edit>Edit inquiry</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

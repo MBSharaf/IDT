@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IDT — Integrated Dental Technologies</title>
+  <meta name="description" content="IDT supplies dental laboratories with lab scanners, 5-axis milling machines, zirconia sintering furnaces and porcelain furnaces — explore each machine in interactive 3D.">
+  <meta name="theme-color" content="#0A0A0A">
+  <link rel="icon" href="assets/images/brand/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="preload" as="image" href="assets/images/products/zahndent-zdm-e5.jpg">
+  <script type="importmap">
+    { "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+    } }
+  </script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script type="module" src="js/pages/home.js"></script>
+</head>
+<body data-page="home">
+<main id="main">
+
+  <!-- HERO: product slider over a giant workflow verb (reference: "01 RENEW") -->
+  <section class="hero" id="hero" aria-roledescription="carousel" aria-label="IDT product highlights">
+    <div class="hero__stage container">
+      <div class="hero__index" aria-hidden="true">
+        <span class="hero__num" data-hero-num>02</span>
+        <span class="hero__total">/ <span data-hero-total>04</span></span>
+      </div>
+      <div class="hero__word-wrap" aria-hidden="true"><div class="hero__word" data-hero-word>MILL</div></div>
+      <div class="hero__viewer" id="hero-viewer"></div>
+
+      <div class="hero__copy">
+        <p class="eyebrow">Integrated Dental Technologies</p>
+        <h1 class="hero__title">Equipment for the complete digital dental lab.</h1>
+        <p class="hero__product" aria-live="polite"><strong data-hero-name>Zahndent ZDM-E5</strong> <span data-hero-tagline>Five-axis dry milling for zirconia, PMMA, wax and PEEK.</span></p>
+        <div class="hero__ctas">
+          <a class="btn" href="products.html">Explore products <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost" data-hero-link href="product.html?id=zahndent-zdm-e5">View in 3D</a>
+        </div>
+      </div>
+
+      <div class="hero__list" data-hero-list></div>
+
+      <div class="hero__controls">
+        <button class="hero__arrow" type="button" data-hero-prev aria-label="Previous product">←</button>
+        <div class="hero__steps" role="tablist" aria-label="Workflow step" data-hero-steps></div>
+        <button class="hero__arrow" type="button" data-hero-next aria-label="Next product">→</button>
+      </div>
+    </div>
+    <div class="hero__scroll" aria-hidden="true"><span></span>Scroll</div>
+  </section>
+
+  <!-- WORKFLOW: sticky 3D stage with scroll-linked steps -->
+  <section class="workflow" id="workflow" aria-labelledby="workflow-title">
+    <div class="container workflow__head">
+      <div>
+        <p class="eyebrow">The digital lab, in four steps</p>
+        <h2 id="workflow-title">From impression<br>to glaze.</h2>
+      </div>
+      <div class="bundle" data-bundle aria-label="Workflow equipment"></div>
+    </div>
+    <div class="container workflow__grid">
+      <div class="workflow__sticky">
+        <div class="workflow__viewer" id="workflow-viewer"></div>
+        <div class="workflow__meter" aria-hidden="true"><span data-workflow-meter></span></div>
+      </div>
+      <ol class="workflow__steps" role="list" data-workflow-steps></ol>
+    </div>
+  </section>
+
+  <!-- CATALOG PREVIEW -->
+  <section class="section" id="featured" aria-labelledby="featured-title">
+    <div class="container">
+      <div class="section-head section-head--split">
+        <div>
+          <p class="eyebrow">Catalog</p>
+          <h2 id="featured-title">Every machine,<br>in real 3D.</h2>
+        </div>
+        <div>
+          <p class="lead">Each product page has an interactive 3D model built to the manufacturer's published dimensions, along with the full specifications and their sources.</p>
+          <p style="margin-top:1.2rem"><a class="link-arrow" href="products.html">Browse the full catalog <span aria-hidden="true">→</span></a></p>
+        </div>
+      </div>
+      <div class="product-grid" data-featured></div>
+    </div>
+  </section>
+
+  <!-- VALUE PROPOSITION -->
+  <section class="section section--ink values" aria-labelledby="values-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Why IDT</p>
+        <h2 id="values-title">One partner for the whole chain.</h2>
+      </div>
+      <ol class="values__grid" role="list">
+        <li class="value" data-reveal data-reveal-stagger>
+          <span class="value__num">01</span>
+          <h3>A connected workflow</h3>
+          <p>Lab scanner, 5-axis mill, sintering furnaces and a vacuum porcelain furnace, chosen to cover every step from scan to glaze.</p>
+        </li>
+        <li class="value" data-reveal data-reveal-stagger>
+          <span class="value__num">02</span>
+          <h3>Specifications you can check</h3>
+          <p>Every figure on this site comes from the manufacturer's published specifications, and each product page links to its sources.</p>
+        </li>
+        <li class="value" data-reveal data-reveal-stagger>
+          <span class="value__num">03</span>
+          <h3>Matched to your caseload</h3>
+          <p>Tell us your materials and daily volume, for example speed sintering on the S9 versus the compact M9, and we'll help you configure the right setup.</p>
+        </li>
+        <li class="value" data-reveal data-reveal-stagger>
+          <span class="value__num">04</span>
+          <h3>Installation &amp; support</h3>
+          <p>We install your equipment and train your team, with service across Egypt.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- REVIEWS (approved in the Google Sheet before they appear) -->
+  <section class="section reviews" id="reviews" aria-labelledby="reviews-title">
+    <div class="container">
+      <div class="section-head section-head--split">
+        <div>
+          <p class="eyebrow">Reviews</p>
+          <h2 id="reviews-title">What labs say.</h2>
+        </div>
+        <p class="lead">Feedback from laboratories that work with IDT equipment. Every review is checked before it is published.</p>
+      </div>
+      <div data-reviews></div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section cta-final" aria-labelledby="cta-title">
+    <div class="container cta-final__inner">
+      <p class="eyebrow">Product inquiry</p>
+      <h2 id="cta-title" class="cta-final__title">Ready to equip<br>your lab<span class="gold">?</span></h2>
+      <p class="lead">Tell us which machines you're considering. We'll come back with configuration, pricing and lead times.</p>
+      <div class="hero__ctas">
+        <a class="btn" href="contact.html#inquiry">Start an inquiry <span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost" href="products.html">Compare products</a>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

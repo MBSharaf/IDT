@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Products — IDT Integrated Dental Technologies</title>
+  <meta name="description" content="IDT's dental laboratory catalog: Aident AI-S3 lab scanner, Zahndent ZDM-E5 5-axis mill, NeunoRton S9 and M9 sintering furnaces and the M5 porcelain furnace.">
+  <meta name="theme-color" content="#0A0A0A">
+  <link rel="icon" href="assets/images/brand/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script type="module" src="js/pages/catalog.js"></script>
+</head>
+<body data-page="products">
+<main id="main">
+  <header class="page-hero">
+    <div class="container">
+      <p class="eyebrow" data-reveal>Product catalog</p>
+      <h1 class="page-hero__title" data-reveal>The digital<br>lab<span class="gold">.</span></h1>
+      <div class="page-hero__meta" data-reveal>
+        <p class="lead">Equipment for every step of the digital lab: scan, mill, sinter, fire. Specifications are taken from each manufacturer's published data, and every product page links to its sources.</p>
+      </div>
+    </div>
+    <div class="page-hero__ghost" aria-hidden="true">05</div>
+  </header>
+
+  <section class="section" style="padding-top:0" aria-label="Products">
+    <div class="container">
+      <nav class="workflow-strip" aria-label="Browse by workflow step" data-strip></nav>
+      <div class="catalog-toolbar">
+        <div class="filters" role="group" aria-label="Filter by category" data-filters></div>
+        <span class="catalog-count" aria-live="polite" data-count></span>
+      </div>
+      <div class="product-grid" data-grid></div>
+      <p class="catalog-empty" data-empty hidden>No products in this category yet.</p>
+    </div>
+  </section>
+
+  <section class="section section--ink">
+    <div class="container pd-cta" data-reveal>
+      <div>
+        <h2>Not sure which configuration fits?</h2>
+        <p>Tell us your materials, case mix and daily volume. We'll recommend a setup and send pricing.</p>
+      </div>
+      <a class="btn btn--dark" href="contact.html#inquiry">Start an inquiry <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</main>
+</body>
+</html>

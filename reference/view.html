@@ -1,0 +1,22 @@
+<!doctype html>
+<meta charset="utf-8"><title>view</title>
+<style>html,body{margin:0;height:100%;background:#888}img{display:block;width:100vw;height:100vh;object-fit:contain}</style>
+<!-- Dev helper: shows one reference image fitted to the viewport. Usage: view.html?src=<path>&crop=x0,y0,x1,y1 (normalized) -->
+<img id="i">
+<script>
+const q = new URLSearchParams(location.search);
+const img = document.getElementById('i');
+const crop = q.get('crop');
+if (!crop) img.src = q.get('src');
+else {
+  const [x0, y0, x1, y1] = crop.split(',').map(Number);
+  const src = new Image();
+  src.onload = () => {
+    const c = document.createElement('canvas');
+    c.width = (x1 - x0) * src.naturalWidth; c.height = (y1 - y0) * src.naturalHeight;
+    c.getContext('2d').drawImage(src, x0 * src.naturalWidth, y0 * src.naturalHeight, c.width, c.height, 0, 0, c.width, c.height);
+    img.src = c.toDataURL();
+  };
+  src.src = q.get('src');
+}
+</script>

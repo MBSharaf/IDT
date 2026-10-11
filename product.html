@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product — IDT Integrated Dental Technologies</title>
+  <meta name="description" content="Explore dental laboratory equipment in interactive 3D, with the manufacturer's specifications and their sources.">
+  <meta name="theme-color" content="#0A0A0A">
+  <link rel="icon" href="assets/images/brand/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script type="importmap">
+    { "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+    } }
+  </script>
+  <script type="module" src="js/pages/product.js"></script>
+</head>
+<body data-page="product">
+<main id="main" data-product-root>
+  <div class="pd-hero container" aria-busy="true">
+    <div class="viewer__loader" style="position:static;min-height:60vh"><span class="viewer__ring"></span><span>Loading product</span></div>
+  </div>
+</main>
+<div class="lightbox" hidden data-lightbox role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="btn btn--icon btn--ghost lightbox__close" type="button" data-lightbox-close aria-label="Close">✕</button>
+  <img alt="">
+</div>
+</body>
+</html>

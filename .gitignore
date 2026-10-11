@@ -1,0 +1,15 @@
+# Large reference-only files (not used by the website)
+assets/images/products/source/zahndent-zdm-e5/E5.mp4
+assets/images/products/source/aident-ai-s3/aident-catalog-2026.pdf
+*.mp4
+*.pdf
+
+# Local dev output / reference material
+reference/_renders/
+reference/reference.mp4
+
+# OS / editor
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/

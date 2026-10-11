@@ -1,0 +1,476 @@
+{
+  "meta": {
+    "researchedOn": "2026-10-09",
+    "note": "All specifications are as published by the manufacturers on the source pages listed per product. Values were transcribed, not computed. Items under 'missingInformation' must be confirmed with the manufacturer before they are published.",
+    "categories": [
+      { "id": "scanning", "label": "Lab Scanning", "step": 1, "summary": "Digitise models and impressions for CAD design." },
+      { "id": "milling", "label": "CAD/CAM Milling", "step": 2, "summary": "Mill restorations from discs in five axes." },
+      { "id": "sintering", "label": "Zirconia Sintering", "step": 3, "summary": "Sinter milled zirconia to final density and shade." },
+      { "id": "porcelain", "label": "Porcelain Firing", "step": 4, "summary": "Fire ceramic layering, stains and glaze under vacuum." }
+    ]
+  },
+  "products": [
+    {
+      "id": "zahndent-zdm-e5",
+      "verb": "MILL",
+      "highlights": [{ "label": "Max. spindle speed", "value": "60,000", "unit": "RPM" }, { "label": "Tool positions", "value": "6", "unit": "auto-change" }, { "label": "Disc format", "value": "98", "unit": "mm" }],
+      "order": 1,
+      "featured": true,
+      "manufacturer": "Zahndent",
+      "manufacturerLegalName": "Zhejiang Zahndent Biotechnology Co., Ltd. (per marketplace supplier listings)",
+      "name": "ZDM-E5 Dental Lab Milling Machine",
+      "shortName": "ZDM-E5",
+      "model": "ZDM-E5",
+      "category": "milling",
+      "categoryLabel": "CAD/CAM Milling",
+      "tagline": "The all-in-one starter mill: five-axis dry milling for zirconia, PMMA, wax and PEEK.",
+      "description": "Zahndent presents the ZDM-E5 as an all-in-one starter milling machine for dental laboratories. It mills crowns, copings, bridges and inlays/onlays from 98 mm discs in five axes, using a water-cooled 1.2 kW Haozhi spindle that reaches 60,000 RPM and an automatic six-position tool changer. It is operated from a touch display, and the window door at the front opens upward for loading. CAM is HyperDent.",
+      "labValue": [
+        "An entry point into in-house milling: zirconia, PMMA, wax and PEEK without outsourcing.",
+        "Automatic tool change across six positions lets long jobs run unattended; Zahndent states each DC-coated bur carves about 600 teeth.",
+        "Zahndent states a full-arch cut takes about 1.5 hours, with an average zirconia crown time of 8 to 15 minutes.",
+        "Mills from standard 98 mm discs, the common disc format across the industry."
+      ],
+      "features": [
+        { "title": "5-axis machining", "text": "Five-axis milling with 90° cutting for more flexible engraving of complex anatomy (manufacturer claim)." },
+        { "title": "Haozhi water-cooled spindle", "text": "1.2 kW, 20,000–60,000 RPM. Zahndent states the water cooling extends spindle life and allows 24-hour operation." },
+        { "title": "Six-tool magazine", "text": "Automatic tool change; Zahndent states each DC-coated bur carves approximately 600 teeth." },
+        { "title": "Free calibration", "text": "Listed by Zahndent among the machine's main features." },
+        { "title": "Dry milling", "text": "Configured for dry milling of zirconia, wax, PMMA and PEEK." },
+        { "title": "Touch operation & HyperDent", "text": "Touch display on the machine; supplied for use with HyperDent CAM software. Servo motors drive the axes." }
+      ],
+      "specs": [
+        { "group": "Machining", "label": "Axes", "value": "5" },
+        { "group": "Machining", "label": "Milling mode", "value": "Dry" },
+        { "group": "Machining", "label": "Millable materials", "value": "Zirconia, wax, PMMA, PEEK" },
+        { "group": "Machining", "label": "Indications", "value": "Crown, coping, bridge, inlay/onlay" },
+        { "group": "Machining", "label": "Average milling time (crown)", "value": "Zirconia 8–15 min · PMMA 8–15 min · Wax 5–8 min" },
+        { "group": "Machining", "label": "Positioning accuracy", "value": "0.02 mm" },
+        { "group": "Machining", "label": "Full-arch milling time", "value": "About 1.5 h (manufacturer)" },
+        { "group": "Spindle", "label": "Spindle", "value": "Haozhi, water-cooled" },
+        { "group": "Spindle", "label": "Spindle power", "value": "1.2 kW" },
+        { "group": "Spindle", "label": "Speed range", "value": "20,000–60,000 RPM" },
+        { "group": "Spindle", "label": "Spindle cooling", "value": "Water" },
+        { "group": "Tooling", "label": "Tool positions", "value": "6" },
+        { "group": "Tooling", "label": "Tool shank diameter", "value": "4 mm" },
+        { "group": "Tooling", "label": "Tool change", "value": "Automatic" },
+        { "group": "Tooling", "label": "Workpiece", "value": "98 mm discs" },
+        { "group": "Installation", "label": "Machine total power", "value": "1.8 kW" },
+        { "group": "Installation", "label": "Voltage", "value": "220 V / 50 Hz" },
+        { "group": "Installation", "label": "Compressed air", "value": "4.5–8 bar, oil- and water-free" },
+        { "group": "Installation", "label": "External dimensions", "value": "637 × 494 × 668 mm", "flag": "As published; Zahndent's front render suggests a width nearer 540 mm — confirm with Zahndent" },
+        { "group": "Installation", "label": "Packing dimensions", "value": "780 × 785 × 930 mm" },
+        { "group": "Installation", "label": "Net / gross weight", "value": "111 kg / 148 kg" },
+        { "group": "Software & support", "label": "Control", "value": "NC" },
+        { "group": "Software & support", "label": "CAM software", "value": "HyperDent" },
+        { "group": "Software & support", "label": "Interface languages", "value": "Chinese, English, Russian, French, Turkish, Spanish" },
+        { "group": "Software & support", "label": "Warranty (manufacturer)", "value": "1 year" }
+      ],
+      "workflow": ["Receives CAM toolpaths from HyperDent", "Mills restorations from 98 mm discs", "Hands zirconia work on to a sintering furnace"],
+      "images": {
+        "hero": "assets/images/products/zahndent-zdm-e5.jpg",
+        "gallery": [
+          { "src": "assets/images/products/zahndent-zdm-e5.jpg", "alt": "Zahndent ZDM-E5 milling machine, three-quarter view with touch display and lit milling chamber", "uploadRef": "upload #2" },
+          { "src": "assets/images/products/zahndent-zdm-e5-cabinet.jpg", "alt": "Zahndent ZDM-E5 on an IDT-branded lab cabinet", "uploadRef": "upload #1" },
+          { "src": "assets/images/products/source/zahndent-zdm-e5/07-detail-04.jpg", "alt": "Official Zahndent front view of the ZDM-E5", "credit": "Zahndent" },
+          { "src": "assets/images/products/source/zahndent-zdm-e5/03-photo-b.jpg", "alt": "ZDM-E5 with its window door opened upward, left side visible", "credit": "Zahndent" },
+          { "src": "assets/images/products/source/zahndent-zdm-e5/06-detail-02.jpg", "alt": "Inside the ZDM-E5 milling chamber: disc holder and spindle with bur", "credit": "Zahndent" },
+          { "src": "assets/images/products/source/zahndent-zdm-e5/09-detail-08.jpg", "alt": "Six-position automatic tool magazine", "credit": "Zahndent" },
+          { "src": "assets/images/products/source/zahndent-zdm-e5/08-detail-06.jpg", "alt": "PMMA discs milled on the ZDM-E5 and the Haozhi spindle", "credit": "Zahndent" }
+        ],
+        "background": "light"
+      },
+      "model3d": {
+        "type": "procedural",
+        "builder": "mill",
+        "glb": null,
+        "dimensionsMm": { "w": 539, "h": 668, "d": 637 },
+        "dimensionsNote": "The spec sheet lists external dimensions of 637 × 494 × 668 mm, but Zahndent's own orthographic front render has a width-to-height ratio of 0.81, which does not fit 494 × 668. The 3D model keeps the published height (668 mm) and depth (637 mm) and takes the width (539 mm) from the render. Confirm the exact width with Zahndent.",
+        "views": {
+          "front": { "src": "assets/images/products/source/zahndent-zdm-e5/07-detail-04.jpg", "rect": [0.11004, 0.18199, 0.42866, 0.77928] }
+        },
+        "label": "Zahndent"
+      },
+      "sources": {
+        "official": "https://www.zahndent.com/product/dental-lab-milling-machine-zdm-e5/",
+        "supporting": [
+          "https://www.zahndent.com/wp-content/uploads/2025/08/ZDM-E5详情页（修改）_12.jpg",
+          "https://www.zahndent.com/wp-content/uploads/2025/08/ZDM-E5详情页（修改）_13.jpg",
+          "https://www.zahndent.com/product-category/dental-milling-machine/"
+        ]
+      },
+      "officialAssets": {
+        "images": ["https://www.zahndent.com/wp-content/uploads/2025/08/ZDM-E5-8.jpg"],
+        "video": "https://www.zahndent.com/wp-content/uploads/2026/07/E5.mp4",
+        "models3d": [],
+        "usageRights": "Official images downloaded from the manufacturer's website at IDT's request (2026-10-10) and shown with credit. Confirm reseller usage rights with the manufacturer."
+      },
+      "confidence": "verified",
+      "identificationEvidence": "The front design matches the official ZDM-E5 product image: an all-white housing, a wide landscape touch display, a round power button with two ports beside it, a full-width viewing window and the Zahndent wordmark below. The darker ZAHN-5Z, ZAHN-5T and ZDM-5T models have different screen and housing designs.",
+      "missingInformation": [
+        "The indications chart on the official page also lists telescopes, veneers, hybrids, wax RPD frameworks and Maryland bridges for zirconia, but the parameter table lists only crown/coping/bridge/inlay/onlay. Only the table values are published.",
+        "The cabinet in upload #1 carries the IDT brand. It is not a listed Zahndent accessory for the E5, so its dimensions and specs are unknown.",
+        "Both mill photos carry an AI-image sparkle mark in the corner. Confirm that they accurately represent the device as sold.",
+        "Price, lead time, regional certification (CE/FDA) and local warranty terms from IDT."
+      ]
+    },
+    {
+      "id": "aident-ai-s3",
+      "verb": "SCAN",
+      "highlights": [{ "label": "Single arch", "value": "8.5", "unit": "s" }, { "label": "Accuracy (ISO 12836)", "value": "≤6", "unit": "µm" }, { "label": "Full impression", "value": "18", "unit": "s" }],
+      "order": 2,
+      "featured": true,
+      "manufacturer": "Aident",
+      "manufacturerLegalName": "Shenzhen Aident Technology Co., Ltd.",
+      "name": "AI-S3 High-Speed Desktop Lab Scanner",
+      "shortName": "AI-S3",
+      "model": "AI-S3",
+      "category": "scanning",
+      "categoryLabel": "Lab Scanning",
+      "tagline": "Blue-light desktop scanner: single arch in 8.5 s, ≤0.006 mm accuracy, true-color texture.",
+      "description": "A high-speed desktop scanner for dental labs, built on blue-light fringe (grating) projection with dual 2.4 MP cameras. It digitises models, dies and impressions, with true-color texture at one click, and exports open STL, PLY and OBJ data for exocad, 3Shape and other CAD software. Aident specifies ≤0.006 mm accuracy (ISO 12836) and a 94 × 89 × 60 mm scan area, and positions it for high-volume batch work.",
+      "labValue": [
+        "Speed for batch orders: 1 s occlusion, 8.5 s single arch, 18 s full impression (Aident brochure).",
+        "Direct impression scanning skips the gypsum model; double-sided impressions are aligned automatically.",
+        "AI screw-channel closure fills implant scan-body channels automatically, so implant data goes to CAD without manual repair.",
+        "Open data (STL/PLY/OBJ) goes straight into exocad or 3Shape without trimming or gap filling."
+      ],
+      "features": [
+        { "title": "Blue-light grating projection", "text": "Structured blue-light optics filter ambient light; Aident specifies full-arch accuracy within 6 µm." },
+        { "title": "AI screw-channel closure", "text": "Automatically seals screw-channel gaps when scanning implant models." },
+        { "title": "AI teeth sorting & order dispatch", "text": "Software identifies 25 tooth positions in 2 seconds and matches them to order boxes, guided by buzzer and LED (Aident brochure)." },
+        { "title": "True-color texture", "text": "One-click switch to HD color texture for margin marking and aesthetic reference." },
+        { "title": "Direct impression scanning", "text": "Double-sided, post-core, half and quarter impressions without pouring a model." },
+        { "title": "Open CAD export", "text": "STL, PLY and OBJ output; works with exocad and 3Shape." }
+      ],
+      "specs": [
+        { "group": "Optics", "label": "Technology", "value": "Blue-light fringe (grating) projection" },
+        { "group": "Optics", "label": "Cameras", "value": "2 × 2.4 MP" },
+        { "group": "Optics", "label": "Accuracy", "value": "≤0.006 mm (ISO 12836)" },
+        { "group": "Optics", "label": "Scan area", "value": "94 × 89 × 60 mm" },
+        { "group": "Optics", "label": "Texture", "value": "True-color texture scanning" },
+        { "group": "Scan time", "label": "Occlusion", "value": "1 s" },
+        { "group": "Scan time", "label": "Single arch", "value": "8.5 s" },
+        { "group": "Scan time", "label": "1–4 crowns", "value": "12 s" },
+        { "group": "Scan time", "label": "Full impression", "value": "18 s", "flag": "Aident's web pages also list 15 s and 19 s; 18 s is from the official brochure" },
+        { "group": "Software", "label": "Export & CAD", "value": "STL / PLY / OBJ · exocad, 3Shape" },
+        { "group": "Physical", "label": "Dimensions", "value": "393 × 271 × 264 mm" },
+        { "group": "Physical", "label": "Net weight", "value": "6.5 kg", "flag": "Brochure figure; Aident's web pages list 4 kg and 6 kg" },
+        { "group": "Physical", "label": "Power", "value": "DC 24 V" },
+        { "group": "Compliance", "label": "Marks shown by Aident", "value": "CE, ISO 13485, ISO 9001 (manufacturer brochure)" }
+      ],
+      "workflow": ["Scans models, dies or impressions", "Exports STL/PLY/OBJ to exocad, 3Shape or other CAD", "The CAD design is then milled on the ZDM-E5"],
+      "images": {
+        "hero": "assets/images/products/aident-ai-s3.jpg",
+        "gallery": [
+          { "src": "assets/images/products/aident-ai-s3.jpg", "alt": "Aident AI-S3 desktop lab scanner with black camera head and rotating model plate", "uploadRef": "upload #4" },
+          { "src": "assets/images/products/source/aident-ai-s3/07-dental-model-scannercd5de.webp", "alt": "AI-S3 front view into the scan bay, with tilt ring and arm", "credit": "Aident" },
+          { "src": "assets/images/products/source/aident-ai-s3/02-dental-model-scannere8eda.webp", "alt": "AI-S3 seen from the open end, camera head lenses facing the model plate", "credit": "Aident" },
+          { "src": "assets/images/products/source/aident-ai-s3/05-dental-model-scanner61d22.webp", "alt": "AI-S3 three-quarter view showing the tower, status light and arm", "credit": "Aident" },
+          { "src": "assets/images/products/source/aident-ai-s3/04-dental-model-scanner44262.webp", "alt": "AI-S3 rear view with motor cover, ports and vent", "credit": "Aident" },
+          { "src": "assets/images/products/source/aident-ai-s3/06-dental-model-scanner0e1c5.webp", "alt": "AI-S3 top view", "credit": "Aident" }
+        ],
+        "background": "light"
+      },
+      "model3d": {
+        "type": "procedural",
+        "builder": "scanner",
+        "glb": null,
+        "preferredYaw": 0.62,
+        "dimensionsMm": { "w": 393, "h": 264, "d": 271 },
+        "views": {
+          "front": { "src": "assets/images/products/source/aident-ai-s3/07-dental-model-scannercd5de.webp", "rect": [0.065, 0.215, 0.93125, 0.79] },
+          "right": { "src": "assets/images/products/source/aident-ai-s3/08-dental-model-scanner62f01.webp", "rect": [0.04375, 0.09875, 0.865, 0.825] },
+          "back": { "src": "assets/images/products/source/aident-ai-s3/03-dental-model-scannerd063c.webp", "rect": [0.03125, 0.215, 0.88125, 0.75] }
+        },
+        "label": "AIDENT",
+        "modelBadge": "AI-S3"
+      },
+      "sources": {
+        "official": "https://www.aident3d.com/3d-scanner/dental-lab-scanner/dental-model-scanner.html",
+        "supporting": [
+          "https://www.aident3d.com/uploads/46840/files/3.pdf",
+          "https://www.aident3d.com/3d-scanner/dental-lab-scanner/fast-lab-scanner.html",
+          "https://www.aident3d.com/3d-scanner/dental-lab-scanner/scanner-for-dental-impression.html",
+          "https://www.aident3d.com/3d-scanner/dental-lab-scanner/"
+        ]
+      },
+      "officialAssets": {
+        "images": [
+          "https://www.aident3d.com/uploads/46840/fast-lab-scanner3dc45.jpg",
+          "https://www.aident3d.com/uploads/46840/scanner-for-dental-impressione79e3.jpg"
+        ],
+        "video": null,
+        "models3d": [],
+        "usageRights": "Official images downloaded from the manufacturer's website at IDT's request (2026-10-10) and shown with credit. Confirm reseller usage rights with the manufacturer."
+      },
+      "confidence": "verified",
+      "identificationEvidence": "The housing is printed with the model name 'AI-S3' and the AIDENT logo. Both match Aident's official AI-S3 pages. Note that the brand is Aident (Shenzhen Aident Technology), not Aidite.",
+      "missingInformation": [
+        "Aident's own sources disagree on impression time (15 s / 18 s / 19 s) and weight (4 / 6 / 6.5 kg). The brochure values (18 s, 6.5 kg) are published with a flag.",
+        "The PC interface (e.g. USB) and the name of the bundled scan software are not stated.",
+        "The manufacturer also claims the scanner is about 50% faster than regular scanners. This is not published because it has no defined baseline.",
+        "Price, regional certification and IDT warranty terms."
+      ]
+    },
+    {
+      "id": "neunorton-s9",
+      "verb": "SINTER",
+      "highlights": [{ "label": "Max. temperature", "value": "1700", "unit": "°C" }, { "label": "Crowns per cycle", "value": "25", "unit": "max." }, { "label": "Programs", "value": "100", "unit": "" }],
+      "order": 3,
+      "featured": true,
+      "manufacturer": "NeunoRton",
+      "manufacturerLegalName": "Zhongshan NeunoRton Intelligent Manufacturing Technology Co., Ltd.",
+      "name": "S9 High-Temperature Speed Sintering Furnace",
+      "shortName": "S9",
+      "model": "S9",
+      "category": "sintering",
+      "categoryLabel": "Zirconia Sintering",
+      "tagline": "Speed sintering of translucent zirconia up to 1700 °C.",
+      "description": "A high-temperature lift-type furnace for speed sintering translucent zirconia. It sinters up to 25 single crowns per cycle at up to 1700 °C. Three molybdenum-disilicide elements heat the chamber from all sides, and an electrically driven lifting table makes loading easier. It suits chairside production and urgent laboratory work.",
+      "labValue": [
+        "Speed cycles mean urgent zirconia cases can leave the lab sooner.",
+        "Holds three crucible layers at once, for up to 25 single crowns per cycle.",
+        "Ships with 100 programs, including presets for common zirconia blocks.",
+        "The NeunoRton app shows cycle progress on a phone and sends a notification if a fault occurs."
+      ],
+      "features": [
+        { "title": "1700 °C maximum", "text": "For sintering translucent zirconia at high temperature." },
+        { "title": "All-round heating", "text": "Three MoSi₂ (silicon-molybdenum) elements for an even temperature across the chamber." },
+        { "title": "PID control ±1 °C", "text": "Intelligent PID temperature control." },
+        { "title": "Electric lifting table", "text": "Motorised lift that makes loading the crucibles easier." },
+        { "title": "100 programs", "text": "Programs shown as graphs and tables, with presets for common zirconia." },
+        { "title": "7-inch HD touch screen", "text": "Large touch interface with a mobile app for remote monitoring." }
+      ],
+      "specs": [
+        { "group": "Thermal", "label": "Max. sintering temperature", "value": "1700 °C" },
+        { "group": "Thermal", "label": "Heating rate", "value": "≤100 °C/min" },
+        { "group": "Thermal", "label": "Temperature accuracy", "value": "±1 °C" },
+        { "group": "Thermal", "label": "Fastest sintering cycle", "value": "2 h (incl. heating, holding, cooling)" },
+        { "group": "Thermal", "label": "Heating elements", "value": "3 × dental-grade MoSi₂" },
+        { "group": "Capacity", "label": "Crucible", "value": "Ø100 × 35 mm, up to 3 layers" },
+        { "group": "Capacity", "label": "Load", "value": "Up to 25 single crowns" },
+        { "group": "Control", "label": "Display", "value": "7-inch HD touch screen" },
+        { "group": "Control", "label": "Programs", "value": "100" },
+        { "group": "Electrical", "label": "Max. power", "value": "2500 W" },
+        { "group": "Electrical", "label": "Power supply", "value": "220 V or 110 V, 50/60 Hz" },
+        { "group": "Physical", "label": "Dimensions", "value": "498 × 346 × 811 mm" },
+        { "group": "Physical", "label": "Weight", "value": "70 kg" }
+      ],
+      "workflow": ["Receives milled zirconia from the ZDM-E5", "Speed-sinters to final density", "Restorations then go on to staining and glaze firing"],
+      "images": {
+        "hero": "assets/images/products/neunorton-s9.jpg",
+        "gallery": [
+          { "src": "assets/images/products/neunorton-s9.jpg", "alt": "NeunoRton S9 sintering furnace with lifting table lowered and touch screen", "uploadRef": "upload #6" },
+          { "src": "assets/images/products/source/neunorton-s9/02-68cb5760c4325_.jpg", "alt": "S9 front view: hood, open chamber with crucible stack, touch display", "credit": "NeunoRton" },
+          { "src": "assets/images/products/source/neunorton-s9/03-68cb5760e6881_.jpg", "alt": "S9 three-quarter view from the right", "credit": "NeunoRton" },
+          { "src": "assets/images/products/source/neunorton-s9/05-68cb57613332a_.jpg", "alt": "S9 side view: rear column, hood, lifting table and slanted console", "credit": "NeunoRton" },
+          { "src": "assets/images/products/source/neunorton-s9/06-68cb57664644f_.jpg", "alt": "S9 from above: vented hood top and glass loading plate", "credit": "NeunoRton" },
+          { "src": "assets/images/products/source/neunorton-s9/04-68cb57611a791_.jpg", "alt": "S9 rear panel with ventilation slots", "credit": "NeunoRton" }
+        ],
+        "background": "light"
+      },
+      "model3d": {
+        "type": "procedural",
+        "builder": "s9",
+        "glb": null,
+        "dimensionsMm": { "w": 346, "h": 811, "d": 498 },
+        "dimensionsNote": "The spec lists 498 × 346 × 811 mm. NeunoRton's orthographic renders confirm width = 346 mm, depth = 498 mm and height = 811 mm.",
+        "views": {
+          "front": { "src": "assets/images/products/source/neunorton-s9/02-68cb5760c4325_.jpg", "rect": [0.42, 0.10375, 0.74, 0.825] },
+          "left": { "src": "assets/images/products/source/neunorton-s9/05-68cb57613332a_.jpg", "rect": [0.27, 0.1375, 0.69, 0.83375] },
+          "right": { "mirror": "left" },
+          "back": { "src": "assets/images/products/source/neunorton-s9/04-68cb57611a791_.jpg", "rect": [0.41625, 0.15125, 0.73125, 0.88375] }
+        },
+        "label": "NeunoRton",
+        "modelBadge": "S9"
+      },
+      "sources": {
+        "official": "https://www.neunorton.com/zirconia-sintering-furnace/s9-zirconia-sintering-furnace.html",
+        "supporting": ["https://www.neunorton.com/products/", "https://www.youtube.com/@NeunoRton"]
+      },
+      "officialAssets": {
+        "images": ["https://www.neunorton.com/data/watermark/main/20250918/68cb576078e70_.jpg"],
+        "video": null,
+        "models3d": [],
+        "usageRights": "Official images downloaded from the manufacturer's website at IDT's request (2026-10-10) and shown with credit. Confirm reseller usage rights with the manufacturer."
+      },
+      "confidence": "verified",
+      "identificationEvidence": "The 'S9' mark is printed on the control panel, and the curved top housing and lift design match the official S9 imagery. Sibling models C9 and K9 look similar but carry their own model marks.",
+      "missingInformation": [
+        "The official description says the process 'can be completed within one hour', but the specifications state 2 hours. Only the 2-hour figure is published.",
+        "The official page does not give the chamber dimensions; only the crucible size is listed.",
+        "Certifications claimed on the brand's channel (CE MDR, FDA, ISO 13485) are self-reported. Verify them before publishing.",
+        "Price and IDT warranty terms."
+      ]
+    },
+    {
+      "id": "neunorton-m9",
+      "verb": "SINTER",
+      "highlights": [{ "label": "Temp. accuracy", "value": "±1", "unit": "°C" }, { "label": "Crucible layers", "value": "3", "unit": "× 100 mm" }, { "label": "Weight", "value": "50", "unit": "kg" }],
+      "order": 4,
+      "featured": false,
+      "manufacturer": "NeunoRton",
+      "manufacturerLegalName": "Zhongshan NeunoRton Intelligent Manufacturing Technology Co., Ltd.",
+      "name": "M9 High-Temperature Sintering Furnace",
+      "shortName": "M9",
+      "model": "M9",
+      "category": "sintering",
+      "categoryLabel": "Zirconia Sintering",
+      "tagline": "Compact front-loading sintering for crowns and bridges.",
+      "description": "A compact, front-loading high-temperature furnace for sintering crowns and bridges made of translucent zirconia. It can be programmed for the recommended sintering curves of almost all zirconia manufacturers, and its MoSi₂ heating elements are dental-specific.",
+      "labValue": [
+        "Can be programmed for the sintering curves of almost all zirconia brands.",
+        "Power-off memory resumes the program after a power interruption.",
+        "A drying function removes residual moisture before sintering.",
+        "Smaller footprint than the S9, at 361 × 360 × 555 mm."
+      ],
+      "features": [
+        { "title": "MoSi₂ heating elements", "text": "Dental-specific silicon-molybdenum elements that the manufacturer says do not contaminate restorations." },
+        { "title": "PID control ±1 °C", "text": "Intelligent PID temperature control." },
+        { "title": "Three crucible layers", "text": "100 × 100 × 35 mm per layer." },
+        { "title": "Power-off memory", "text": "Resumes from any temperature at any point on the curve." },
+        { "title": "Drying function", "text": "Removes residual moisture before high-temperature sintering." },
+        { "title": "7-inch HD touch screen", "text": "Touch control for programming and monitoring." }
+      ],
+      "specs": [
+        { "group": "Thermal", "label": "Max. sintering temperature", "value": "1700 °C", "flag": "To be confirmed with the manufacturer: the source page also mentions 1560 °C" },
+        { "group": "Thermal", "label": "Temperature accuracy", "value": "±1 °C" },
+        { "group": "Thermal", "label": "Heating elements", "value": "MoSi₂ (silicon-molybdenum)" },
+        { "group": "Capacity", "label": "Crucible", "value": "100 × 100 × 35 mm, up to 3 layers" },
+        { "group": "Control", "label": "Display", "value": "7-inch HD touch screen" },
+        { "group": "Electrical", "label": "Max. power", "value": "2500 W" },
+        { "group": "Electrical", "label": "Power supply", "value": "220 V or 110 V, 50/60 Hz" },
+        { "group": "Physical", "label": "Dimensions", "value": "361 × 360 × 555 mm" },
+        { "group": "Physical", "label": "Weight", "value": "50 kg" },
+        { "group": "Support", "label": "Warranty (manufacturer)", "value": "1 year machine · 6 months consumables" }
+      ],
+      "workflow": ["Receives milled zirconia", "Sinters to final density", "Restorations then go on to glaze firing"],
+      "images": {
+        "hero": "assets/images/products/neunorton-m9.jpg",
+        "gallery": [
+          { "src": "assets/images/products/neunorton-m9.jpg", "alt": "NeunoRton M9 front-loading sintering furnace with touch display", "uploadRef": "upload #5" },
+          { "src": "assets/images/products/source/neunorton-m9/02-68d0adc0d4751_.jpg", "alt": "M9 three-quarter view from the left, showing the door hinges", "credit": "NeunoRton" },
+          { "src": "assets/images/products/source/neunorton-m9/03-68d0adc0e71a7_.jpg", "alt": "M9 three-quarter view from the right, with side cable glands", "credit": "NeunoRton" },
+          { "src": "assets/images/products/source/neunorton-m9/04-68d0adc1096e2_.jpg", "alt": "M9 from above: vented top, door and console", "credit": "NeunoRton" },
+          { "src": "assets/images/products/source/neunorton-m9/05-68d0adc123634_.jpg", "alt": "M9 left side view", "credit": "NeunoRton" }
+        ],
+        "background": "light"
+      },
+      "model3d": {
+        "type": "procedural",
+        "builder": "m9",
+        "glb": null,
+        "dimensionsMm": { "w": 361, "h": 555, "d": 360 },
+        "views": {
+          "front": { "src": "assets/images/products/source/neunorton-m9/01-68d0adc0b9c01_.jpg", "rect": [0.3225, 0.16625, 0.7325, 0.79375] },
+          "left": { "src": "assets/images/products/source/neunorton-m9/05-68d0adc123634_.jpg", "rect": [0.31875, 0.2775, 0.70875, 0.88125] }
+        },
+        "label": "NeunoRton"
+      },
+      "sources": {
+        "official": "https://www.neunorton.com/zirconia-sintering-furnace/m9.html",
+        "supporting": ["https://www.neunorton.com/products/"]
+      },
+      "officialAssets": {
+        "images": ["https://www.neunorton.com/data/watermark/main/20250922/68d0adc0b9c01_.jpg"],
+        "video": null,
+        "models3d": [],
+        "usageRights": "Official images downloaded from the manufacturer's website at IDT's request (2026-10-10) and shown with credit. Confirm reseller usage rights with the manufacturer."
+      },
+      "confidence": "partially-verified",
+      "identificationEvidence": "The uploaded image is identical in composition to the official M9 product image (front door with handle, warning label and a clock reading 20:09 on the touch screen), so the model ID is secure. However, the official text contradicts itself, so some specifications are withheld.",
+      "missingInformation": [
+        "Maximum temperature: the title and spec table say 1700 °C, but the body text says 1560 °C. 1700 °C is shown with a 'to be confirmed' flag.",
+        "The official text mentions an 'electrically driven lifting table', a 'cylindrical chamber' and 'forced cooling: the furnace opens step by step'. These appear to be copied from the lift-type models and conflict with the front-door box design in the photo, so they are not published.",
+        "Heating rate is given as both '<100 °C/min' and '10o °C/min', and fastest cycle as both '3.5 hours' and 'under 2.5 hours'. Neither is published.",
+        "Number of programs is not stated."
+      ]
+    },
+    {
+      "id": "neunorton-m5",
+      "verb": "FIRE",
+      "highlights": [{ "label": "Max. temperature", "value": "1200", "unit": "°C" }, { "label": "Max. vacuum", "value": "−98", "unit": "kPa" }, { "label": "Program segments", "value": "100", "unit": "" }],
+      "order": 5,
+      "featured": true,
+      "manufacturer": "NeunoRton",
+      "manufacturerLegalName": "Zhongshan NeunoRton Intelligent Manufacturing Technology Co., Ltd.",
+      "name": "M5 Vacuum Porcelain Furnace",
+      "shortName": "M5",
+      "model": "M5",
+      "category": "porcelain",
+      "categoryLabel": "Porcelain Firing",
+      "tagline": "Vacuum porcelain firing to 1200 °C with built-in ceramic programs.",
+      "description": "A lift-type vacuum porcelain furnace for firing dental ceramics, including glass ceramics. The chamber is heated on all sides with dental-specific high-purity heating wire, and an oil-free vacuum pump reaches −98 kPa. Programs for Ivoclar, Vita and Noritake porcelain are built in.",
+      "labValue": [
+        "Heating from all sides gives a uniform temperature field, so fired results are more consistent.",
+        "Built-in programs for major porcelain brands reduce manual programming.",
+        "The oil-free vacuum pump is described as maintenance-free and quiet.",
+        "At 20 kg, the furnace fits on a technician's bench."
+      ],
+      "features": [
+        { "title": "Vacuum firing", "text": "Imported vacuum sensor and an oil-free pump that reaches −98 kPa." },
+        { "title": "Multi-stage heating", "text": "Can fire glass ceramics." },
+        { "title": "Built-in porcelain programs", "text": "For Ivoclar, Vita and Noritake materials." },
+        { "title": "PID control ±1 °C", "text": "S-type thermocouple for precise control." },
+        { "title": "Lifting chamber", "text": "The lift design keeps the body compact." },
+        { "title": "7-inch HD touch screen", "text": "Shows firing curves visually, with icon-based buttons." }
+      ],
+      "specs": [
+        { "group": "Thermal", "label": "Max. operating temperature", "value": "1200 °C" },
+        { "group": "Thermal", "label": "Temperature accuracy", "value": "±1 °C" },
+        { "group": "Thermal", "label": "Thermocouple", "value": "S-type" },
+        { "group": "Thermal", "label": "Heating element", "value": "Dental-specific high-purity heating wire" },
+        { "group": "Vacuum", "label": "Max. vacuum", "value": "−98 kPa" },
+        { "group": "Capacity", "label": "Chamber size", "value": "100 × 90 mm" },
+        { "group": "Control", "label": "Program segments", "value": "100" },
+        { "group": "Control", "label": "Display", "value": "7-inch HD touch screen" },
+        { "group": "Electrical", "label": "Rated power", "value": "1500 W" },
+        { "group": "Electrical", "label": "Input voltage", "value": "220 V or 110 V, 50/60 Hz" },
+        { "group": "Physical", "label": "Dimensions", "value": "329 × 290 × 541 mm" },
+        { "group": "Physical", "label": "Weight", "value": "20 kg" }
+      ],
+      "workflow": ["Receives sintered or pressed restorations", "Fires layering ceramics, stains and glaze under vacuum", "Restorations are then ready for finishing and dispatch"],
+      "images": {
+        "hero": "assets/images/products/neunorton-m5.jpg",
+        "gallery": [
+          { "src": "assets/images/products/neunorton-m5.jpg", "alt": "NeunoRton M5 porcelain furnace with raised firing chamber, firing tray and touch display showing a firing curve", "uploadRef": "upload #3" },
+          { "src": "assets/images/products/source/neunorton-m5/02-68d0ac84cc229_.jpg", "alt": "M5 three-quarter view from the left: cylindrical hood, column vents, tilted console", "credit": "NeunoRton" },
+          { "src": "assets/images/products/source/neunorton-m5/03-68d0ac84e89f2_.jpg", "alt": "M5 three-quarter view from the right", "credit": "NeunoRton" },
+          { "src": "assets/images/products/source/neunorton-m5/04-68d0ac852d90d_.jpg", "alt": "M5 from above: radial vents on the hood top", "credit": "NeunoRton" },
+          { "src": "assets/images/products/source/neunorton-m5/06-68d0ac8b59dd1_.jpg", "alt": "M5 rear three-quarter view: vented column and power inlet", "credit": "NeunoRton" }
+        ],
+        "background": "light"
+      },
+      "model3d": {
+        "type": "procedural",
+        "builder": "m5",
+        "glb": null,
+        "dimensionsMm": { "w": 290, "h": 541, "d": 329 },
+        "dimensionsNote": "The spec lists 329 × 290 × 541 mm. NeunoRton's orthographic front render has the same pixel scale on both axes only with width = 290 mm, so the order is depth × width × height.",
+        "views": {
+          "front": { "src": "assets/images/products/source/neunorton-m5/01-68d0ac8510f63_.jpg", "rect": [0.37, 0.16625, 0.7275, 0.84375] },
+          "back": { "src": "assets/images/products/source/neunorton-m5/05-68d0ac8572a1a_.jpg", "rect": [0.3825, 0.125, 0.73875, 0.79] }
+        },
+        "label": "NeunoRton"
+      },
+      "sources": {
+        "official": "https://www.neunorton.com/porcelain-furnace/m5.html",
+        "supporting": ["https://www.neunorton.com/products/"]
+      },
+      "officialAssets": {
+        "images": ["https://www.neunorton.com/data/watermark/main/20250922/68d0ac8510f63_.jpg"],
+        "video": null,
+        "models3d": [],
+        "usageRights": "Official images downloaded from the manufacturer's website at IDT's request (2026-10-10) and shown with credit. Confirm reseller usage rights with the manufacturer."
+      },
+      "confidence": "verified",
+      "identificationEvidence": "The cylindrical lifting hood with a heat-warning label, the separate base with a firing-curve touch display and the row of six blue control icons match the official M5 imagery.",
+      "missingInformation": [
+        "The manufacturer's site files the M5 under the 'Zirconia Sintering Furnace' category, but the specification (1200 °C, vacuum) is for a porcelain furnace. It is categorised here as Porcelain Firing.",
+        "Firing-tray dimensions and the number of storable programs (as opposed to segments) are not stated.",
+        "Price and IDT warranty terms."
+      ]
+    }
+  ]
+}

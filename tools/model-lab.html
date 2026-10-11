@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Model lab</title><base href="../">
+<!-- Dev tool: renders a product model with an orthographic camera from a reference view and overlays the
+     reference image, to check that geometry and photo projection line up.
+     Usage: model-lab.html?id=<product-id>&view=front|back|left|right|persp&mix=0.5 -->
+<style>
+  body{margin:0;background:#9a9a9a;font:12px monospace;color:#111}
+  #wrap{position:relative;display:inline-block;margin:8px}
+  #wrap img{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+  canvas{display:block}
+  #info{padding:4px 8px}
+</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
+</head><body>
+<div id="info">loading…</div>
+<div id="wrap"><canvas id="c"></canvas><img id="ref" alt=""></div>
+<script type="module">
+addEventListener('unhandledrejection', (e) => { document.getElementById('info').textContent = 'ERROR ' + (e.reason?.stack || e.reason); window.done = 'error'; });
+addEventListener('error', (e) => { document.getElementById('info').textContent = 'ERROR ' + e.message; window.done = 'error'; });
+import * as THREE from 'three';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { createProductModel } from './js/three/models/index.js';
+
+const q = new URLSearchParams(location.search);
+const id = q.get('id'), view = q.get('view') || 'front', mix = +(q.get('mix') ?? 0.5), size = +(q.get('size') || 700);
+const data = await (await fetch('data/products.json')).json();
+const product = data.products.find((p) => p.id === id);
+const cfg = product.model3d;
+const dims = { w: cfg.dimensionsMm.w / 1000, h: cfg.dimensionsMm.h / 1000, d: cfg.dimensionsMm.d / 1000 };
+
+const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('c'), antialias: true, preserveDrawingBuffer: true });
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xf6f6f6);
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+scene.environmentIntensity = 0.55;
+scene.add(new THREE.HemisphereLight(0xffffff, 0x444444, 0.6));
+const key = new THREE.DirectionalLight(0xffffff, 1.6); key.position.set(-1, 2, 3); scene.add(key);
+
+const model = await createProductModel(product);
+scene.add(model);
+
+const v = cfg.views?.[view];
+let cam, aspect;
+if (view === 'persp') {
+  aspect = 1;
+  cam = new THREE.PerspectiveCamera(30, 1, 0.01, 20);
+  cam.position.set(-0.9, 0.75, 1.4).multiplyScalar(Math.max(dims.h, dims.w) * 1.4);
+  cam.lookAt(0, dims.h / 2, 0);
+} else {
+  const horiz = view === 'front' || view === 'back' ? dims.w : dims.d;
+  aspect = horiz / dims.h;
+  cam = new THREE.OrthographicCamera(-horiz / 2, horiz / 2, dims.h, 0, 0.01, 20);
+  const dist = 5;
+  const dir = { front: [0, 0, 1], back: [0, 0, -1], left: [-1, 0, 0], right: [1, 0, 0] }[view];
+  cam.position.set(dir[0] * dist, 0, dir[2] * dist);
+  cam.lookAt(0, 0, 0);
+  cam.position.y = 0; cam.updateMatrixWorld();
+  // Frustum is defined around the camera axis; shift vertically so y ∈ [0, h].
+  cam.top = dims.h; cam.bottom = 0; cam.updateProjectionMatrix();
+}
+const W = Math.round(size * Math.min(1, aspect)), H = Math.round(size / Math.max(1, aspect));
+renderer.setSize(W, H);
+const ref = document.getElementById('ref');
+if (v?.src && view !== 'persp') {
+  const img = new Image(); img.src = v.src; await img.decode();
+  const [x0, y0, x1, y1] = v.rect;
+  const c = document.createElement('canvas');
+  c.width = W; c.height = H;
+  const sx = x0 * img.naturalWidth, sy = y0 * img.naturalHeight;
+  let sw = (x1 - x0) * img.naturalWidth, sh = (y1 - y0) * img.naturalHeight;
+  const ctx = c.getContext('2d');
+  if (v.mirrored) { ctx.translate(W, 0); ctx.scale(-1, 1); }
+  ctx.drawImage(img, sx, sy, sw, sh, 0, 0, W, H);
+  ref.src = c.toDataURL();
+  ref.style.opacity = mix;
+}
+if (q.get('demo')) { model.userData.demo?.toggle(); for (let i = 0; i < 120; i++) model.userData.demo?.update(0.05); }
+if (q.get('yaw')) model.rotation.y = +q.get('yaw');
+renderer.render(scene, cam);
+document.getElementById('info').textContent = `${id} · ${view} · ${W}x${H} · overlay ${mix}`;
+
+// Composite [render | reference | 50/50 blend] and save it through the dev server for review.
+const panels = ref.src ? 3 : 1;
+const out = document.createElement('canvas');
+out.width = W * panels; out.height = H;
+const o = out.getContext('2d');
+o.fillStyle = '#9a9a9a'; o.fillRect(0, 0, out.width, out.height);
+o.drawImage(renderer.domElement, 0, 0);
+if (ref.src) {
+  const r = new Image(); r.src = ref.src; await r.decode();
+  o.drawImage(r, W, 0, W, H);
+  o.drawImage(renderer.domElement, 2 * W, 0);
+  o.globalAlpha = 0.5; o.drawImage(r, 2 * W, 0, W, H); o.globalAlpha = 1;
+}
+const blob = await new Promise((res) => out.toBlob(res, 'image/png'));
+const name = q.get('out') || `${id}-${view}${q.get('demo') ? '-demo' : ''}.png`;
+await fetch(`/__save?name=${encodeURIComponent(name)}`, { method: 'POST', body: blob });
+window.done = name;
+</script>
+</body></html>

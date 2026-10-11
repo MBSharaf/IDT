@@ -1,0 +1,25 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Reference frames</title>
+<style>body{margin:0;background:#111;color:#eee;font:12px sans-serif}#g{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:4px}figure{margin:0}canvas{width:100%;display:block}figcaption{padding:2px}</style></head>
+<body><div id="info"></div><div id="g"></div>
+<video id="v" src="reference.mp4" muted playsinline style="display:none"></video>
+<script>
+// Dev-only helper: samples frames from the reference video for visual analysis.
+const v = document.getElementById('v'), g = document.getElementById('g');
+const N = +(new URLSearchParams(location.search).get('n') || 16);
+const start = +(new URLSearchParams(location.search).get('s') || 0);
+const end = +(new URLSearchParams(location.search).get('e') || 0);
+v.addEventListener('loadedmetadata', async () => {
+  const dur = end || v.duration;
+  document.getElementById('info').textContent = `duration ${v.duration.toFixed(2)}s  ${v.videoWidth}x${v.videoHeight}`;
+  for (let i = 0; i < N; i++) {
+    const t = start + (dur - start) * (i + 0.5) / N;
+    await new Promise(r => { v.onseeked = r; v.currentTime = t; });
+    const c = document.createElement('canvas'); c.width = v.videoWidth; c.height = v.videoHeight;
+    c.getContext('2d').drawImage(v, 0, 0);
+    const f = document.createElement('figure'); f.append(c);
+    const cap = document.createElement('figcaption'); cap.textContent = t.toFixed(2) + 's'; f.append(cap); g.append(f);
+  }
+  window.done = true;
+});
+</script></body></html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<meta charset="utf-8"><title>Calibrate</title>
+<!-- Dev tool: measures where a product sits inside an orthographic reference image.
+     Usage from the console: await measure(src, {threshold, ignoreBottom}) -> normalized bbox + profiles. -->
+<script>
+async function load(src) {
+  const img = new Image(); img.src = src; await img.decode();
+  const c = document.createElement('canvas'); c.width = img.naturalWidth; c.height = img.naturalHeight;
+  const x = c.getContext('2d'); x.drawImage(img, 0, 0);
+  return { W: c.width, H: c.height, d: x.getImageData(0, 0, c.width, c.height).data };
+}
+function px(im, i, j) { const k = (j * im.W + i) * 4; return [im.d[k], im.d[k + 1], im.d[k + 2]]; }
+function diff(a, b) { return Math.abs(a[0] - b[0]) + Math.abs(a[1] - b[1]) + Math.abs(a[2] - b[2]); }
+
+/** Bounding box of pixels that differ from the background (sampled at the top-left corner). */
+async function measure(src, { threshold = 36, region = [0, 0, 1, 1] } = {}) {
+  const im = await load(src);
+  const bg = px(im, 3, 3);
+  const [rx0, ry0, rx1, ry1] = region.map((v, i) => Math.round(v * (i % 2 ? im.H : im.W)));
+  let x0 = im.W, y0 = im.H, x1 = 0, y1 = 0;
+  for (let j = ry0; j < ry1; j++) for (let i = rx0; i < rx1; i++) {
+    if (diff(px(im, i, j), bg) > threshold) { if (i < x0) x0 = i; if (i > x1) x1 = i; if (j < y0) y0 = j; if (j > y1) y1 = j; }
+  }
+  return { W: im.W, H: im.H, bg, px: [x0, y0, x1, y1], norm: [x0 / im.W, y0 / im.H, x1 / im.W, y1 / im.H].map((v) => +v.toFixed(4)), aspect: +((x1 - x0) / (y1 - y0)).toFixed(4) };
+}
+
+/** Transitions along a row (v) or column (u) inside a bbox, as fractions of the bbox. */
+async function profile(src, bboxPx, { row, col, threshold = 36, dark = null } = {}) {
+  const im = await load(src); const bg = px(im, 3, 3);
+  const [x0, y0, x1, y1] = bboxPx; const out = []; let prev = null;
+  const cls = (p) => dark != null ? ((p[0] + p[1] + p[2]) / 3 < dark ? 'D' : 'L') : (diff(p, bg) > threshold ? 'O' : '.');
+  if (row != null) { const j = Math.round(y0 + row * (y1 - y0)); for (let i = x0 - 3; i <= x1 + 3; i++) { const s = cls(px(im, i, j)); if (s !== prev) { out.push(s + ((i - x0) / (x1 - x0)).toFixed(3)); prev = s; } } }
+  else { const i = Math.round(x0 + col * (x1 - x0)); for (let j = y0 - 3; j <= y1 + 3; j++) { const s = cls(px(im, i, j)); if (s !== prev) { out.push(s + ((j - y0) / (y1 - y0)).toFixed(3)); prev = s; } } }
+  return out.join(' ');
+}
+</script>

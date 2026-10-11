@@ -1,0 +1,67 @@
+/* IDT design tokens — single source of truth for colour, type, space and motion. */
+:root {
+  /* Brand palette (exact) */
+  --c-black: #0A0A0A;
+  --c-gold: #D9AD55;
+  --c-graphite: #303034;
+  --c-white: #F5F3EE;
+
+  /* Derived tones (mixes of the brand palette only) */
+  --c-ink-1: color-mix(in srgb, var(--c-black) 88%, var(--c-graphite));   /* raised surface */
+  --c-ink-2: color-mix(in srgb, var(--c-black) 65%, var(--c-graphite));   /* card surface */
+  --c-line: color-mix(in srgb, var(--c-white) 12%, transparent);
+  --c-line-strong: color-mix(in srgb, var(--c-white) 24%, transparent);
+  --c-text: var(--c-white);
+  --c-text-muted: color-mix(in srgb, var(--c-white) 64%, var(--c-black));
+  --c-text-faint: color-mix(in srgb, var(--c-white) 42%, var(--c-black));
+  --c-gold-soft: color-mix(in srgb, var(--c-gold) 16%, transparent);
+  --c-gold-deep: color-mix(in srgb, var(--c-gold) 70%, var(--c-black));
+  --c-paper-text: var(--c-black);
+  --c-paper-muted: color-mix(in srgb, var(--c-black) 62%, var(--c-white));
+
+  /* Typography */
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --stretch-display: 125%;
+
+  --fs-mega: clamp(4.2rem, 17vw, 17rem);
+  --fs-h1: clamp(2.6rem, 6.4vw, 5.6rem);
+  --fs-h2: clamp(2rem, 4.2vw, 3.6rem);
+  --fs-h3: clamp(1.25rem, 1.8vw, 1.6rem);
+  --fs-lead: clamp(1.05rem, 1.3vw, 1.25rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-micro: 0.75rem;
+
+  /* Space & layout */
+  --gutter: clamp(16px, 4vw, 56px);
+  --maxw: 1360px;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+  --space-6: clamp(5rem, 11vw, 9rem);
+  --header-h: 76px;
+
+  /* Shape */
+  --radius-s: 6px;
+  --radius-m: 14px;
+  --radius-l: 28px;
+  --radius-pill: 999px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 180ms;
+  --dur-med: 420ms;
+  --dur-slow: 900ms;
+
+  --shadow-card: 0 30px 80px -40px rgb(0 0 0 / 0.8);
+  --focus-ring: 0 0 0 2px var(--c-black), 0 0 0 4px var(--c-gold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-fast: 0ms; --dur-med: 0ms; --dur-slow: 0ms; }
+}

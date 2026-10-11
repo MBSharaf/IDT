@@ -2,7 +2,7 @@
 import { renderHeader, renderFooter } from '../components/layout.js';
 import { productCard } from '../components/productCard.js';
 import { specGroups } from '../components/specs.js';
-import { $, $$, esc, pad2 } from '../core/dom.js';
+import { $, $$, esc, pad2, srcsetAttrs } from '../core/dom.js';
 import { loadCatalog, inquiryUrl, productUrl } from '../core/data.js';
 import { boot, initReveals } from '../core/motion.js';
 import { createViewer } from '../three/viewer.js';
@@ -118,7 +118,7 @@ function render(p, products, categories) {
     <section class="pd-section" id="gallery" aria-labelledby="gl-title">
       <div class="section-head"><p class="eyebrow">Gallery</p><h2 id="gl-title">Every angle.</h2></div>
       <div class="gallery">
-        ${p.images.gallery.map((g) => `<figure class="gallery__item" data-reveal data-reveal-stagger><button type="button" data-zoom="${esc(g.src)}" data-alt="${esc(g.alt)}" style="position:absolute;inset:0" aria-label="Enlarge: ${esc(g.alt)}"></button><img src="${esc(g.src)}" alt="${esc(g.alt)}" loading="lazy"><figcaption>${g.credit ? `Official image · ${esc(g.credit)}` : 'Product photo'}</figcaption></figure>`).join('')}
+        ${p.images.gallery.map((g) => `<figure class="gallery__item" data-reveal data-reveal-stagger><button type="button" data-zoom="${esc(g.src)}" data-alt="${esc(g.alt)}" style="position:absolute;inset:0" aria-label="Enlarge: ${esc(g.alt)}"></button><img src="${esc(g.src)}"${srcsetAttrs(g.src, '(min-width: 900px) 33vw, 92vw')} alt="${esc(g.alt)}" loading="lazy" decoding="async"><figcaption>${g.credit ? `Official image · ${esc(g.credit)}` : 'Product photo'}</figcaption></figure>`).join('')}
         ${['three-quarter', 'front', 'side', 'top'].map((v) => `<figure class="gallery__item gallery__item--angle" data-reveal data-reveal-stagger><button type="button" class="tool-btn" data-goto-view="${v}">View ${v.replace('-', ' ')} in 3D</button><figcaption>Interactive 3D model</figcaption></figure>`).join('')}
       </div>
     </section>

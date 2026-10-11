@@ -5,6 +5,7 @@ import * as THREE from 'three';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { createProductModel } from './models/index.js';
 import { createFloaters } from './floaters.js';
+import { srcsetAttrs } from '../core/dom.js';
 
 const TARGET = 1.35;           // normalised product size (scene units)
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -46,13 +47,14 @@ export function createViewer(el, opts = {}) {
   const api = {
     el, ready: false, product: null, model: null,
     state: { spin: 0, spread: 0, lift: 0, offsetX: 0, scale: 1, tiltX: 0 },
-    setProduct, setView, toggleAutoRotate, toggleDemo, resetView, dispose, onChange: null,
+    setProduct, preload, setView, toggleAutoRotate, toggleDemo, resetView, dispose, onChange: null,
   };
   el.idtViewer = api; // handy for debugging from the console
 
   if (!supportsWebGL()) {
     el.classList.add('is-fallback');
     api.setProduct = async (p) => { api.product = p; poster.src = p.images.hero; poster.alt = p.name; };
+    api.preload = () => {};
     return api;
   }
 
@@ -64,7 +66,10 @@ export function createViewer(el, opts = {}) {
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.05;
   renderer.shadowMap.enabled = false;
+  // Shader error checks force a synchronous wait on every new program; the shaders are known-good.
+  renderer.debug.checkShaderErrors = location.hostname === 'localhost';
   el.prepend(renderer.domElement);
+  api.renderer = renderer; // debugging / QA
   renderer.domElement.setAttribute('aria-hidden', 'true');
 
   const scene = new THREE.Scene();
@@ -192,13 +197,13 @@ export function createViewer(el, opts = {}) {
   async function setProduct(product, { immediate = false } = {}) {
     const token = ++swapToken;
     api.product = product;
-    poster.src = product.images.hero;
-    poster.alt = product.name;
+    // The poster is only seen before the first model appears (or if 3D fails); later swaps skip it.
+    if (!api.ready) setPoster(product);
     renderer.domElement.setAttribute('aria-label', `Interactive 3D model of the ${product.manufacturer} ${product.name}`);
-    if (!cache.has(product.id)) cache.set(product.id, createProductModel(product).then(normalise));
     let next;
-    try { next = await cache.get(product.id); } catch (err) {
+    try { next = await load(product); } catch (err) {
       console.error(err);
+      setPoster(product);
       el.classList.add('is-fallback');
       return;
     }
@@ -232,6 +237,50 @@ export function createViewer(el, opts = {}) {
     api.onChange?.('product', product);
   }
 
+  function setPoster(product) {
+    const m = srcsetAttrs(product.images.hero, '').match(/srcset="([^"]+)"/);
+    if (m) { poster.sizes = '(min-width: 960px) 50vw, 100vw'; poster.srcset = m[1].replace(/&amp;/g, '&'); }
+    poster.src = product.images.hero;
+    poster.alt = product.name;
+  }
+
+  function load(product) {
+    if (!cache.has(product.id)) cache.set(product.id, createProductModel(product).then(normalise).then(prepare));
+    return cache.get(product.id);
+  }
+
+  // Uploads textures one at a time (yielding in between) and compiles shaders in the background, so a
+  // model's first frame doesn't freeze the page — this matters most on phones.
+  async function prepare(wrap) {
+    const textures = new Set();
+    wrap.traverse((m) => {
+      if (!m.isMesh) return;
+      for (const mat of [].concat(m.material)) {
+        mat.userData.projTextures?.forEach((t) => textures.add(t));
+        for (const k of ['map', 'normalMap', 'roughnessMap', 'alphaMap', 'emissiveMap', 'bumpMap']) if (mat[k]) textures.add(mat[k]);
+      }
+    });
+    for (const t of textures) { renderer.initTexture(t); await yieldToMain(); }
+    // Shader variants depend on the scene's light count, so compile as if this model were the only
+    // one on the turntable (the model on show is hidden for the synchronous part of compileAsync).
+    const shown = turntable.visible;
+    turntable.visible = false;
+    let compiled;
+    try { compiled = renderer.compileAsync(wrap, camera, scene); } finally { turntable.visible = shown; }
+    try { await compiled; } catch { /* compiled on first render instead */ }
+    return wrap;
+  }
+
+  /** Builds the given products in idle time so later swaps are instant. */
+  function preload(products) {
+    const queue = products.filter((p) => !cache.has(p.id));
+    const next = () => {
+      const p = queue.shift();
+      if (p) whenIdle(() => load(p).catch(() => {}).finally(next));
+    };
+    next();
+  }
+
   function normalise(model) {
     const box = new THREE.Box3().setFromObject(model);
     const size = box.getSize(new THREE.Vector3());
@@ -249,6 +298,11 @@ export function createViewer(el, opts = {}) {
     // Materials are shared between products; give the wrap its own opacity handling list.
     wrap.userData.meshes = [];
     wrap.traverse((m) => { if (m.isMesh) wrap.userData.meshes.push(m); });
+    // Every model carries exactly one point light (an unlit one if it has none), so swapping products
+    // never changes the scene's light count, which would force every material to recompile.
+    let points = 0;
+    wrap.traverse((l) => { if (l.isPointLight) points++; });
+    if (!points) wrap.add(new THREE.PointLight(0xffffff, 0, 0.01));
     return wrap;
   }
 
@@ -402,6 +456,9 @@ export function createViewer(el, opts = {}) {
   start();
   return api;
 }
+
+const yieldToMain = () => new Promise((r) => setTimeout(r, 0));
+const whenIdle = (fn) => ('requestIdleCallback' in window ? requestIdleCallback(fn, { timeout: 4000 }) : setTimeout(fn, 600));
 
 const easeOut = (k) => 1 - Math.pow(1 - k, 3);
 const easeInOut = (k) => (k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2);

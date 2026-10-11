@@ -208,3 +208,27 @@ Preview-pane screenshots are flaky (they time out, and frames are throttled when
 - `.gitignore` excludes E5.mp4, the Aident PDF, all *.mp4/*.pdf, `reference/_renders/`, `reference/reference.mp4`.
 - Perf at QA time (desktop, local): FCP 0.23 s, LCP 0.9 s, ~820 KB local transfer, scroll ~100 fps, CLS 0.105.
 - Next: add the GitHub remote the user supplies, then push. The site uses relative paths, so it can be hosted on GitHub Pages as-is.
+
+## Mobile performance pass (2026-10-11)
+
+- **Responsive images:**
+  - `tools/make-variants.ps1` writes `name-160/640/960.jpg` for the main product shots, and `-640/-1200` for the E5 gallery.
+  - `srcsetAttrs()` in `js/core/dom.js` is used by product cards, workflow thumbnails, the gallery and the viewer poster.
+  - Re-run the script after replacing a photo.
+- **Textures** (`projection.js`):
+  - Decoded off the main thread with `createImageBitmap` (flipY at decode, so `texture.flipY = false`).
+  - Capped at 1024 px on phones and 2048 px on desktop.
+- **Viewer** (`viewer.js`):
+  - `prepare()` uploads textures one by one, yielding in between, then runs `compileAsync`.
+  - The turntable is hidden during the synchronous compile, so the light count matches the real render.
+  - Every model gets exactly one PointLight (an unlit dummy for the scanner), so swaps never recompile.
+  - `api.preload(products)` builds products in idle time.
+  - The poster only loads before the first model appears, or on failure.
+  - `checkShaderErrors` is off outside localhost.
+- **Home:**
+  - The hero preloads the lineup once its first model is ready.
+  - The workflow viewer is created in idle time (about 3.5 s in) instead of mid-scroll.
+- **Results** (desktop CPU, 375 px viewport):
+  - The first frame of a hero swap went from 120–665 ms long tasks to ≤80 ms.
+  - The products page images went from ~470 KB to ~190 KB.
+  - Remaining: startup blocking around 0.3 s per viewer, mostly the PMREM environment.

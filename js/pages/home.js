@@ -2,7 +2,7 @@
 import { renderHeader, renderFooter } from '../components/layout.js';
 import { productCard } from '../components/productCard.js';
 import { accordion, bindAccordions } from '../components/accordion.js';
-import { $, $$, esc, pad2, showError } from '../core/dom.js';
+import { $, $$, esc, pad2, showError, srcsetAttrs } from '../core/dom.js';
 import { getWorkflowLineup, getProducts, productUrl, inquiryUrl } from '../core/data.js';
 import { boot, getGsap, reduced, splitChars, initReveals } from '../core/motion.js';
 import { createViewer } from '../three/viewer.js';
@@ -128,6 +128,9 @@ function initHero(lineup) {
   new IntersectionObserver(([e]) => { if (!e.isIntersecting) clearTimeout(timer); else if (autoplay) schedule(); }).observe($('#hero'));
 
   render(index, true);
+  // Once the first model is up, prepare the rest in idle time (in autoplay order) so swaps don't stutter.
+  const order = lineup.map((_, k) => lineup[(index + 1 + k) % lineup.length].product);
+  (function waitReady() { if (viewer.ready) viewer.preload(order); else setTimeout(waitReady, 300); })();
 
   // Cinematic scroll-out: product turns and recedes, materials disperse, type drifts.
   if (gs) {
@@ -161,7 +164,7 @@ function initWorkflow(lineup) {
   bundle.innerHTML = lineup.map((x, i) => `
     ${i ? '<span class="bundle__plus" aria-hidden="true">+</span>' : ''}
     <a class="bundle__item" href="#wstep-${i}" title="${esc(x.category.label)}: ${esc(x.product.manufacturer)} ${esc(x.product.model)}">
-      <img src="${esc(x.product.images.hero)}" alt="${esc(x.product.manufacturer)} ${esc(x.product.model)}" loading="lazy" width="84" height="84">
+      <img src="${esc(x.product.images.hero)}"${srcsetAttrs(x.product.images.hero, '84px')} alt="${esc(x.product.manufacturer)} ${esc(x.product.model)}" loading="lazy" width="84" height="84">
     </a>`).join('');
 
   $('[data-workflow-steps]').innerHTML = lineup.map(({ category: c, product: p }, i) => `
@@ -191,14 +194,21 @@ function initWorkflow(lineup) {
     viewer?.setProduct(lineup[i].product);
   };
 
-  // Create the second WebGL scene only when the section approaches the viewport.
+  // The second WebGL scene is set up in idle time after the hero (or as soon as the section nears the
+  // viewport, if that comes first), so its setup never lands in the middle of a scroll on phones.
+  const create = () => {
+    if (viewer) return;
+    // Scroll drives the rotation here; no idle spin on top of it.
+    viewer = createViewer(host, { idleSpin: false, frame: { x: 0, y: 0.03, zoom: 1.05 } });
+    viewer.setProduct(lineup[Math.max(active, 0)].product, { immediate: true })
+      .then(() => viewer.preload(lineup.map((x) => x.product)));
+  };
   new IntersectionObserver(([e], obs) => {
     if (!e.isIntersecting) return;
     obs.disconnect();
-    // Scroll drives the rotation here; no idle spin on top of it.
-    viewer = createViewer(host, { idleSpin: false, frame: { x: 0, y: 0.03, zoom: 1.05 } });
-    viewer.setProduct(lineup[Math.max(active, 0)].product, { immediate: true });
+    create();
   }, { rootMargin: '400px' }).observe(host);
+  setTimeout(() => ('requestIdleCallback' in window ? requestIdleCallback(create, { timeout: 4000 }) : create()), 3500);
 
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => { if (e.isIntersecting) activate(+e.target.dataset.i); });

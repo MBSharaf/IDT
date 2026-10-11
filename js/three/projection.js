@@ -8,10 +8,28 @@ import * as THREE from 'three';
 
 const loader = new THREE.TextureLoader();
 const texCache = new Map();
+// Phones get smaller textures: less to upload to the GPU and far less memory.
+const MAX_TEX = matchMedia('(max-width: 767px), (pointer: coarse)').matches ? 1024 : 2048;
+
+// Decodes off the main thread (createImageBitmap) so the first frame of a model doesn't stall on JPEG decoding.
+async function loadBitmapTexture(src) {
+  const blob = await fetch(src).then((r) => { if (!r.ok) throw new Error(`${r.status} ${src}`); return r.blob(); });
+  let bmp = await createImageBitmap(blob, { imageOrientation: 'flipY' });
+  if (bmp.width > MAX_TEX) {
+    const small = await createImageBitmap(bmp, { resizeWidth: MAX_TEX, resizeHeight: Math.round(bmp.height * MAX_TEX / bmp.width), resizeQuality: 'high' });
+    bmp.close();
+    bmp = small;
+  }
+  const t = new THREE.Texture(bmp);
+  t.flipY = false; // already flipped during decode
+  t.needsUpdate = true;
+  return t;
+}
 
 function loadTexture(src) {
   if (!texCache.has(src)) {
-    texCache.set(src, loader.loadAsync(src).then((t) => {
+    const load = 'createImageBitmap' in window ? loadBitmapTexture(src).catch(() => loader.loadAsync(src)) : loader.loadAsync(src);
+    texCache.set(src, load.then((t) => {
       t.colorSpace = THREE.SRGBColorSpace;
       t.anisotropy = 8;
       t.wrapS = t.wrapT = THREE.ClampToEdgeWrapping;
@@ -81,6 +99,7 @@ export async function createProjector(cfg) {
         .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
           totalEmissiveRadiance += pColor * uEmissive;`);
     };
+    m.userData.projTextures = Object.values(uniforms).map((u) => u.value).filter((v) => v?.isTexture);
     m.customProgramCacheKey = () => `proj-${cfg.key || ''}-${emissive}-${fallback ?? ''}`;
     return m;
   }

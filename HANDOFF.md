@@ -201,3 +201,10 @@ Preview-pane screenshots are flaky (they time out, and frames are throttled when
 - **Still open (content):**
   - Placeholders filled 2026-10-11: founded 2024, service area / installation & training = Egypt, hours confirmed. "After-sales service" row and About "Editable section" notice removed (no info supplied yet).
   - `assets/.../zahndent-zdm-e5/E5.mp4` (73 MB) and `aident-catalog-2026.pdf` are reference-only. Exclude them when deploying.
+
+## Git / GitHub (2026-10-11)
+
+- Local repo initialised on `main`; initial commit `206dc1c` (111 files, ~2.2 MB).
+- `.gitignore` excludes E5.mp4, the Aident PDF, all *.mp4/*.pdf, `reference/_renders/`, `reference/reference.mp4`.
+- Perf at QA time (desktop, local): FCP 0.23 s, LCP 0.9 s, ~820 KB local transfer, scroll ~100 fps, CLS 0.105.
+- Next: add the GitHub remote the user supplies, then push. The site uses relative paths, so it can be hosted on GitHub Pages as-is.

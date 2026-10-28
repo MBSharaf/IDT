@@ -14,7 +14,10 @@ $mime = @{
 
 $listener = [System.Net.HttpListener]::new()
 $listener.Prefixes.Add("http://localhost:$Port/")
-$listener.Start()
+try { $listener.Start() } catch {
+  Write-Error "Port $Port is already in use (another dev server may still be running). Stop it or pass -Port <n>."
+  exit 1
+}
 Write-Host "IDT site running at http://localhost:$Port/  (Ctrl+C to stop)"
 
 try {

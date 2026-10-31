@@ -5,6 +5,10 @@
   --c-gold: #D9AD55;
   --c-graphite: #303034;
   --c-white: #F5F3EE;
+  /* --c-black / --c-white act as the page background / text colour and swap in the light theme.
+     --ink / --paper always stay dark / light (text on gold, photo backdrops). */
+  --ink: #0A0A0A;
+  --paper: #F5F3EE;
 
   /* Derived tones (mixes of the brand palette only) */
   --c-ink-1: color-mix(in srgb, var(--c-black) 88%, var(--c-graphite));   /* raised surface */
@@ -18,6 +22,8 @@
   --c-gold-deep: color-mix(in srgb, var(--c-gold) 70%, var(--c-black));
   --c-paper-text: var(--c-black);
   --c-paper-muted: color-mix(in srgb, var(--c-black) 62%, var(--c-white));
+  --c-gold-text: var(--c-gold);                                           /* gold used as text colour */
+  --word-base: rgb(72, 71, 74);                                           /* giant hero word (plain rgb for GSAP) */
 
   /* Typography */
   --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
@@ -64,4 +70,30 @@
 
 @media (prefers-reduced-motion: reduce) {
   :root { --dur-fast: 0ms; --dur-med: 0ms; --dur-slow: 0ms; }
+}
+
+/* Light theme: warm paper background, ink text, gold kept for accents (deepened when used as text). */
+:root[data-theme="light"] {
+  --c-black: #F5F3EE;
+  --c-white: #0A0A0A;
+  --c-graphite: #DDD8CD;
+  --c-ink-1: #EEEBE4;
+  --c-ink-2: #E7E3DA;
+  --c-line: color-mix(in srgb, var(--ink) 11%, transparent);
+  --c-line-strong: color-mix(in srgb, var(--ink) 22%, transparent);
+  --c-text-muted: color-mix(in srgb, var(--ink) 72%, var(--paper));
+  --c-text-faint: color-mix(in srgb, var(--ink) 56%, var(--paper));
+  --c-gold-text: #8C6820;
+  --c-gold-soft: color-mix(in srgb, var(--c-gold) 20%, transparent);
+  --word-base: rgb(226, 222, 212);
+  --shadow-card: 0 30px 70px -40px rgb(40 30 10 / 0.35);
+  color-scheme: light;
+}
+:root { color-scheme: dark; }
+
+/* Arabic: Latin glyphs keep the brand fonts, Arabic glyphs fall through to Cairo. */
+:root[lang="ar"] {
+  --font-display: "Archivo", "Cairo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Archivo", "Cairo", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "Cairo", ui-monospace, Consolas, monospace;
 }

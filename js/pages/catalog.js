@@ -4,6 +4,7 @@ import { productCard } from '../components/productCard.js';
 import { $, $$, esc, pad2, showError } from '../core/dom.js';
 import { loadCatalog } from '../core/data.js';
 import { boot, initReveals } from '../core/motion.js';
+import { t, plural } from '../core/i18n.js';
 
 renderHeader('products');
 renderFooter();
@@ -15,12 +16,12 @@ try {
   const count = (id) => products.filter((p) => p.category === id).length;
 
   $('[data-grid]').innerHTML = products.map(productCard).join('');
-  $('[data-filters]').innerHTML = [{ id: 'all', label: 'All' }, ...categories]
+  $('[data-filters]').innerHTML = [{ id: 'all', label: t('All') }, ...categories]
     .map((c) => `<button class="chip" type="button" aria-pressed="false" data-filter="${c.id}">${esc(c.label)} <span class="chip__count">${c.id === 'all' ? products.length : count(c.id)}</span></button>`)
     .join('');
   $('[data-strip]').innerHTML = categories.map((c) => `
     <a href="?category=${c.id}" data-strip-link="${c.id}">
-      <small>Step ${pad2(c.step)}</small><strong>${esc(c.label)}</strong><span>${esc(c.summary)}</span>
+      <small>${t('Step {n}', { n: pad2(c.step) })}</small><strong>${esc(c.label)}</strong><span>${esc(c.summary)}</span>
     </a>`).join('');
 
   const apply = (id, push = false) => {
@@ -33,7 +34,7 @@ try {
       card.classList.toggle('is-hidden', !on);
       if (on) { shown++; card.classList.add('is-in'); }
     });
-    $('[data-count]').textContent = `${shown} product${shown === 1 ? '' : 's'}`;
+    $('[data-count]').textContent = plural(shown, '{n} product', '{n} products');
     $('[data-empty]').hidden = shown > 0;
     if (push) {
       const url = new URL(location.href);

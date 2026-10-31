@@ -37,7 +37,7 @@ h2 { font-size: var(--fs-h2); }
 h3 { font-size: var(--fs-h3); line-height: 1.15; letter-spacing: -0.01em; }
 p { text-wrap: pretty; }
 
-::selection { background: var(--c-gold); color: var(--c-black); }
+::selection { background: var(--c-gold); color: var(--ink); }
 :focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: var(--radius-s); }
 
 .container { width: min(100% - 2 * var(--gutter), var(--maxw)); margin-inline: auto; }
@@ -50,7 +50,7 @@ p { text-wrap: pretty; }
   font-size: var(--fs-micro);
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--c-gold);
+  color: var(--c-gold-text);
   display: inline-flex;
   align-items: center;
   gap: 0.75em;
@@ -62,7 +62,7 @@ p { text-wrap: pretty; }
 .section--paper .lead { color: var(--c-paper-muted); }
 .muted { color: var(--c-text-muted); }
 .mono { font-family: var(--font-mono); }
-.gold { color: var(--c-gold); }
+.gold { color: var(--c-gold-text); }
 
 .visually-hidden {
   position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -70,8 +70,8 @@ p { text-wrap: pretty; }
 }
 
 .skip-link {
-  position: fixed; top: 12px; left: 12px; z-index: 1000;
-  padding: 0.6rem 1rem; background: var(--c-gold); color: var(--c-black);
+  position: fixed; top: 12px; inset-inline-start: 12px; z-index: 1000;
+  padding: 0.6rem 1rem; background: var(--c-gold); color: var(--ink);
   border-radius: var(--radius-s); transform: translateY(-160%);
   transition: transform var(--dur-fast) var(--ease-out);
 }
@@ -82,6 +82,18 @@ p { text-wrap: pretty; }
   max-width: none; grid-template-columns: 1fr; align-items: end; gap: var(--space-3);
 }
 @media (min-width: 900px) { .section-head--split { grid-template-columns: 1.1fr 0.9fr; } }
+
+/* Theme switch: change every colour in one step (no per-element transitions). */
+.theme-switching, .theme-switching * { transition: none !important; }
+
+/* ---------- Arabic & right-to-left ---------- */
+/* Letter-spacing pulls Arabic letters apart (they join), so it's off for Arabic text. */
+:root[lang="ar"] body *:not(.credit *, .brand__name, .brand__mark, .hero__word, .hero__word *, .wstep__verb, .footer-wordmark, [lang="en"]) { letter-spacing: 0 !important; }
+:root[lang="ar"] body { line-height: 1.75; }
+:root[lang="ar"] :is(h1, h2, h3, .display) { line-height: 1.3; font-weight: 800; }
+:root[lang="ar"] p, :root[lang="ar"] li { text-wrap: pretty; }
+/* Direction-bearing arrows and the hero prev/next glyphs point the other way. */
+[dir="rtl"] :is(.arrow, .hero__arrow) { scale: -1 1; }
 
 /* Reveal hooks (motion.js adds .is-in; without JS everything stays visible) */
 .js [data-reveal] { opacity: 0; transform: translateY(28px); }

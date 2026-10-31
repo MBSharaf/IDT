@@ -7,6 +7,7 @@ import { getWorkflowLineup, getProducts, productUrl, inquiryUrl } from '../core/
 import { boot, getGsap, reduced, splitChars, initReveals } from '../core/motion.js';
 import { createViewer } from '../three/viewer.js';
 import { mountReviews } from '../components/reviews.js';
+import { t, isAr } from '../core/i18n.js';
 
 renderHeader('home');
 renderFooter();
@@ -44,7 +45,7 @@ function initHero(lineup) {
   $('[data-hero-total]').textContent = pad2(lineup.length);
   stepsEl.innerHTML = lineup.map((x, i) => `
     <button class="hero__step" type="button" role="tab" aria-selected="false" data-i="${i}">
-      ${pad2(i + 1)} ${esc(x.product.verb.toLowerCase())}<span class="hero__step-bar"></span>
+      ${pad2(i + 1)} ${esc(t(x.product.verb.toLowerCase()))}<span class="hero__step-bar"></span>
     </button>`).join('');
 
   fitWord(lineup.map((x) => x.product.verb));
@@ -57,11 +58,11 @@ function initHero(lineup) {
     $('[data-hero-name]').textContent = `${p.manufacturer} ${p.model}`;
     $('[data-hero-tagline]').textContent = p.tagline;
     $('[data-hero-link]').href = productUrl(p);
-    $('[data-hero-link]').setAttribute('aria-label', `View the ${p.name} in 3D`);
+    $('[data-hero-link]').setAttribute('aria-label', t('View the {name} in 3D', { name: p.name }));
     listEl.innerHTML = accordion([
-      { title: 'Key figures', html: p.highlights.map((h) => `<div class="fig"><span>${esc(h.label)}</span><strong>${esc(h.value)} ${esc(h.unit)}</strong></div>`).join('') },
-      { title: 'Why labs choose it', text: p.labValue[0] },
-      { title: 'Buying options', html: `<p>Ask us for configuration, pricing and lead times. <br><a class="link-arrow" href="${inquiryUrl(p)}">Request a quote <span aria-hidden="true">→</span></a></p>` },
+      { title: t('Key figures'), html: p.highlights.map((h) => `<div class="fig"><span>${esc(h.label)}</span><strong>${esc(h.value)} ${esc(h.unit)}</strong></div>`).join('') },
+      { title: t('Why labs choose it'), text: p.labValue[0] },
+      { title: t('Buying options'), html: `<p>${t('Ask us for configuration, pricing and lead times.')} <br><a class="link-arrow" href="${inquiryUrl(p)}">${t('Request a quote')} <span class="arrow" aria-hidden="true">→</span></a></p>` },
     ], { openFirst: true });
     bindAccordions(listEl);
     $$('.hero__step', stepsEl).forEach((b, bi) => {
@@ -75,8 +76,8 @@ function initHero(lineup) {
     schedule();
   }
 
-  // The word's resting colour as a concrete rgb() string (GSAP can't interpolate color-mix()).
-  const WORD_BASE = 'rgb(72, 71, 74)';
+  // The word's resting colour, a plain rgb() per theme in CSS (GSAP can't interpolate color-mix()).
+  const wordBase = () => getComputedStyle(wordEl).getPropertyValue('--word-base').trim();
   function swapWord(text, first) {
     if (!gs || first) {
       wordEl.textContent = text;
@@ -91,7 +92,7 @@ function initHero(lineup) {
         wordEl.textContent = text;
         const chars = splitChars(wordEl);
         gs.gsap.fromTo(chars, { yPercent: 150 }, { yPercent: 0, duration: 0.9, ease: 'expo.out', stagger: 0.04 });
-        gs.gsap.fromTo(chars, { color: '#D9AD55' }, { color: WORD_BASE, duration: 1.4, ease: 'power2.out', stagger: 0.04, clearProps: 'color' });
+        gs.gsap.fromTo(chars, { color: '#D9AD55' }, { color: wordBase(), duration: 1.4, ease: 'power2.out', stagger: 0.04, clearProps: 'color' });
       },
     });
     gs.gsap.fromTo(numEl, { yPercent: 60, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.7, ease: 'expo.out' });
@@ -119,7 +120,8 @@ function initHero(lineup) {
   stepsEl.addEventListener('keydown', (e) => {
     if (!['ArrowLeft', 'ArrowRight'].includes(e.key)) return;
     stopAutoplay();
-    const n = (index + (e.key === 'ArrowRight' ? 1 : -1) + lineup.length) % lineup.length;
+    const forward = (e.key === 'ArrowRight') !== isAr; // right-to-left: ArrowLeft moves forward
+    const n = (index + (forward ? 1 : -1) + lineup.length) % lineup.length;
     render(n);
     $$('.hero__step', stepsEl)[n].focus();
   });
@@ -163,20 +165,20 @@ function initWorkflow(lineup) {
   const bundle = $('[data-bundle]');
   bundle.innerHTML = lineup.map((x, i) => `
     ${i ? '<span class="bundle__plus" aria-hidden="true">+</span>' : ''}
-    <a class="bundle__item" href="#wstep-${i}" title="${esc(x.category.label)}: ${esc(x.product.manufacturer)} ${esc(x.product.model)}">
+    <a class="bundle__item" href="#wstep-${i}" title="${esc(x.category.label)}: ${esc(x.product.manufacturer)} ${esc(x.product.model)}" aria-label="${esc(x.category.label)}: ${esc(x.product.manufacturer)} ${esc(x.product.model)}">
       <img src="${esc(x.product.images.card || x.product.images.hero)}"${srcsetAttrs(x.product.images.card || x.product.images.hero, '84px')} alt="${esc(x.product.manufacturer)} ${esc(x.product.model)}" loading="lazy" width="84" height="84">
     </a>`).join('');
 
   $('[data-workflow-steps]').innerHTML = lineup.map(({ category: c, product: p }, i) => `
     <li class="wstep" id="wstep-${i}" data-i="${i}">
-      <span class="wstep__step">Step ${pad2(i + 1)} · ${esc(c.label)}</span>
+      <span class="wstep__step">${t('Step {n}', { n: pad2(i + 1) })} · ${esc(c.label)}</span>
       <span class="wstep__verb">${esc(p.verb)}</span>
       <h3 class="wstep__name">${esc(p.manufacturer)} ${esc(p.name)}</h3>
       <p>${esc(c.summary)} ${esc(p.labValue[0])}</p>
       <div class="wstep__facts">${p.highlights.map((h) => `<div class="wstep__fact"><strong>${esc(h.value)}<small>${esc(h.unit.length <= 4 ? h.unit : '')}</small></strong><span>${esc(h.label)}${h.unit.length > 4 ? ` · ${esc(h.unit)}` : ''}</span></div>`).join('')}</div>
       <div class="wstep__links">
-        <a class="btn btn--sm" href="${productUrl(p)}">Explore in 3D <span class="arrow" aria-hidden="true">→</span></a>
-        <a class="btn btn--ghost btn--sm" href="${inquiryUrl(p)}">Inquire</a>
+        <a class="btn btn--sm" href="${productUrl(p)}">${t('Explore in 3D')} <span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost btn--sm" href="${inquiryUrl(p)}">${t('Inquire')}</a>
       </div>
     </li>`).join('');
 

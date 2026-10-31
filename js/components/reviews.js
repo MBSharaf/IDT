@@ -2,9 +2,10 @@
 // Submitted reviews go to the Google Sheet as "Pending" and only appear once set to "Approved".
 import { $, $$, esc } from '../core/dom.js';
 import { getApprovedReviews, submitReview } from '../services/reviews.js';
+import { t, plural } from '../core/i18n.js';
 
 const STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.6l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.5l-5.9 3.1 1.2-6.5L2.5 9.5l6.6-.9z"/></svg>';
-const stars = (n) => `<span class="stars" role="img" aria-label="${n} out of 5 stars">${[1, 2, 3, 4, 5].map((i) => `<span class="${i <= n ? 'is-on' : ''}">${STAR}</span>`).join('')}</span>`;
+const stars = (n) => `<span class="stars" role="img" aria-label="${t('{n} out of 5 stars', { n })}">${[1, 2, 3, 4, 5].map((i) => `<span class="${i <= n ? 'is-on' : ''}">${STAR}</span>`).join('')}</span>`;
 
 /**
  * Renders the reviews block into `host`.
@@ -13,9 +14,9 @@ const stars = (n) => `<span class="stars" role="img" aria-label="${n} out of 5 s
  */
 export async function mountReviews(host, { products = [], productId = null, limit = 6 } = {}) {
   host.innerHTML = `
-    <div class="reviews__summary" data-rv-summary aria-live="polite"><span class="muted">Loading reviews…</span></div>
+    <div class="reviews__summary" data-rv-summary aria-live="polite"><span class="muted">${t('Loading reviews…')}</span></div>
     <div class="reviews__grid" data-rv-grid></div>
-    <div class="reviews__actions"><button class="btn" type="button" data-rv-open>Write a review <span class="arrow" aria-hidden="true">→</span></button></div>`;
+    <div class="reviews__actions"><button class="btn" type="button" data-rv-open>${t('Write a review')} <span class="arrow" aria-hidden="true">→</span></button></div>`;
   const dialog = ensureDialog(products);
   $('[data-rv-open]', host).addEventListener('click', () => openDialog(dialog, productId));
 
@@ -25,11 +26,11 @@ export async function mountReviews(host, { products = [], productId = null, limi
   const summary = $('[data-rv-summary]', host);
 
   if (!reviews.length) {
-    summary.innerHTML = `<p class="muted">No reviews yet${productId ? ' for this product' : ''}. Be the first to share your experience with IDT.</p>`;
+    summary.innerHTML = `<p class="muted">${t(productId ? 'No reviews yet for this product. Be the first to share your experience with IDT.' : 'No reviews yet. Be the first to share your experience with IDT.')}</p>`;
     return;
   }
   const avg = reviews.reduce((s, r) => s + r.rating, 0) / reviews.length;
-  summary.innerHTML = `<strong class="reviews__avg">${avg.toFixed(1)}</strong>${stars(Math.round(avg))}<span class="muted">${reviews.length} verified review${reviews.length === 1 ? '' : 's'}</span>`;
+  summary.innerHTML = `<strong class="reviews__avg">${avg.toFixed(1)}</strong>${stars(Math.round(avg))}<span class="muted">${plural(reviews.length, '{n} verified review', '{n} verified reviews')}</span>`;
   grid.innerHTML = reviews.slice(0, limit).map((r) => `
     <article class="review-card">
       ${stars(r.rating)}
@@ -51,28 +52,28 @@ function ensureDialog(products) {
   dialogEl.innerHTML = `
     <form class="form" data-rv-form novalidate>
       <div class="review-dialog__head">
-        <h2 id="rv-title">Write a review</h2>
-        <button class="btn btn--icon btn--ghost" type="button" data-rv-close aria-label="Close">✕</button>
+        <h2 id="rv-title">${t('Write a review')}</h2>
+        <button class="btn btn--icon btn--ghost" type="button" data-rv-close aria-label="${t('Close')}">✕</button>
       </div>
-      <p class="muted" style="font-size:.9rem">Reviews are checked by IDT before they appear on the site. Your e-mail is never shown.</p>
+      <p class="muted" style="font-size:.9rem">${t('Reviews are checked by IDT before they appear on the site. Your e-mail is never shown.')}</p>
       <fieldset class="field rating-input" style="border:0;padding:0;margin:0">
-        <legend>Your rating <span class="req">*</span></legend>
-        <div class="rating-input__stars">${[5, 4, 3, 2, 1].map((n) => `<input type="radio" name="rating" id="rv-${n}" value="${n}"><label for="rv-${n}" title="${n} star${n > 1 ? 's' : ''}">${STAR}<span class="visually-hidden">${n} star${n > 1 ? 's' : ''}</span></label>`).join('')}</div>
+        <legend>${t('Your rating')} <span class="req">*</span></legend>
+        <div class="rating-input__stars">${[5, 4, 3, 2, 1].map((n) => `<input type="radio" name="rating" id="rv-${n}" value="${n}"><label for="rv-${n}" title="${plural(n, '{n} star', '{n} stars')}">${STAR}<span class="visually-hidden">${plural(n, '{n} star', '{n} stars')}</span></label>`).join('')}</div>
         <span class="field__error" data-rv-error="rating"></span>
       </fieldset>
-      <div class="field"><label for="rv-product">Product</label>
-        <select class="select" id="rv-product" name="productId"><option value="">General — IDT service</option>${products.map((p) => `<option value="${esc(p.id)}">${esc(p.manufacturer)} ${esc(p.model)}</option>`).join('')}</select></div>
+      <div class="field"><label for="rv-product">${t('Product')}</label>
+        <select class="select" id="rv-product" name="productId"><option value="">${t('General — IDT service')}</option>${products.map((p) => `<option value="${esc(p.id)}">${esc(p.manufacturer)} ${esc(p.model)}</option>`).join('')}</select></div>
       <div class="form__row form__row--2">
-        <div class="field"><label for="rv-name">Full name <span class="req">*</span></label><input class="input" id="rv-name" name="name" autocomplete="name" maxlength="120"><span class="field__error" data-rv-error="name"></span></div>
-        <div class="field"><label for="rv-company">Laboratory / company</label><input class="input" id="rv-company" name="company" autocomplete="organization" maxlength="160"></div>
+        <div class="field"><label for="rv-name">${t('Full name')} <span class="req">*</span></label><input class="input" id="rv-name" name="name" autocomplete="name" maxlength="120"><span class="field__error" data-rv-error="name"></span></div>
+        <div class="field"><label for="rv-company">${t('Laboratory / company')}</label><input class="input" id="rv-company" name="company" autocomplete="organization" maxlength="160"></div>
       </div>
       <div class="form__row form__row--2">
-        <div class="field"><label for="rv-country">Country</label><input class="input" id="rv-country" name="country" autocomplete="country-name" maxlength="80"></div>
-        <div class="field"><label for="rv-email">Email (private, for a confirmation)</label><input class="input" id="rv-email" name="email" type="email" autocomplete="email" maxlength="200"><span class="field__error" data-rv-error="email"></span></div>
+        <div class="field"><label for="rv-country">${t('Country')}</label><input class="input" id="rv-country" name="country" autocomplete="country-name" maxlength="80"></div>
+        <div class="field"><label for="rv-email">${t('Email (private, for a confirmation)')}</label><input class="input" id="rv-email" name="email" type="email" autocomplete="email" maxlength="200"><span class="field__error" data-rv-error="email"></span></div>
       </div>
-      <div class="field"><label for="rv-text">Your review <span class="req">*</span></label><textarea class="textarea" id="rv-text" name="review" maxlength="2000" placeholder="How has the equipment and IDT's service worked for your lab?"></textarea><span class="field__error" data-rv-error="review"></span></div>
+      <div class="field"><label for="rv-text">${t('Your review')} <span class="req">*</span></label><textarea class="textarea" id="rv-text" name="review" maxlength="2000" placeholder="${t("How has the equipment and IDT's service worked for your lab?")}"></textarea><span class="field__error" data-rv-error="review"></span></div>
       <div class="visually-hidden" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></div>
-      <div class="review-dialog__foot"><button class="btn" type="submit">Submit review <span class="arrow" aria-hidden="true">→</span></button></div>
+      <div class="review-dialog__foot"><button class="btn" type="submit">${t('Submit review')} <span class="arrow" aria-hidden="true">→</span></button></div>
     </form>
     <div class="review-dialog__done" data-rv-done hidden tabindex="-1"></div>`;
   document.body.append(dialogEl);
@@ -86,10 +87,10 @@ function ensureDialog(products) {
     e.preventDefault();
     const fd = new FormData(form);
     const errors = {
-      rating: fd.get('rating') ? '' : 'Please choose a rating.',
-      name: (fd.get('name') || '').trim().length >= 2 ? '' : 'Please enter your name.',
-      review: (fd.get('review') || '').trim().length >= 10 ? '' : 'Please write at least a sentence.',
-      email: !fd.get('email') || /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(fd.get('email')) ? '' : 'Please enter a valid email or leave it empty.',
+      rating: fd.get('rating') ? '' : t('Please choose a rating.'),
+      name: (fd.get('name') || '').trim().length >= 2 ? '' : t('Please enter your name.'),
+      review: (fd.get('review') || '').trim().length >= 10 ? '' : t('Please write at least a sentence.'),
+      email: !fd.get('email') || /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(fd.get('email')) ? '' : t('Please enter a valid email or leave it empty.'),
     };
     Object.entries(errors).forEach(([k, v]) => { $(`[data-rv-error="${k}"]`, dialogEl).textContent = v; });
     const first = Object.keys(errors).find((k) => errors[k]);
@@ -97,7 +98,7 @@ function ensureDialog(products) {
 
     const btn = form.querySelector('[type="submit"]');
     const label = btn.innerHTML;
-    btn.disabled = true; btn.textContent = 'Sending…';
+    btn.disabled = true; btn.textContent = t('Sending…');
     const product = products.find((p) => p.id === fd.get('productId'));
     const outcome = await submitReview({
       rating: Number(fd.get('rating')),
@@ -109,8 +110,8 @@ function ensureDialog(products) {
     });
     btn.disabled = false; btn.innerHTML = label;
     done.innerHTML = outcome.delivered
-      ? `<h2>Thank you!</h2><p class="muted">Your review has been received and will appear on the site once IDT approves it.${fd.get('email') ? ` A confirmation has been sent to ${esc(fd.get('email'))}.` : ''}</p><button class="btn" type="button" data-rv-close>Close</button>`
-      : `<h2>Couldn't send your review</h2><p class="muted">Please check your connection and try again.</p><button class="btn btn--ghost" type="button" data-rv-retry>Try again</button>`;
+      ? `<h2>${t('Thank you!')}</h2><p class="muted">${t('Your review has been received and will appear on the site once IDT approves it.')}${fd.get('email') ? ` ${t('A confirmation has been sent to {email}.', { email: `<span dir="ltr">${esc(fd.get('email'))}</span>` })}` : ''}</p><button class="btn" type="button" data-rv-close>${t('Close')}</button>`
+      : `<h2>${t("Couldn't send your review")}</h2><p class="muted">${t('Please check your connection and try again.')}</p><button class="btn btn--ghost" type="button" data-rv-retry>${t('Try again')}</button>`;
     form.hidden = true; done.hidden = false; done.focus();
     if (outcome.delivered) form.reset();
     $('[data-rv-retry]', done)?.addEventListener('click', () => { done.hidden = true; form.hidden = false; });

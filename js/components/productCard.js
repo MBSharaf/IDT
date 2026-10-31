@@ -1,6 +1,7 @@
 // Product card used on the catalog and home "featured" grid.
 import { esc, pad2, srcsetAttrs } from '../core/dom.js';
 import { productUrl, inquiryUrl } from '../core/data.js';
+import { t } from '../core/i18n.js';
 
 export function productCard(p, index) {
   const facts = (p.highlights || []).slice(0, 2)
@@ -20,8 +21,8 @@ export function productCard(p, index) {
         <div class="product-card__facts">${facts}</div>
       </div>
       <div class="product-card__actions">
-        <a class="btn btn--sm" href="${productUrl(p)}">View in 3D <span class="arrow" aria-hidden="true">→</span></a>
-        <a class="btn btn--sm btn--ghost" href="${inquiryUrl(p)}" aria-label="Inquire about ${esc(p.name)}">Inquire</a>
+        <a class="btn btn--sm" href="${productUrl(p)}">${t('View in 3D')} <span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn--sm btn--ghost" href="${inquiryUrl(p)}" aria-label="${esc(t('Inquire about {name}', { name: p.name }))}">${t('Inquire')}</a>
       </div>
     </article>`;
 }

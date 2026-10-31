@@ -3,9 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About IDT — Integrated Dental Technologies</title>
-  <meta name="description" content="IDT — Integrated Dental Technologies supplies dental laboratories with digital workflow equipment: lab scanning, CAD/CAM milling, sintering and porcelain firing.">
+  <title data-i18n="about.title">About IDT — Integrated Dental Technologies</title>
+  <meta name="description" content="IDT — Integrated Dental Technologies supplies dental laboratories with digital workflow equipment: lab scanning, CAD/CAM milling, sintering and porcelain firing." data-i18n-attr="content:about.desc">
   <meta name="theme-color" content="#0A0A0A">
+  <!-- Language + theme before first paint (see js/core/i18n.js). -->
+  <script>(function(d){var l,t;try{var q=new URLSearchParams(location.search).get('lang');if(q==='ar'||q==='en')localStorage.setItem('idt-lang',q);l=localStorage.getItem('idt-lang');t=localStorage.getItem('idt-theme')}catch(e){}l=l||(/^ar\b/i.test(navigator.language)?'ar':'en');t=t==='light'?'light':'dark';d.lang=l;d.dir=l==='ar'?'rtl':'ltr';d.dataset.theme=t;if(t==='light')document.querySelector('meta[name=theme-color]').content='#F5F3EE';if(l==='ar'){var f=document.createElement('link');f.rel='stylesheet';f.href='https://fonts.googleapis.com/css2?family=Cairo:wght@300..900&display=swap';document.head.appendChild(f)}})(document.documentElement)</script>
   <link rel="icon" href="assets/images/brand/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +22,7 @@
 <main id="main">
   <header class="page-hero">
     <div class="container">
-      <p class="eyebrow" data-reveal>About IDT</p>
+      <p class="eyebrow" data-reveal data-i18n="about.eyebrow">About IDT</p>
       <h1 class="page-hero__title" data-reveal>Integrated<br>Dental<br>Technologies<span class="gold">.</span></h1>
     </div>
     <div class="page-hero__ghost" aria-hidden="true">IDT</div>
@@ -29,11 +31,11 @@
   <section class="section" style="padding-top:2rem">
     <div class="container about-grid">
       <div data-reveal>
-        <p class="eyebrow">What we do</p>
+        <p class="eyebrow" data-i18n="about.what">What we do</p>
       </div>
       <div style="display:grid;gap:1.6rem">
-        <p class="statement" data-reveal>IDT equips dental laboratories for the <em>digital workflow</em>: lab scanning, five-axis CAD/CAM milling, zirconia sintering and vacuum porcelain firing.</p>
-        <p class="lead" data-reveal>We bring together equipment from specialist manufacturers, so a lab can source every step from scan to glaze through one partner. Every product page shows the manufacturer's published specifications and links to the original sources.</p>
+        <p class="statement" data-reveal data-i18n="about.statement">IDT equips dental laboratories for the <em>digital workflow</em>: lab scanning, five-axis CAD/CAM milling, zirconia sintering and vacuum porcelain firing.</p>
+        <p class="lead" data-reveal data-i18n="about.lead">We bring together equipment from specialist manufacturers, so a lab can source every step from scan to glaze through one partner. Every product page shows the manufacturer's published specifications and links to the original sources.</p>
       </div>
     </div>
   </section>
@@ -41,8 +43,8 @@
   <section class="section section--ink" aria-labelledby="brands-title">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">Manufacturers in our range</p>
-        <h2 id="brands-title">The equipment behind the workflow.</h2>
+        <p class="eyebrow" data-i18n="about.makers.eyebrow">Manufacturers in our range</p>
+        <h2 id="brands-title" data-i18n="about.makers.title">The equipment behind the workflow.</h2>
       </div>
       <div class="brands" data-brands></div>
     </div>
@@ -51,8 +53,8 @@
   <section class="section" aria-labelledby="facts-title">
     <div class="container about-grid">
       <div>
-        <p class="eyebrow">Company details</p>
-        <h2 id="facts-title" style="margin-top:1rem">At a glance.</h2>
+        <p class="eyebrow" data-i18n="about.facts.eyebrow">Company details</p>
+        <h2 id="facts-title" style="margin-top:1rem" data-i18n="about.facts.title">At a glance.</h2>
       </div>
       <dl class="fact-sheet" data-facts></dl>
     </div>
@@ -61,10 +63,10 @@
   <section class="section" style="padding-top:0">
     <div class="container pd-cta" data-reveal>
       <div>
-        <h2>Let's talk about your lab.</h2>
-        <p>Tell us about your materials, volumes and current setup.</p>
+        <h2 data-i18n="about.cta.title">Let's talk about your lab.</h2>
+        <p data-i18n="about.cta.p">Tell us about your materials, volumes and current setup.</p>
       </div>
-      <a class="btn btn--dark" href="contact.html#inquiry">Contact IDT <span class="arrow" aria-hidden="true">→</span></a>
+      <a class="btn btn--dark" href="contact.html#inquiry" data-i18n="about.cta.btn">Contact IDT <span class="arrow" aria-hidden="true">→</span></a>
     </div>
   </section>
 </main>

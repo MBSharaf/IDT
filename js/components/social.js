@@ -1,6 +1,7 @@
 // Social profile links (icons + accessible labels), rendered from site.socials.
 import { site } from '../core/site.js';
 import { esc } from '../core/dom.js';
+import { t } from '../core/i18n.js';
 
 // Glyphs from Simple Icons (CC0).
 const ICONS = {
@@ -11,7 +12,7 @@ const ICONS = {
 export function socialLinks({ withLabels = false } = {}) {
   if (!site.socials?.length) return '';
   return `<ul class="social" role="list">${site.socials.map((s) => `
-    <li><a class="social__link" href="${esc(s.url)}" target="_blank" rel="noopener" aria-label="IDT on ${esc(s.label)} (opens in a new tab)">
+    <li><a class="social__link" href="${esc(s.url)}" target="_blank" rel="noopener" aria-label="${esc(t('IDT on {network} (opens in a new tab)', { network: s.label }))}">
       <span class="social__icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">${ICONS[s.id] || ''}</svg></span>${withLabels ? `<span class="social__text">${esc(s.label)}</span>` : ''}
     </a></li>`).join('')}</ul>`;
 }

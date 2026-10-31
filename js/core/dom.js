@@ -1,4 +1,5 @@
 // Tiny DOM helpers (kept framework-agnostic so they map cleanly to React components later).
+import { t } from './i18n.js';
 export const $ = (sel, root = document) => root.querySelector(sel);
 export const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 
@@ -21,7 +22,7 @@ export const pad2 = (n) => String(n).padStart(2, '0');
 export const prefersReducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 export function showError(target, message) {
-  mount(target, `<div class="notice" role="alert"><strong>Couldn't load content.</strong> ${esc(message)} — run the site through a local server (see README).</div>`);
+  mount(target, `<div class="notice" role="alert"><strong>${t("Couldn't load content.")}</strong> ${esc(message)}</div>`);
 }
 
 // Responsive images: smaller copies made by tools/make-variants.ps1 (name-<width>.jpg).

@@ -9,7 +9,8 @@ export function buildInquiry(fd, products) {
     type: 'inquiry',
     products: ids.map((id) => {
       const p = products.find((x) => x.id === id);
-      return p ? { id, label: `${p.manufacturer} ${p.model} (${p.name})` } : { id, label: 'Not sure yet: please recommend a setup' };
+      // Always the English name: the inquiry goes to IDT's sheet and inbox.
+      return p ? { id, label: `${p.manufacturer} ${p.model} (${p.en?.name || p.name})` } : { id, label: 'Not sure yet: please recommend a setup' };
     }),
     name: fd.get('name').trim(),
     company: fd.get('company').trim(),

@@ -6,6 +6,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { createProductModel } from './models/index.js';
 import { createFloaters } from './floaters.js';
 import { srcsetAttrs } from '../core/dom.js';
+import { t } from '../core/i18n.js';
 
 const TARGET = 1.35;           // normalised product size (scene units)
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -41,7 +42,7 @@ export function createViewer(el, opts = {}) {
   poster.setAttribute('aria-hidden', 'true');
   const loader = document.createElement('div');
   loader.className = 'viewer__loader';
-  loader.innerHTML = '<span class="viewer__ring"></span><span>Preparing 3D model</span>';
+  loader.innerHTML = `<span class="viewer__ring"></span><span>${t('Preparing 3D model')}</span>`;
   el.append(poster, loader);
 
   const api = {
@@ -201,7 +202,7 @@ export function createViewer(el, opts = {}) {
     api.product = product;
     // The poster is only seen before the first model appears (or if 3D fails); later swaps skip it.
     if (!api.ready) setPoster(product);
-    renderer.domElement.setAttribute('aria-label', `Interactive 3D model of the ${product.manufacturer} ${product.name}`);
+    renderer.domElement.setAttribute('aria-label', t('Interactive 3D model of the {maker} {name}', { maker: product.manufacturer, name: product.name }));
     let next;
     try { next = await load(product); } catch (err) {
       console.error(err);

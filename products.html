@@ -3,9 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Products — IDT Integrated Dental Technologies</title>
-  <meta name="description" content="IDT's dental laboratory catalog: Aident AI-S3 lab scanner, Zahndent ZDM-E5 5-axis mill, NeunoRton S9 and M9 sintering furnaces and the M5 porcelain furnace.">
+  <title data-i18n="cat.title">Products — IDT Integrated Dental Technologies</title>
+  <meta name="description" content="IDT's dental laboratory catalog: Aident AI-S3 lab scanner, Zahndent ZDM-E5 5-axis mill, NeunoRton S9 and M9 sintering furnaces and the M5 porcelain furnace." data-i18n-attr="content:cat.desc">
   <meta name="theme-color" content="#0A0A0A">
+  <!-- Language + theme before first paint (see js/core/i18n.js). -->
+  <script>(function(d){var l,t;try{var q=new URLSearchParams(location.search).get('lang');if(q==='ar'||q==='en')localStorage.setItem('idt-lang',q);l=localStorage.getItem('idt-lang');t=localStorage.getItem('idt-theme')}catch(e){}l=l||(/^ar\b/i.test(navigator.language)?'ar':'en');t=t==='light'?'light':'dark';d.lang=l;d.dir=l==='ar'?'rtl':'ltr';d.dataset.theme=t;if(t==='light')document.querySelector('meta[name=theme-color]').content='#F5F3EE';if(l==='ar'){var f=document.createElement('link');f.rel='stylesheet';f.href='https://fonts.googleapis.com/css2?family=Cairo:wght@300..900&display=swap';document.head.appendChild(f)}})(document.documentElement)</script>
   <link rel="icon" href="assets/images/brand/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,34 +22,34 @@
 <main id="main">
   <header class="page-hero">
     <div class="container">
-      <p class="eyebrow" data-reveal>Product catalog</p>
-      <h1 class="page-hero__title" data-reveal>The digital<br>lab<span class="gold">.</span></h1>
+      <p class="eyebrow" data-reveal data-i18n="cat.eyebrow">Product catalog</p>
+      <h1 class="page-hero__title" data-reveal data-i18n="cat.h1">The digital<br>lab<span class="gold">.</span></h1>
       <div class="page-hero__meta" data-reveal>
-        <p class="lead">Equipment for every step of the digital lab: scan, mill, sinter, fire. Specifications are taken from each manufacturer's published data, and every product page links to its sources.</p>
+        <p class="lead" data-i18n="cat.lead">Equipment for every step of the digital lab: scan, mill, sinter, fire. Specifications are taken from each manufacturer's published data, and every product page links to its sources.</p>
       </div>
     </div>
     <div class="page-hero__ghost" aria-hidden="true">05</div>
   </header>
 
-  <section class="section" style="padding-top:0" aria-label="Products">
+  <section class="section" style="padding-top:0" aria-label="Products" data-i18n-attr="aria-label:Products">
     <div class="container">
-      <nav class="workflow-strip" aria-label="Browse by workflow step" data-strip></nav>
+      <nav class="workflow-strip" aria-label="Browse by workflow step" data-strip data-i18n-attr="aria-label:cat.strip"></nav>
       <div class="catalog-toolbar">
-        <div class="filters" role="group" aria-label="Filter by category" data-filters></div>
+        <div class="filters" role="group" aria-label="Filter by category" data-filters data-i18n-attr="aria-label:cat.filters"></div>
         <span class="catalog-count" aria-live="polite" data-count></span>
       </div>
       <div class="product-grid" data-grid></div>
-      <p class="catalog-empty" data-empty hidden>No products in this category yet.</p>
+      <p class="catalog-empty" data-empty hidden data-i18n="cat.empty">No products in this category yet.</p>
     </div>
   </section>
 
   <section class="section section--ink">
     <div class="container pd-cta" data-reveal>
       <div>
-        <h2>Not sure which configuration fits?</h2>
-        <p>Tell us your materials, case mix and daily volume. We'll recommend a setup and send pricing.</p>
+        <h2 data-i18n="cat.cta.title">Not sure which configuration fits?</h2>
+        <p data-i18n="cat.cta.p">Tell us your materials, case mix and daily volume. We'll recommend a setup and send pricing.</p>
       </div>
-      <a class="btn btn--dark" href="contact.html#inquiry">Start an inquiry <span class="arrow" aria-hidden="true">→</span></a>
+      <a class="btn btn--dark" href="contact.html#inquiry" data-i18n="cta.start">Start an inquiry <span class="arrow" aria-hidden="true">→</span></a>
     </div>
   </section>
 </main>

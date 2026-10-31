@@ -3,9 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Product — IDT Integrated Dental Technologies</title>
-  <meta name="description" content="Explore dental laboratory equipment in interactive 3D, with the manufacturer's specifications and their sources.">
+  <title data-i18n="pd.title">Product — IDT Integrated Dental Technologies</title>
+  <meta name="description" content="Explore dental laboratory equipment in interactive 3D, with the manufacturer's specifications and their sources." data-i18n-attr="content:pd.desc">
   <meta name="theme-color" content="#0A0A0A">
+  <!-- Language + theme before first paint (see js/core/i18n.js). -->
+  <script>(function(d){var l,t;try{var q=new URLSearchParams(location.search).get('lang');if(q==='ar'||q==='en')localStorage.setItem('idt-lang',q);l=localStorage.getItem('idt-lang');t=localStorage.getItem('idt-theme')}catch(e){}l=l||(/^ar\b/i.test(navigator.language)?'ar':'en');t=t==='light'?'light':'dark';d.lang=l;d.dir=l==='ar'?'rtl':'ltr';d.dataset.theme=t;if(t==='light')document.querySelector('meta[name=theme-color]').content='#F5F3EE';if(l==='ar'){var f=document.createElement('link');f.rel='stylesheet';f.href='https://fonts.googleapis.com/css2?family=Cairo:wght@300..900&display=swap';document.head.appendChild(f)}})(document.documentElement)</script>
   <link rel="icon" href="assets/images/brand/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,11 +38,11 @@
 <body data-page="product">
 <main id="main" data-product-root>
   <div class="pd-hero container" aria-busy="true">
-    <div class="viewer__loader" style="position:static;min-height:60vh"><span class="viewer__ring"></span><span>Loading product</span></div>
+    <div class="viewer__loader" style="position:static;min-height:60vh" data-i18n="pd.loading"><span class="viewer__ring"></span><span>Loading product</span></div>
   </div>
 </main>
-<div class="lightbox" hidden data-lightbox role="dialog" aria-modal="true" aria-label="Image viewer">
-  <button class="btn btn--icon btn--ghost lightbox__close" type="button" data-lightbox-close aria-label="Close">✕</button>
+<div class="lightbox" hidden data-lightbox role="dialog" aria-modal="true" aria-label="Image viewer" data-i18n-attr="aria-label:pd.lightbox">
+  <button class="btn btn--icon btn--ghost lightbox__close" type="button" data-lightbox-close aria-label="Close" data-i18n-attr="aria-label:Close">✕</button>
   <img alt="">
 </div>
 </body>

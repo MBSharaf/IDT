@@ -94,6 +94,8 @@ p { text-wrap: pretty; }
 :root[lang="ar"] p, :root[lang="ar"] li { text-wrap: pretty; }
 /* Direction-bearing arrows and the hero prev/next glyphs point the other way. */
 [dir="rtl"] :is(.arrow, .hero__arrow) { scale: -1 1; }
+/* English display words and counters keep left-to-right order (per-letter spans would otherwise reverse). */
+[dir="rtl"] :is(.hero__word, .hero__index, .wstep__verb, .pd-stage__ghost, .page-hero__ghost, .footer-wordmark, .brand) { direction: ltr; }
 
 /* Reveal hooks (motion.js adds .is-in; without JS everything stays visible) */
 .js [data-reveal] { opacity: 0; transform: translateY(28px); }

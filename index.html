@@ -14,7 +14,10 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/pages.css">
-  <link rel="preload" as="image" href="assets/images/products/zahndent-zdm-e5.jpg">
+  <!-- Same srcset/sizes as the viewer poster, so phones preload the 640 px file instead of the full one. -->
+  <link rel="preload" as="image" href="assets/images/products/zahndent-zdm-e5.jpg"
+    imagesrcset="assets/images/products/zahndent-zdm-e5-160.jpg 160w, assets/images/products/zahndent-zdm-e5-640.jpg 640w, assets/images/products/zahndent-zdm-e5-960.jpg 960w, assets/images/products/zahndent-zdm-e5.jpg 1536w"
+    imagesizes="(min-width: 960px) 50vw, 100vw">
   <script type="importmap">
     { "imports": {
       "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js",
@@ -23,6 +26,17 @@
   </script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Flatten the 3D import waterfall: fetch the module graph in parallel with the page script. -->
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js">
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/environments/RoomEnvironment.js">
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/geometries/RoundedBoxGeometry.js">
+  <link rel="modulepreload" href="js/three/viewer.js">
+  <link rel="modulepreload" href="js/three/floaters.js">
+  <link rel="modulepreload" href="js/three/materials.js">
+  <link rel="modulepreload" href="js/three/projection.js">
+  <link rel="modulepreload" href="js/three/models/index.js">
+  <link rel="modulepreload" href="js/three/models/parts.js">
+  <link rel="modulepreload" href="js/three/models/mill.js">
   <script type="module" src="js/pages/home.js"></script>
 </head>
 <body data-page="home">

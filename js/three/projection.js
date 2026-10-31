@@ -62,8 +62,10 @@ export async function createProjector(cfg) {
 
   // The photos already carry their own shading, so the material keeps scene lighting modest
   // (dimmed diffuse + photo emissive) and reflections low; blacks stay black.
-  function material({ base = 0xa8a8a8, roughness = 0.62, metalness = 0, emissive = 0.5, clearcoat = 0, fallback } = {}) {
-    const m = new THREE.MeshPhysicalMaterial({ color: base, roughness, metalness, clearcoat, clearcoatRoughness: 0.5, envMapIntensity: 0.35 });
+  // MeshStandard, not MeshPhysical: no caller uses clearcoat, and the physical shader is noticeably
+  // heavier per pixel on phones while looking the same here (both use an F0 of 0.04).
+  function material({ base = 0xa8a8a8, roughness = 0.62, metalness = 0, emissive = 0.5, fallback } = {}) {
+    const m = new THREE.MeshStandardMaterial({ color: base, roughness, metalness, envMapIntensity: 0.35 });
     const uniforms = {
       tFront: { value: views.front?.tex || null }, tBack: { value: views.back?.tex || null },
       tLeft: { value: views.left?.tex || null }, tRight: { value: views.right?.tex || null },

@@ -20,7 +20,7 @@ export async function build(cfg) {
   // Rear column (full height) with slotted sides. Its front face sits behind the hood in the front
   // render, so it gets a plain white facing instead of projection (visible once the hood lowers).
   g.add(at(rbox(colW, H, colZ1 - colZ0, mm(8), shell), 0, H / 2, (colZ0 + colZ1) / 2));
-  const colFace = box(colW - mm(10), H - baseTop - mm(6), mm(1), new THREE.MeshPhysicalMaterial({ color: 0xeeeeec, roughness: 0.55 }));
+  const colFace = box(colW - mm(10), H - baseTop - mm(6), mm(1), new THREE.MeshStandardMaterial({ color: 0xeeeeec, roughness: 0.55 }));
   colFace.userData.project = false;
   g.add(at(colFace, 0, baseTop + (H - baseTop - mm(6)) / 2, colZ1 + mm(0.6)));
   for (const sx of [-1, 1]) {
@@ -57,7 +57,7 @@ export async function build(cfg) {
   // Cylindrical lifting hood (lowers onto the platform).
   const hood = new THREE.Group();
   g.add(hood);
-  hood.add(at(cyl(hoodR, hoodR, H - hoodY0, shell, 96), 0, (H + hoodY0) / 2, hoodZ));
+  hood.add(at(cyl(hoodR, hoodR, H - hoodY0, shell, 64), 0, (H + hoodY0) / 2, hoodZ));
   const vents = new THREE.Mesh(new THREE.CircleGeometry(hoodR - mm(4), 64), new THREE.MeshStandardMaterial({ map: radialVentTexture(), transparent: true, roughness: 0.8, polygonOffset: true, polygonOffsetFactor: -2 }));
   vents.rotation.x = -Math.PI / 2;
   vents.userData.project = false;

@@ -20,6 +20,17 @@
       "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
     } }
   </script>
+  <!-- Flatten the 3D import waterfall: fetch the module graph in parallel with the page script. -->
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js">
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/environments/RoomEnvironment.js">
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/geometries/RoundedBoxGeometry.js">
+  <link rel="modulepreload" href="https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/controls/OrbitControls.js">
+  <link rel="modulepreload" href="js/three/viewer.js">
+  <link rel="modulepreload" href="js/three/floaters.js">
+  <link rel="modulepreload" href="js/three/materials.js">
+  <link rel="modulepreload" href="js/three/projection.js">
+  <link rel="modulepreload" href="js/three/models/index.js">
+  <link rel="modulepreload" href="js/three/models/parts.js">
   <script type="module" src="js/pages/product.js"></script>
 </head>
 <body data-page="product">

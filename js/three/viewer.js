@@ -131,7 +131,8 @@ export function createViewer(el, opts = {}) {
       controls.autoRotate = !REDUCED;
       controls.autoRotateSpeed = 0.9;
       controls.target.copy(camTarget);
-      controls.addEventListener('start', () => { controls.autoRotate = false; api.onChange?.('autorotate', false); });
+      controls.addEventListener('start', () => { controls.autoRotate = false; api.onChange?.('autorotate', false); wake(); });
+      controls.addEventListener('change', () => wake());
       placeCamera(view);
     });
     renderer.domElement.tabIndex = 0;
@@ -179,6 +180,7 @@ export function createViewer(el, opts = {}) {
       if (controls) { controls.minDistance = camDist * 0.45; controls.maxDistance = camDist * 1.6; }
       placeCamera(view);
     }
+    wake();
   }
 
   function setFit(wrap, instant) {
@@ -232,6 +234,7 @@ export function createViewer(el, opts = {}) {
       resetModel(next);
     }
     resetModel(next);
+    wake();
     el.classList.add('is-ready');
     api.ready = true;
     api.onChange?.('product', product);
@@ -329,9 +332,11 @@ export function createViewer(el, opts = {}) {
   function toggleAutoRotate(force) {
     if (!controls) return false;
     controls.autoRotate = typeof force === 'boolean' ? force : !controls.autoRotate;
+    wake();
     return controls.autoRotate;
   }
-  function toggleDemo() { return api.model?.userData.demo?.toggle() ?? false; }
+  // Demo actions ease with lerpTo (speed ~2.2/s), so they settle well within 3.5 s.
+  function toggleDemo() { wake(3500); return api.model?.userData.demo?.toggle() ?? false; }
 
   function animateCamera(v) {
     const from = camera.position.clone();
@@ -391,9 +396,14 @@ export function createViewer(el, opts = {}) {
   document.addEventListener('visibilitychange', () => { if (!document.hidden) start(); });
 
   function start() { if (!raf) { clock.getDelta(); raf = requestAnimationFrame(loop); } }
+  // Product pages render on demand: frames only run while something moves (orbit/damping,
+  // auto-rotate, tweens, a demo action), then the loop sleeps until the next wake().
+  let awakeUntil = 0;
+  function wake(ms = 300) { awakeUntil = Math.max(awakeUntil, performance.now() + ms); start(); }
+  // `raf` stays set while a frame runs, so a wake() fired from inside it (controls 'change') can't
+  // start a second loop.
   function loop() {
-    raf = 0;
-    if (!visible || document.hidden) return;
+    if (!visible || document.hidden) { raf = 0; return; }
     const dt = Math.min(clock.getDelta(), 0.05);
     elapsed += dt;
     const s = api.state;
@@ -417,6 +427,7 @@ export function createViewer(el, opts = {}) {
     tweens.forEach((t) => t(dt));
     controls?.update();
     renderer.render(scene, camera);
+    if (o.interactive && !controls?.autoRotate && !tweens.size && performance.now() > awakeUntil) { raf = 0; return; }
     raf = requestAnimationFrame(loop);
   }
 

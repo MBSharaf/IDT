@@ -4,7 +4,7 @@ import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 import { mats } from '../materials.js';
 
-export function rbox(w, h, d, r, material, segments = 4) {
+export function rbox(w, h, d, r, material, segments = 3) {
   const radius = Math.min(r, w / 2 - 1e-4, h / 2 - 1e-4, d / 2 - 1e-4);
   const mesh = new THREE.Mesh(new RoundedBoxGeometry(w, h, d, segments, Math.max(radius, 1e-4)), material);
   mesh.castShadow = true;

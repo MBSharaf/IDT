@@ -8,9 +8,9 @@
   border-bottom: 1px solid transparent;
 }
 .site-header.is-scrolled {
-  background: color-mix(in srgb, var(--c-black) 82%, transparent);
-  backdrop-filter: blur(14px) saturate(1.2);
-  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  /* No backdrop-filter: blurring over the WebGL canvas re-composites every scroll frame. A denser
+     tint keeps the same look without it. */
+  background: color-mix(in srgb, var(--c-black) 93%, transparent);
   border-bottom-color: var(--c-line);
 }
 .site-header.is-hidden { transform: translateY(-100%); }

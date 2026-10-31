@@ -56,7 +56,7 @@ export async function build(cfg) {
   g.add(at(peanut, mm(85), mm(111.5), wallZ0 - mm(12)));
 
   // Tilt ring on the wall's inner face.
-  const ring = new THREE.Mesh(new THREE.TorusGeometry(mm(52), mm(1.6), 10, 96), mats.blackMatte());
+  const ring = new THREE.Mesh(new THREE.TorusGeometry(mm(52), mm(1.6), 8, 64), mats.blackMatte());
   ring.userData.project = false;
   g.add(at(ring, mm(134), mm(156), wallZ1 + mm(0.8)));
 

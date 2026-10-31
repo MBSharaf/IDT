@@ -232,3 +232,17 @@ Preview-pane screenshots are flaky (they time out, and frames are throttled when
   - The first frame of a hero swap went from 120–665 ms long tasks to ≤80 ms.
   - The products page images went from ~470 KB to ~190 KB.
   - Remaining: startup blocking around 0.3 s per viewer, mostly the PMREM environment.
+
+## Performance pass 2 (2026-10-31, on a new PC)
+
+- **Machine note:** the repo was moved to another PC (user `MMO`). Plain `git` fails with "dubious ownership"; use `git -c safe.directory=* …`. No git `user.name`/`user.email` and no `gh` CLI here.
+- **Render on demand** (`viewer.js`, interactive viewers only): frames run only while something moves (orbit/damping via the controls `change` event, auto-rotate, tweens, a demo action for 3.5 s, resize, product load), via `wake(ms)`. Measured on the S9 page: auto-rotate one render per display frame (145 Hz); idle = 0 frames. The loop keeps `raf` set while a frame runs so a `wake()` from inside it can't start a second loop.
+- **Materials:** the projected shell material (`projection.js`) and the M5 column face are now `MeshStandardMaterial` (no caller used clearcoat). `materials.js` and the M9/S9 physical materials with real clearcoat are unchanged.
+- **Geometry:** `rbox` default segments 4 → 3; M5 hood cylinder 96 → 64; scanner tilt-ring torus 10×96 → 8×64.
+- **No `backdrop-filter`** on `.site-header.is-scrolled` (now 93 % black) and `.pd-nav` (95 %).
+- **`modulepreload`** in `index.html` and `product.html` for three, RoomEnvironment, RoundedBoxGeometry (+ OrbitControls on product) and the local viewer/model modules (+ `mill.js` on home). All of them now start at ~33 ms in parallel instead of a 3-level waterfall.
+- **Hero image preload** now has `imagesrcset`/`imagesizes` matching the poster, so phones no longer download the 1536 px file on top of the 640 px one.
+- **Zahndent 2362 px photos:** left as-is; the gallery already serves the -640/-1200 variants through srcset.
+- **`tools/serve.ps1`:** `Cache-Control: no-cache` + `Last-Modified`, with a 304 when `If-Modified-Since` matches.
+- **Verified:** all 5 product pages and the home page build their models with no console errors.
+- **Still open:** the PMREM startup cost; a hosting note (gzip/CDN; GitHub Pages already gzips); re-measuring long tasks on a real phone.

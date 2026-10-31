@@ -46,8 +46,16 @@ try {
       } else {
         $ext = [IO.Path]::GetExtension($path).ToLower()
         $res.ContentType = if ($mime.ContainsKey($ext)) { $mime[$ext] } else { 'application/octet-stream' }
-        $res.Headers.Add('Cache-Control', 'no-store')
-        $bytes = [IO.File]::ReadAllBytes($path)
+        # Revalidate on every request (edits show up immediately) but answer 304 when unchanged.
+        $res.Headers.Add('Cache-Control', 'no-cache')
+        $stamp = [IO.File]::GetLastWriteTimeUtc($path).ToString('R')
+        $res.Headers.Add('Last-Modified', $stamp)
+        if ($ctx.Request.Headers['If-Modified-Since'] -eq $stamp) {
+          $res.StatusCode = 304
+          $bytes = [byte[]]@()
+        } else {
+          $bytes = [IO.File]::ReadAllBytes($path)
+        }
       }
       $res.ContentLength64 = $bytes.Length
       if ($ctx.Request.HttpMethod -ne 'HEAD') { $res.OutputStream.Write($bytes, 0, $bytes.Length) }

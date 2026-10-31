@@ -60,7 +60,7 @@ function initHero(lineup) {
     $('[data-hero-link]').href = productUrl(p);
     $('[data-hero-link]').setAttribute('aria-label', t('View the {name} in 3D', { name: p.name }));
     listEl.innerHTML = accordion([
-      { title: t('Key figures'), html: p.highlights.map((h) => `<div class="fig"><span>${esc(h.label)}</span><strong>${esc(h.value)} ${esc(h.unit)}</strong></div>`).join('') },
+      { title: t('Key figures'), html: p.highlights.map((h) => `<div class="fig"><span>${esc(h.label)}</span><strong><bdi>${esc(h.value)} ${esc(h.unit)}</bdi></strong></div>`).join('') },
       { title: t('Why labs choose it'), text: p.labValue[0] },
       { title: t('Buying options'), html: `<p>${t('Ask us for configuration, pricing and lead times.')} <br><a class="link-arrow" href="${inquiryUrl(p)}">${t('Request a quote')} <span class="arrow" aria-hidden="true">→</span></a></p>` },
     ], { openFirst: true });

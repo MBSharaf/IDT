@@ -57,6 +57,7 @@ export const AR = {
   'home.hero.next': 'المنتج اللي بعده',
   'home.hero.steps': 'خطوات الشغل',
   'home.hero.scroll': '<span></span>انزل',
+  'home.hero.tagline': 'تفريز جاف 5 محاور للزيركون والـ PMMA والشمع والـ PEEK.',
   'scan': 'السكان',
   'mill': 'التفريز',
   'sinter': 'التلبيد',

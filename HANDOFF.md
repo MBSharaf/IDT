@@ -304,3 +304,18 @@ The site now has 9 products.
   - The page carries no dental claims; the product notes flag that dental resins need confirming.
 - **Card images:** both were made with Adobe cutouts plus `tools/cutout.ps1`.
 - **Order:** `order` values were renumbered 1–9 to match the list order. The AI-30 sits next to the AI-S3.
+
+## Arabic / English + light / dark theme (2026-10-31)
+- Header has two switches (`.prefs` in js/components/layout.js): language ("ع" / "EN") and theme (sun / moon).
+- An inline script at the top of every page's `<head>` sets `<html lang dir data-theme>` before first paint
+  (`?lang=ar|en` > localStorage `idt-lang` > browser language; theme from localStorage `idt-theme`, default dark).
+  Changing language reloads the page; changing theme is instant.
+- Text: `js/core/i18n.js` (`t()`, `plural()`, `applyI18n()`). Arabic (Egyptian) interface text is in
+  `js/core/strings.ar.js`: JS strings are keyed by their English text, static HTML by `data-i18n` / `data-i18n-attr` keys.
+  New UI text: wrap it in `t('English')` and add the Arabic to strings.ar.js.
+- Product data: `data/products.ar.json` is laid over `data/products.json` (arrays aligned by index; only translated
+  fields). After adding/editing a product, add its Arabic and run `node tools/merge-ar.mjs` to check alignment.
+  Inquiries sent to the Sheet keep English product names (`p.en.name`).
+- Theme: `--c-black` / `--c-white` are the background / text roles and swap in `[data-theme=light]` (css/tokens.css);
+  `--ink` / `--paper` never swap; gold used as text goes through `--c-gold-text`. RTL uses logical CSS properties.
+- The giant decorative words (MILL, SCAN…), model names and the Pharosline credit stay in English.

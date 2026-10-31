@@ -13,6 +13,7 @@ renderHeader('products');
 renderFooter();
 boot();
 
+const VIEW_NAMES = { 'three-quarter': '3/4', front: 'Front', side: 'Side', top: 'Top', back: 'Back' };
 const root = $('[data-product-root]');
 const id = new URLSearchParams(location.search).get('id');
 
@@ -25,8 +26,6 @@ try {
   console.error(err);
   root.innerHTML = `<div class="container not-found"><h1>${t("Couldn't load the catalog.")}</h1><p class="lead">${esc(err.message)}</p></div>`;
 }
-
-const VIEW_NAMES = { 'three-quarter': '3/4', front: 'Front', side: 'Side', top: 'Top', back: 'Back' };
 
 function render(p, products, categories) {
   document.title = `${p.manufacturer} ${p.name} — IDT`;

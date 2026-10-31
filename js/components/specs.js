@@ -11,7 +11,7 @@ export function specGroups(specs) {
     <div class="spec-group" data-reveal>
       <h3>${esc(name)}</h3>
       <dl class="spec-list">${rows.map((r) => `
-        <div class="spec-row"><dt>${esc(r.label)}</dt><dd>${esc(r.value)}${r.flag ? `<span class="spec-flag">⚑ ${esc(r.flag)}</span>` : ''}</dd></div>`).join('')}
+        <div class="spec-row"><dt>${esc(r.label)}</dt><dd><bdi>${esc(r.value)}</bdi>${r.flag ? `<span class="spec-flag">⚑ ${esc(r.flag)}</span>` : ''}</dd></div>`).join('')}
       </dl>
     </div>`).join('')}</div>`;
 }

@@ -69,6 +69,7 @@
       "workflow": ["Receives CAM toolpaths from HyperDent", "Mills restorations from 98 mm discs", "Hands zirconia work on to a sintering furnace"],
       "images": {
         "hero": "assets/images/products/zahndent-zdm-e5.jpg",
+        "card": "assets/images/products/zahndent-zdm-e5-card.jpg",
         "gallery": [
           { "src": "assets/images/products/zahndent-zdm-e5.jpg", "alt": "Zahndent ZDM-E5 milling machine, three-quarter view with touch display and lit milling chamber", "uploadRef": "upload #2" },
           { "src": "assets/images/products/zahndent-zdm-e5-cabinet.jpg", "alt": "Zahndent ZDM-E5 on an IDT-branded lab cabinet", "uploadRef": "upload #1" },
@@ -322,6 +323,7 @@
       ],
       "images": {
         "hero": "assets/images/products/zahndent-zdm-5z.jpg",
+        "card": "assets/images/products/zahndent-zdm-5z-card.jpg",
         "gallery": [
           {
             "src": "assets/images/products/zahndent-zdm-5z.jpg",
@@ -454,6 +456,7 @@
       "workflow": ["Scans models, dies or impressions", "Exports STL/PLY/OBJ to exocad, 3Shape or other CAD", "The CAD design is then milled on the ZDM-E5"],
       "images": {
         "hero": "assets/images/products/aident-ai-s3.jpg",
+        "card": "assets/images/products/aident-ai-s3-card.jpg",
         "gallery": [
           { "src": "assets/images/products/aident-ai-s3.jpg", "alt": "Aident AI-S3 desktop lab scanner with black camera head and rotating model plate", "uploadRef": "upload #4" },
           { "src": "assets/images/products/source/aident-ai-s3/07-dental-model-scannercd5de.webp", "alt": "AI-S3 front view into the scan bay, with tilt ring and arm", "credit": "Aident" },
@@ -552,6 +555,7 @@
       "workflow": ["Receives milled zirconia from the ZDM-E5", "Speed-sinters to final density", "Restorations then go on to staining and glaze firing"],
       "images": {
         "hero": "assets/images/products/neunorton-s9.jpg",
+        "card": "assets/images/products/neunorton-s9-card.jpg",
         "gallery": [
           { "src": "assets/images/products/neunorton-s9.jpg", "alt": "NeunoRton S9 sintering furnace with lifting table lowered and touch screen", "uploadRef": "upload #6" },
           { "src": "assets/images/products/source/neunorton-s9/02-68cb5760c4325_.jpg", "alt": "S9 front view: hood, open chamber with crucible stack, touch display", "credit": "NeunoRton" },
@@ -640,6 +644,7 @@
       "workflow": ["Receives milled zirconia", "Sinters to final density", "Restorations then go on to glaze firing"],
       "images": {
         "hero": "assets/images/products/neunorton-m9.jpg",
+        "card": "assets/images/products/neunorton-m9-card.jpg",
         "gallery": [
           { "src": "assets/images/products/neunorton-m9.jpg", "alt": "NeunoRton M9 front-loading sintering furnace with touch display", "uploadRef": "upload #5" },
           { "src": "assets/images/products/source/neunorton-m9/02-68d0adc0d4751_.jpg", "alt": "M9 three-quarter view from the left, showing the door hinges", "credit": "NeunoRton" },
@@ -836,6 +841,7 @@
       ],
       "images": {
         "hero": "assets/images/products/zahndent-zds-08.jpg",
+        "card": "assets/images/products/zahndent-zds-08-card.jpg",
         "gallery": [
           {
             "src": "assets/images/products/zahndent-zds-08.jpg",
@@ -961,6 +967,7 @@
       "workflow": ["Receives sintered or pressed restorations", "Fires layering ceramics, stains and glaze under vacuum", "Restorations are then ready for finishing and dispatch"],
       "images": {
         "hero": "assets/images/products/neunorton-m5.jpg",
+        "card": "assets/images/products/neunorton-m5-card.jpg",
         "gallery": [
           { "src": "assets/images/products/neunorton-m5.jpg", "alt": "NeunoRton M5 porcelain furnace with raised firing chamber, firing tray and touch display showing a firing curve", "uploadRef": "upload #3" },
           { "src": "assets/images/products/source/neunorton-m5/02-68d0ac84cc229_.jpg", "alt": "M5 three-quarter view from the left: cylindrical hood, column vents, tilted console", "credit": "NeunoRton" },

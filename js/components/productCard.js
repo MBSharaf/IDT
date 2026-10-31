@@ -11,7 +11,7 @@ export function productCard(p, index) {
       <div class="product-card__media">
         <span class="product-card__index">${pad2(index + 1)}</span>
         <span class="product-card__cat">${esc(p.categoryLabel)}</span>
-        <img src="${esc(p.images.hero)}"${srcsetAttrs(p.images.hero, '(min-width: 1100px) 30vw, (min-width: 700px) 45vw, 92vw')} alt="${esc(p.images.gallery[0]?.alt || p.name)}" loading="lazy" decoding="async" width="600" height="600">
+        <img src="${esc(p.images.card || p.images.hero)}"${srcsetAttrs(p.images.card || p.images.hero, '(min-width: 1100px) 30vw, (min-width: 700px) 45vw, 92vw')} alt="${esc(p.images.gallery[0]?.alt || p.name)}" loading="lazy" decoding="async" width="600" height="600">
       </div>
       <div class="product-card__body">
         <span class="product-card__maker">${esc(p.manufacturer)} · ${esc(p.model)}</span>

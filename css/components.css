@@ -142,7 +142,7 @@
 }
 .product-card:hover { border-color: color-mix(in srgb, var(--c-gold) 45%, transparent); transform: translateY(-4px); box-shadow: var(--shadow-card); }
 .product-card__media {
-  position: relative; aspect-ratio: 1 / 0.86; background: var(--c-white); overflow: hidden;
+  position: relative; aspect-ratio: 1 / 0.86; background: #1D1D20; overflow: hidden; /* matches the edge of the *-card.jpg photos (tools/cutout.ps1) */
   border-radius: calc(var(--radius-l) - 8px); margin: 8px;
 }
 .product-card__media img {

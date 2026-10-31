@@ -94,7 +94,7 @@
 
 .bundle { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
 .bundle__item {
-  width: clamp(58px, 7vw, 84px); aspect-ratio: 1; border-radius: 50%; background: var(--c-white); overflow: hidden;
+  width: clamp(58px, 7vw, 84px); aspect-ratio: 1; border-radius: 50%; background: #1D1D20; overflow: hidden;
   box-shadow: inset 0 0 0 1px var(--c-line-strong);
   transition: transform var(--dur-med) var(--ease-out), box-shadow var(--dur-med);
 }

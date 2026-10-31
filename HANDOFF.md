@@ -271,3 +271,17 @@ The site now has 7 products.
   - Both product pages build their 3D model with no errors.
   - Specs and gallery render.
   - model-lab renders look right (`reference/_renders/zahndent-zds-08-persp.png`, `zahndent-zdm-5z-persp-demo.png`).
+
+## Dark card photos (2026-10-31)
+
+- **Problem:** the white photo backgrounds looked like a white box inside the dark cards, especially on hover.
+- **Cutouts:**
+  - Transparent cutouts of every main photo are in `assets/images/products/source/cutouts/<id>.png`.
+  - They came from Adobe's background removal: the photo was uploaded to the user's Adobe CC storage under `idt/`, then `image_remove_background` was run.
+  - A local colour-based removal was tried first. It ate into the white housings, so don't go back to it.
+- **Card images:**
+  - `tools/cutout.ps1` places each cutout on a dark graphite glow that fades to `#1D1D20`.
+  - It writes `assets/images/products/<id>-card.jpg` plus -160/-640/-960 variants.
+- **Where `images.card` is used:** each product's `images.card` in `products.json` is used by the product cards, the home workflow bundle thumbnails and the 3D viewer poster.
+- **Backgrounds:** `.product-card__media` and `.bundle__item` now use `#1D1D20`. The hero preload in `index.html` points at the card image.
+- **Adding a product:** make its cutout PNG first, then run `tools/cutout.ps1`, then add `"card"` to its images.

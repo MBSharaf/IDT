@@ -164,7 +164,7 @@ function initWorkflow(lineup) {
   bundle.innerHTML = lineup.map((x, i) => `
     ${i ? '<span class="bundle__plus" aria-hidden="true">+</span>' : ''}
     <a class="bundle__item" href="#wstep-${i}" title="${esc(x.category.label)}: ${esc(x.product.manufacturer)} ${esc(x.product.model)}">
-      <img src="${esc(x.product.images.hero)}"${srcsetAttrs(x.product.images.hero, '84px')} alt="${esc(x.product.manufacturer)} ${esc(x.product.model)}" loading="lazy" width="84" height="84">
+      <img src="${esc(x.product.images.card || x.product.images.hero)}"${srcsetAttrs(x.product.images.card || x.product.images.hero, '84px')} alt="${esc(x.product.manufacturer)} ${esc(x.product.model)}" loading="lazy" width="84" height="84">
     </a>`).join('');
 
   $('[data-workflow-steps]').innerHTML = lineup.map(({ category: c, product: p }, i) => `

@@ -53,7 +53,7 @@ export function createViewer(el, opts = {}) {
 
   if (!supportsWebGL()) {
     el.classList.add('is-fallback');
-    api.setProduct = async (p) => { api.product = p; poster.src = p.images.hero; poster.alt = p.name; };
+    api.setProduct = async (p) => { api.product = p; poster.src = p.images.card || p.images.hero; poster.alt = p.name; };
     api.preload = () => {};
     return api;
   }
@@ -241,9 +241,9 @@ export function createViewer(el, opts = {}) {
   }
 
   function setPoster(product) {
-    const m = srcsetAttrs(product.images.hero, '').match(/srcset="([^"]+)"/);
+    const m = srcsetAttrs(product.images.card || product.images.hero, '').match(/srcset="([^"]+)"/);
     if (m) { poster.sizes = '(min-width: 960px) 50vw, 100vw'; poster.srcset = m[1].replace(/&amp;/g, '&'); }
-    poster.src = product.images.hero;
+    poster.src = product.images.card || product.images.hero;
     poster.alt = product.name;
   }
 

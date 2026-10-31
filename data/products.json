@@ -115,6 +115,298 @@
       ]
     },
     {
+      "id": "zahndent-zdm-5z",
+      "verb": "MILL",
+      "highlights": [
+        {
+          "label": "Positioning accuracy",
+          "value": "0.002",
+          "unit": "mm"
+        },
+        {
+          "label": "Max. spindle speed",
+          "value": "60,000",
+          "unit": "RPM"
+        },
+        {
+          "label": "Tool positions",
+          "value": "6",
+          "unit": "auto-change"
+        }
+      ],
+      "order": 2,
+      "featured": false,
+      "manufacturer": "Zahndent",
+      "manufacturerLegalName": "Zhejiang Zahndent Biotechnology Co., Ltd. (per marketplace supplier listings)",
+      "name": "ZDM-5Z Dental Lab Milling Machine",
+      "shortName": "ZDM-5Z",
+      "model": "ZDM-5Z",
+      "category": "milling",
+      "categoryLabel": "CAD/CAM Milling",
+      "tagline": "Efficient five-axis dry milling for zirconia, PMMA and wax, driven by servo motors.",
+      "description": "Zahndent presents the ZDM-5Z as an efficient zirconia milling machine for dental laboratories. It dry-mills crowns, copings, bridges and inlays/onlays from 98 mm discs in five axes, with servo motors on every axis, a water-cooled 1.2 kW spindle up to 60,000 RPM and an automatic six-bur tool changer. A touch screen sits above the milling window, and the window door swings open from its lower edge for loading. A water chiller is supplied with the machine; CAM is HyperDent.",
+      "labValue": [
+        "Servo-driven axes with a published positioning accuracy of 0.002 mm, for precise margins on zirconia work.",
+        "Zahndent states an average crown time of 8 to 15 minutes in zirconia or PMMA and 5 to 8 minutes in wax.",
+        "Automatic six-bur tool change lets jobs run unattended.",
+        "Ships with its own water chiller, a set of burs (0.6, 1.0 and 2.0 mm) and a wax block, so it is ready to mill on delivery."
+      ],
+      "features": [
+        {
+          "title": "5-axis machining",
+          "text": "A axis ±360° and B axis +25° to −115° (as published), for undercuts and complex anatomy."
+        },
+        {
+          "title": "Servo motor drive",
+          "text": "Servo motors drive the axes; Zahndent lists extremely high accuracy and extraordinary stability among the main features."
+        },
+        {
+          "title": "Water-cooled spindle",
+          "text": "1.2 kW, 20,000–60,000 RPM, cooled by the supplied water chiller."
+        },
+        {
+          "title": "Six-bur magazine",
+          "text": "Automatic tool change across six positions, 4 mm shank."
+        },
+        {
+          "title": "Dry milling",
+          "text": "Configured for dry milling of zirconia, PMMA and wax."
+        },
+        {
+          "title": "Touch operation & HyperDent",
+          "text": "Touch display on the machine; interface in Chinese, English, Russian and French. Supplied for use with HyperDent CAM software."
+        }
+      ],
+      "specs": [
+        {
+          "group": "Machining",
+          "label": "Axes",
+          "value": "5"
+        },
+        {
+          "group": "Machining",
+          "label": "Milling mode",
+          "value": "Dry"
+        },
+        {
+          "group": "Machining",
+          "label": "Millable materials",
+          "value": "Zirconia, PMMA, wax"
+        },
+        {
+          "group": "Machining",
+          "label": "Indications",
+          "value": "Crown, coping, bridge, inlay/onlay"
+        },
+        {
+          "group": "Machining",
+          "label": "Rotation range",
+          "value": "A ±360° · B +25° / −115°"
+        },
+        {
+          "group": "Machining",
+          "label": "Average milling time (crown)",
+          "value": "Zirconia 8–15 min · PMMA 8–15 min · Wax 5–8 min"
+        },
+        {
+          "group": "Machining",
+          "label": "Positioning accuracy",
+          "value": "0.002 mm"
+        },
+        {
+          "group": "Machining",
+          "label": "Motors",
+          "value": "Servo"
+        },
+        {
+          "group": "Spindle",
+          "label": "Spindle power",
+          "value": "1.2 kW"
+        },
+        {
+          "group": "Spindle",
+          "label": "Speed range",
+          "value": "20,000–60,000 RPM"
+        },
+        {
+          "group": "Spindle",
+          "label": "Spindle cooling",
+          "value": "Water (chiller supplied)"
+        },
+        {
+          "group": "Tooling",
+          "label": "Tool positions",
+          "value": "6"
+        },
+        {
+          "group": "Tooling",
+          "label": "Tool shank diameter",
+          "value": "4 mm"
+        },
+        {
+          "group": "Tooling",
+          "label": "Tool change",
+          "value": "Automatic"
+        },
+        {
+          "group": "Tooling",
+          "label": "Workpiece",
+          "value": "98 mm discs"
+        },
+        {
+          "group": "Installation",
+          "label": "Machine total power",
+          "value": "1.8 kW"
+        },
+        {
+          "group": "Installation",
+          "label": "Voltage",
+          "value": "220 V / 50 Hz"
+        },
+        {
+          "group": "Installation",
+          "label": "Compressed air",
+          "value": "4.5–8 bar, oil- and water-free"
+        },
+        {
+          "group": "Installation",
+          "label": "External dimensions (L × W × H)",
+          "value": "625 × 480 × 635 mm",
+          "flag": "Units are not stated on the page; millimetres assumed (they match the front view)."
+        },
+        {
+          "group": "Installation",
+          "label": "Packing dimensions",
+          "value": "830 × 750 × 950 mm"
+        },
+        {
+          "group": "Installation",
+          "label": "Net / gross weight",
+          "value": "125 kg / 148 kg"
+        },
+        {
+          "group": "Installation",
+          "label": "Water chiller",
+          "value": "576 × 390 × 480 mm · 11 kg"
+        },
+        {
+          "group": "Software & support",
+          "label": "Control",
+          "value": "NC"
+        },
+        {
+          "group": "Software & support",
+          "label": "CAM software",
+          "value": "HyperDent"
+        },
+        {
+          "group": "Software & support",
+          "label": "Interface languages",
+          "value": "Chinese, English, Russian, French"
+        },
+        {
+          "group": "Software & support",
+          "label": "Standard accessories",
+          "value": "Water chiller, burs 0.6 / 1.0 / 2.0 mm, wax block"
+        },
+        {
+          "group": "Software & support",
+          "label": "Warranty (manufacturer)",
+          "value": "2 years"
+        }
+      ],
+      "workflow": [
+        "Receives CAM toolpaths from HyperDent",
+        "Mills restorations from 98 mm discs",
+        "Hands zirconia work on to a sintering furnace"
+      ],
+      "images": {
+        "hero": "assets/images/products/zahndent-zdm-5z.jpg",
+        "gallery": [
+          {
+            "src": "assets/images/products/zahndent-zdm-5z.jpg",
+            "alt": "Zahndent ZDM-5Z milling machine, front view with touch screen above the milling window",
+            "credit": "Zahndent"
+          },
+          {
+            "src": "assets/images/products/source/zahndent-zdm-5z/06-photo.jpg",
+            "alt": "ZDM-5Z in a lab, three-quarter view of the grey housing and black glass front",
+            "credit": "Zahndent"
+          },
+          {
+            "src": "assets/images/products/source/zahndent-zdm-5z/07-door-open.jpg",
+            "alt": "ZDM-5Z with its window door swung open from the lower edge, showing the disc fixture",
+            "credit": "Zahndent"
+          },
+          {
+            "src": "assets/images/products/source/zahndent-zdm-5z/05-detail-01.jpg",
+            "alt": "Inside the ZDM-5Z: disc fixture, tool magazine and spindle",
+            "credit": "Zahndent"
+          },
+          {
+            "src": "assets/images/products/source/zahndent-zdm-5z/02-board-6.jpg",
+            "alt": "ZDM-5Z with a milled zirconia disc: 90° engraving for more flexible milling",
+            "credit": "Zahndent"
+          },
+          {
+            "src": "assets/images/products/source/zahndent-zdm-5z/03-board-7.jpg",
+            "alt": "ZDM-5Z and a nested disc: 20° tilt for better material use",
+            "credit": "Zahndent"
+          },
+          {
+            "src": "assets/images/products/source/zahndent-zdm-5z/04-board-8.jpg",
+            "alt": "ZDM-5Z disc fixture and six-bur tool magazine",
+            "credit": "Zahndent"
+          }
+        ],
+        "background": "light"
+      },
+      "model3d": {
+        "type": "procedural",
+        "builder": "mill5z",
+        "glb": null,
+        "dimensionsMm": {
+          "w": 480,
+          "h": 635,
+          "d": 625
+        },
+        "dimensionsNote": "Published as 625 × 480 × 635 (L × W × H) without units; the front view's width-to-height ratio (0.755) matches 480 × 635 mm.",
+        "views": {
+          "front": {
+            "src": "assets/images/products/source/zahndent-zdm-5z/01-5z-2.jpg",
+            "rect": [
+              0.2635,
+              0.1841,
+              0.7429,
+              0.819
+            ]
+          }
+        },
+        "label": "Zahndent"
+      },
+      "sources": {
+        "official": "https://www.zahndent.com/product/dental-lab-milling-machine-zdm-5z/",
+        "supporting": [
+          "https://www.zahndent.com/product-category/dental-milling-machine/"
+        ]
+      },
+      "officialAssets": {
+        "images": [
+          "https://www.zahndent.com/wp-content/uploads/2024/03/5Z-2.jpg"
+        ],
+        "video": null,
+        "models3d": [],
+        "usageRights": "Official images downloaded from the manufacturer's website at IDT's request (2026-10-31) and shown with credit. Confirm reseller usage rights with the manufacturer."
+      },
+      "confidence": "verified",
+      "identificationEvidence": "The front matches the official ZDM-5Z product image: a grey housing frame around a black glass front, a small touch screen at the top with a round power button and two USB ports beside it, a landscape milling window below and the Zahndent wordmark at the bottom.",
+      "missingInformation": [
+        "The page gives the external dimensions, spindle speed and shank diameter without units.",
+        "The page lists a related model as ZAHN-5Z; confirm with Zahndent that this is the same machine.",
+        "Price, lead time, regional certification (CE/FDA) and local warranty terms from IDT."
+      ]
+    },
+    {
       "id": "aident-ai-s3",
       "verb": "SCAN",
       "highlights": [{ "label": "Single arch", "value": "8.5", "unit": "s" }, { "label": "Accuracy (ISO 12836)", "value": "≤6", "unit": "µm" }, { "label": "Full impression", "value": "18", "unit": "s" }],
@@ -385,6 +677,242 @@
         "The official text mentions an 'electrically driven lifting table', a 'cylindrical chamber' and 'forced cooling: the furnace opens step by step'. These appear to be copied from the lift-type models and conflict with the front-door box design in the photo, so they are not published.",
         "Heating rate is given as both '<100 °C/min' and '10o °C/min', and fastest cycle as both '3.5 hours' and 'under 2.5 hours'. Neither is published.",
         "Number of programs is not stated."
+      ]
+    },
+    {
+      "id": "zahndent-zds-08",
+      "verb": "SINTER",
+      "highlights": [
+        {
+          "label": "Max. temperature",
+          "value": "1650",
+          "unit": "°C"
+        },
+        {
+          "label": "Single crown",
+          "value": "30",
+          "unit": "min"
+        },
+        {
+          "label": "Teeth per cycle",
+          "value": "150",
+          "unit": "max."
+        }
+      ],
+      "order": 4,
+      "featured": false,
+      "manufacturer": "Zahndent",
+      "manufacturerLegalName": "Zhejiang Zahndent Biotechnology Co., Ltd. (per marketplace supplier listings)",
+      "name": "ZDS-08 Dental Sintering Furnace",
+      "shortName": "ZDS-08",
+      "model": "ZDS-08",
+      "category": "sintering",
+      "categoryLabel": "Zirconia Sintering",
+      "tagline": "Fast and normal zirconia sintering up to 1650 °C, with a single crown in 30 minutes.",
+      "description": "The ZDS-08 is Zahndent's new lift-type sintering furnace for fast and normal zirconia sintering. Six silicon-molybdenum heating rods take the chamber to 1650 °C, heating at 300 °C/min up to 1200 °C. A single crown veneer sinters in 30 minutes, and up to three teeth in 90 minutes. For larger loads, up to 150 teeth on three 100 mm trays, Zahndent recommends the normal sintering curve. The loading table rises into the chamber from below. A separate 10-inch touch screen holds 120 programs, and the furnace can be monitored remotely through the HaiwellLink app.",
+      "labValue": [
+        "Same-day zirconia: a single crown veneer sinters in 30 minutes on the fast program.",
+        "Up to 150 teeth per cycle on three stacked 100 mm trays for normal sintering.",
+        "120 programs, including your own, set from a separate 10-inch touch screen.",
+        "Remote monitoring of running cycles through the HaiwellLink app."
+      ],
+      "features": [
+        {
+          "title": "Fast & normal sintering",
+          "text": "Single crown veneer in 30 min, under 3 teeth in 90 min. For more than 3 teeth Zahndent recommends normal sintering along the zirconia curve."
+        },
+        {
+          "title": "Up to 1650 °C",
+          "text": "300–1200 °C at 300 °C/min, then 1201–1650 °C at 120 °C/min."
+        },
+        {
+          "title": "Six MoSi2 heating rods",
+          "text": "Six silicon-molybdenum rods heat the chamber."
+        },
+        {
+          "title": "Lift-type loading",
+          "text": "The loading table rises into the chamber from below, so trays load at bench height."
+        },
+        {
+          "title": "10-inch touch screen",
+          "text": "A separate touch screen with 120 programs, self-programmable."
+        },
+        {
+          "title": "Remote monitoring",
+          "text": "Running cycles can be monitored online through the HaiwellLink app."
+        }
+      ],
+      "specs": [
+        {
+          "group": "Sintering",
+          "label": "Type",
+          "value": "Fast / normal sintering furnace"
+        },
+        {
+          "group": "Sintering",
+          "label": "Maximum temperature",
+          "value": "1650 °C"
+        },
+        {
+          "group": "Sintering",
+          "label": "Heating rate",
+          "value": "300–1200 °C: 300 °C/min · 1201–1650 °C: 120 °C/min"
+        },
+        {
+          "group": "Sintering",
+          "label": "Fast sintering time",
+          "value": "Single crown veneer 30 min · fewer than 3 teeth 90 min"
+        },
+        {
+          "group": "Sintering",
+          "label": "More than 3 teeth",
+          "value": "Normal sintering, following the zirconia sintering curve"
+        },
+        {
+          "group": "Sintering",
+          "label": "Heating elements",
+          "value": "6 silicon-molybdenum (MoSi2) rods"
+        },
+        {
+          "group": "Sintering",
+          "label": "Maximum capacity",
+          "value": "150 teeth on 3 × 100 mm trays"
+        },
+        {
+          "group": "Control",
+          "label": "Touch screen",
+          "value": "10 inch"
+        },
+        {
+          "group": "Control",
+          "label": "Programs",
+          "value": "120 (self-programmable)"
+        },
+        {
+          "group": "Control",
+          "label": "Online control",
+          "value": "Remote monitoring (HaiwellLink app)"
+        },
+        {
+          "group": "Installation",
+          "label": "Total power",
+          "value": "3.0 kW"
+        },
+        {
+          "group": "Installation",
+          "label": "Voltage",
+          "value": "220 V / 20 A"
+        },
+        {
+          "group": "Installation",
+          "label": "Frequency",
+          "value": "50–60 Hz"
+        },
+        {
+          "group": "Installation",
+          "label": "Machine dimensions (L × W × H)",
+          "value": "521 × 363 × 653 mm"
+        },
+        {
+          "group": "Installation",
+          "label": "Packing dimensions",
+          "value": "700 × 640 × 1030 mm"
+        },
+        {
+          "group": "Installation",
+          "label": "Net / gross weight",
+          "value": "55 kg / 91 kg"
+        },
+        {
+          "group": "Support",
+          "label": "Warranty (manufacturer)",
+          "value": "1 year (heating rods excluded)"
+        }
+      ],
+      "workflow": [
+        "Receives milled zirconia from the mill",
+        "Sinters to final density on fast or normal programs",
+        "Hands restorations on to porcelain firing"
+      ],
+      "images": {
+        "hero": "assets/images/products/zahndent-zds-08.jpg",
+        "gallery": [
+          {
+            "src": "assets/images/products/zahndent-zds-08.jpg",
+            "alt": "Zahndent ZDS-08 sintering furnace, three-quarter view with its separate touch screen",
+            "credit": "Zahndent"
+          },
+          {
+            "src": "assets/images/products/source/zahndent-zds-08/03-board-3.jpg",
+            "alt": "ZDS-08 front view: graphite chamber, lift rail and silver base",
+            "credit": "Zahndent"
+          },
+          {
+            "src": "assets/images/products/source/zahndent-zds-08/01-main.jpg",
+            "alt": "ZDS-08 on a lab bench beside its 10-inch touch screen",
+            "credit": "Zahndent"
+          },
+          {
+            "src": "assets/images/products/source/zahndent-zds-08/05-board-6.jpg",
+            "alt": "Close-up of the chamber opening and the loading table under the ZDS-08",
+            "credit": "Zahndent"
+          },
+          {
+            "src": "assets/images/products/source/zahndent-zds-08/04-board-4.jpg",
+            "alt": "ZDS-08 with its touch screen and supplied accessories",
+            "credit": "Zahndent"
+          },
+          {
+            "src": "assets/images/products/source/zahndent-zds-08/06-specs.jpg",
+            "alt": "Official ZDS-08 specification table",
+            "credit": "Zahndent"
+          }
+        ],
+        "background": "light"
+      },
+      "model3d": {
+        "type": "procedural",
+        "builder": "zds08",
+        "glb": null,
+        "dimensionsMm": {
+          "w": 363,
+          "h": 653,
+          "d": 521
+        },
+        "dimensionsNote": "Published as 521 × 363 × 653 mm (L × W × H); the front view (363 wide × 653 high) matches. The separate touch screen is modelled beside the furnace.",
+        "views": {
+          "front": {
+            "src": "assets/images/products/source/zahndent-zds-08/03-board-3.jpg",
+            "rect": [
+              0.2371,
+              0.1734,
+              0.5839,
+              0.81
+            ]
+          }
+        },
+        "label": "Zahndent"
+      },
+      "sources": {
+        "official": "https://www.zahndent.com/product/dental-sintering-furnace-zds-08/",
+        "supporting": [
+          "https://www.zahndent.com/wp-content/uploads/2026/08/ZDS-08-详情页_22.jpg"
+        ]
+      },
+      "officialAssets": {
+        "images": [
+          "https://www.zahndent.com/wp-content/uploads/2026/08/333-scaled.jpg"
+        ],
+        "video": null,
+        "models3d": [],
+        "usageRights": "Official images downloaded from the manufacturer's website at IDT's request (2026-10-31) and shown with credit. Confirm reseller usage rights with the manufacturer."
+      },
+      "confidence": "verified",
+      "identificationEvidence": "Matches the official ZDS-08 images: a dark graphite chamber block printed ZDS-08 and Zahndent, a white column with a vertical Zahndent wordmark and an orange edge, a silver base plate, and a separate silver-framed touch screen.",
+      "missingInformation": [
+        "Chamber size and tray material are not published.",
+        "The 10-inch screen, 150-tooth capacity and 120 programs come from the spec image only (not the page text).",
+        "Price, lead time, regional certification (CE/FDA) and local warranty terms from IDT."
       ]
     },
     {

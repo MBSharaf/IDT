@@ -9,6 +9,8 @@ const builders = {
   s9: () => import('./s9.js'),
   m9: () => import('./m9.js'),
   m5: () => import('./m5.js'),
+  mill5z: () => import('./mill5z.js'),
+  zds08: () => import('./zds08.js'),
 };
 
 let gltfLoader;

@@ -246,3 +246,28 @@ Preview-pane screenshots are flaky (they time out, and frames are throttled when
 - **`tools/serve.ps1`:** `Cache-Control: no-cache` + `Last-Modified`, with a 304 when `If-Modified-Since` matches.
 - **Verified:** all 5 product pages and the home page build their models with no console errors.
 - **Still open:** the PMREM startup cost; a hosting note (gzip/CDN; GitHub Pages already gzips); re-measuring long tasks on a real phone.
+
+## New products (2026-10-31): Zahndent ZDM-5Z and ZDS-08
+
+The site now has 7 products.
+
+- **ZDM-5Z mill** (`zahndent-zdm-5z`, order 2, milling):
+  - Builder: `js/three/models/mill5z.js`. It projects the straight front photo `source/zahndent-zdm-5z/01-5z-2.jpg`; sides are grey.
+  - Demo: "Open door". The window door is hinged at the **bottom** and swings out, as in Zahndent's photo `07-door-open.jpg`.
+  - Dimensions are published without units (625×480×635). Millimetres are assumed; the front view's aspect ratio matches.
+- **ZDS-08 sintering furnace** (`zahndent-zds-08`, order 4, sintering):
+  - Builder: `js/three/models/zds08.js`.
+  - Projected from the front photo `source/zahndent-zds-08/03-board-3.jpg`: graphite chamber, light column and silver base.
+  - Plain materials: the white branded side panel with orange edge, and the separate 10" touch screen on its stand (modelled to the right).
+  - Demo: "Lift table". It raises the 3-tray stack into the chamber, with an orange glow, like the S9.
+  - The spec table image is `06-specs.jpg`.
+- **Placement:** both have `featured: false`, so the home hero and workflow lineup still show the E5 and S9.
+- **Images:**
+  - Main shots and -160/-640/-960 variants are in `assets/images/products/`.
+  - 2480 px sources were shrunk to 1600 px.
+  - New photos are not in `tools/make-variants.ps1`'s list; the variants were made once by hand.
+- **Verified:**
+  - Catalog lists all 7 products.
+  - Both product pages build their 3D model with no errors.
+  - Specs and gallery render.
+  - model-lab renders look right (`reference/_renders/zahndent-zds-08-persp.png`, `zahndent-zdm-5z-persp-demo.png`).

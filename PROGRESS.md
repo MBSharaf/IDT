@@ -31,7 +31,7 @@ Local WIP commits exist (NOT pushed: the live site must not get a half-translate
 - [x] Light theme CSS (first pass, not yet checked in browser)
 - [x] RTL CSS fixes (first pass, not yet checked in browser)
 - [x] Static HTML + JS strings (layout, home, catalog, product, contact, about, reviews, whatsapp, social, productCard, viewer)
-- [ ] NEXT: write data/products.ar.json — 6/9 done (zdm-e5, zdm-5z, ai-s3, ai-30, s9, m9). Add parts with `node tools/merge-ar.mjs part.json` (checks alignment). (categories + 9 products, Egyptian Arabic, professional). Do it in chunks
+- [ ] NEXT: write data/products.ar.json — 9/9 DONE. Add parts with `node tools/merge-ar.mjs part.json` (checks alignment). (categories + 9 products, Egyptian Arabic, professional). Do it in chunks
       (scratchpad part file per product, merge with node) and validate index alignment with a node check
       (same array lengths as products.json). Commit locally after each few products.
 - [ ] Browser check (preview "idt-site", port 5173): EN dark, EN light, AR dark, AR light; mobile 375 + desktop;

@@ -103,8 +103,29 @@ export function renderFooter() {
         <span>© <span data-year></span> ${esc(site.legalName)}. All rights reserved.</span>
         <span>Product names and trademarks belong to their respective manufacturers. Specifications are as published by each manufacturer.</span>
       </div>
+      <div class="credit">
+        <span class="credit__badge" data-tilt>
+          <span class="credit__beam" aria-hidden="true"></span>
+          <span class="credit__by">Powered by</span>
+          <span class="credit__name" data-text="PHAROSLINE">PHAROSLINE</span>
+          <span class="credit__tag">Agency</span>
+        </span>
+      </div>
     </div>`;
   document.body.append(footer);
   footer.querySelector('[data-year]').textContent = new Date().getFullYear();
+  tiltCredit(footer.querySelector('[data-tilt]'));
   renderWhatsApp();
+}
+
+// Agency credit: the badge leans towards the pointer (CSS 3D, no WebGL).
+function tiltCredit(el) {
+  if (!el || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  el.addEventListener('pointermove', (e) => {
+    const r = el.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+    el.style.setProperty('--ry', `${(x * 22).toFixed(1)}deg`);
+    el.style.setProperty('--rx', `${(-y * 18).toFixed(1)}deg`);
+  });
+  el.addEventListener('pointerleave', () => { el.style.removeProperty('--ry'); el.style.removeProperty('--rx'); });
 }

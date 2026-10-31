@@ -11,6 +11,8 @@ const builders = {
   m5: () => import('./m5.js'),
   mill5z: () => import('./mill5z.js'),
   zds08: () => import('./zds08.js'),
+  halot: () => import('./halot.js'),
+  ios: () => import('./ios.js'),
 };
 
 let gltfLoader;

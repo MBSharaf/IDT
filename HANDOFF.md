@@ -285,3 +285,22 @@ The site now has 7 products.
 - **Where `images.card` is used:** each product's `images.card` in `products.json` is used by the product cards, the home workflow bundle thumbnails and the 3D viewer poster.
 - **Backgrounds:** `.product-card__media` and `.bundle__item` now use `#1D1D20`. The hero preload in `index.html` points at the card image.
 - **Adding a product:** make its cutout PNG first, then run `tools/cutout.ps1`, then add `"card"` to its images.
+
+## Aident AI-30 and Creality HALOT-X1 (2026-10-31)
+
+The site now has 9 products.
+
+- **Aident AI-30 intraoral scanner** (`aident-ai-30`, scanning, featured false):
+  - Aident publishes few specs (no dimensions, connection or scan technology).
+  - The full-arch time is given two ways (60 s / 2 min) and is flagged on the page.
+  - Builder `js/three/models/ios.js` is procedural (lathe-profile wand, no projection).
+  - The wand stands tip-up in an illustrative cradle. Demo "Scan": the wand lifts and tilts, with a blue window light.
+  - Aident's image URLs serve WebP even with .jpg names. They were converted to real JPEGs.
+- **Creality HALOT-X1 resin printer** (`creality-halot-x1`):
+  - New category `printing` "Dental 3D Printing" (step 5) with `workflow: false`.
+  - `getWorkflowLineup()` in `js/core/data.js` skips categories with `workflow: false`, so the home workflow stays 4 steps. The product page's flow strip does show step 05.
+  - Builder `js/three/models/halot.js` projects the straight front render from Creality's Shopify store page (store.creality.com/products/halot-x1-resin-3d-printer).
+  - The amber lid is hollow, with plain inner faces and a plain top. Demo "Open lid": it hinges up and back, revealing the vat, rails and build plate, and the UV glow goes off.
+  - The page carries no dental claims; the product notes flag that dental resins need confirming.
+- **Card images:** both were made with Adobe cutouts plus `tools/cutout.ps1`.
+- **Order:** `order` values were renumbered 1–9 to match the list order. The AI-30 sits next to the AI-S3.

@@ -27,5 +27,5 @@ export async function getWorkflowLineup() {
     .slice()
     .sort((a, b) => a.step - b.step)
     .map((c) => ({ category: c, product: products.find((p) => p.category === c.id && p.featured) || products.find((p) => p.category === c.id) }))
-    .filter((x) => x.product);
+    .filter((x) => x.product && x.category.workflow !== false);
 }

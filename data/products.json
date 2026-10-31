@@ -6,7 +6,8 @@
       { "id": "scanning", "label": "Lab Scanning", "step": 1, "summary": "Digitise models and impressions for CAD design." },
       { "id": "milling", "label": "CAD/CAM Milling", "step": 2, "summary": "Mill restorations from discs in five axes." },
       { "id": "sintering", "label": "Zirconia Sintering", "step": 3, "summary": "Sinter milled zirconia to final density and shade." },
-      { "id": "porcelain", "label": "Porcelain Firing", "step": 4, "summary": "Fire ceramic layering, stains and glaze under vacuum." }
+      { "id": "porcelain", "label": "Porcelain Firing", "step": 4, "summary": "Fire ceramic layering, stains and glaze under vacuum." },
+      { "id": "printing", "label": "Dental 3D Printing", "step": 5, "workflow": false, "summary": "Print models, trays and guides from scan and CAD data." }
     ]
   },
   "products": [
@@ -412,7 +413,7 @@
       "id": "aident-ai-s3",
       "verb": "SCAN",
       "highlights": [{ "label": "Single arch", "value": "8.5", "unit": "s" }, { "label": "Accuracy (ISO 12836)", "value": "≤6", "unit": "µm" }, { "label": "Full impression", "value": "18", "unit": "s" }],
-      "order": 2,
+      "order": 3,
       "featured": true,
       "manufacturer": "Aident",
       "manufacturerLegalName": "Shenzhen Aident Technology Co., Ltd.",
@@ -509,10 +510,193 @@
       ]
     },
     {
+      "id": "aident-ai-30",
+      "verb": "SCAN",
+      "highlights": [
+        {
+          "label": "Accuracy",
+          "value": "≤10",
+          "unit": "μm"
+        },
+        {
+          "label": "Weight",
+          "value": "198",
+          "unit": "g"
+        },
+        {
+          "label": "Scan speed",
+          "value": "≥30",
+          "unit": "fps"
+        }
+      ],
+      "order": 4,
+      "featured": false,
+      "manufacturer": "Aident",
+      "manufacturerLegalName": "Shenzhen Aident Technology Co., Ltd.",
+      "name": "AI-30 Intraoral Scanner",
+      "shortName": "AI-30",
+      "model": "AIDEN AI-30",
+      "category": "scanning",
+      "categoryLabel": "Intraoral Scanning",
+      "tagline": "A 198 g powder-free intraoral scanner with anti-fog heating, made for comfortable chairside scans.",
+      "description": "Aident presents the AIDEN AI-30 as \"the most comfortable dental mouth scanner for patients and doctors\". The handheld wand weighs 198 g, scans powder-free at 30 frames per second or more and heats its window to stop fogging in the mouth. Aident states an accuracy of 10 μm or better over a 0–25 mm depth of field, in true colour. Standard and mini tips are available, and scans export as STL, PLY or OBJ for any CAD or lab workflow.",
+      "labValue": [
+        "Brings impressions into the digital workflow: clinics send STL/PLY/OBJ scans straight to the lab, ready for design and milling.",
+        "At 198 g it is among the lightest wands, which matters on long or full-arch scans.",
+        "Powder-free scanning with anti-fog heating and a mini tip for children and patients with limited opening.",
+        "Aident lists free lifetime software upgrades, remote installation help and operator training."
+      ],
+      "features": [
+        {
+          "title": "Lightweight wand",
+          "text": "198 g (depending on the tip); Aident calls it one of the lightest intraoral scanners on the market."
+        },
+        {
+          "title": "Powder-free & fast",
+          "text": "Scans at 30 frames per second or more without powder, which Aident says reduces gagging and discomfort."
+        },
+        {
+          "title": "Anti-fog heating",
+          "text": "Intelligent heating keeps the view clear in the humid oral environment."
+        },
+        {
+          "title": "True colour",
+          "text": "Colour scans for shade communication and patient presentation."
+        },
+        {
+          "title": "Standard & mini tips",
+          "text": "Two tip sizes for adults, children and limited mouth opening."
+        },
+        {
+          "title": "Open output",
+          "text": "Exports STL, PLY and OBJ for any CAD software or lab."
+        }
+      ],
+      "specs": [
+        {
+          "group": "Scanning",
+          "label": "Accuracy",
+          "value": "≤ 10 μm"
+        },
+        {
+          "group": "Scanning",
+          "label": "Scanning speed",
+          "value": "≥ 30 frames per second"
+        },
+        {
+          "group": "Scanning",
+          "label": "Depth of field",
+          "value": "0–25 mm"
+        },
+        {
+          "group": "Scanning",
+          "label": "Powder",
+          "value": "Powder-free"
+        },
+        {
+          "group": "Scanning",
+          "label": "Colour",
+          "value": "True colour"
+        },
+        {
+          "group": "Scanning",
+          "label": "Full-arch scan time",
+          "value": "Under 60 s (feature text) · under 2 min (comparison table)",
+          "flag": "The page gives both figures; confirm with Aident."
+        },
+        {
+          "group": "Hardware",
+          "label": "Weight",
+          "value": "198 g (depending on tip)"
+        },
+        {
+          "group": "Hardware",
+          "label": "Anti-fog",
+          "value": "Intelligent heating"
+        },
+        {
+          "group": "Hardware",
+          "label": "Tips",
+          "value": "Standard and mini"
+        },
+        {
+          "group": "Software & support",
+          "label": "Output formats",
+          "value": "STL / PLY / OBJ"
+        },
+        {
+          "group": "Software & support",
+          "label": "Software",
+          "value": "AIdent Scan (for clinics and labs); free lifetime upgrades"
+        }
+      ],
+      "workflow": [
+        "Captures the patient chairside",
+        "Exports STL/PLY/OBJ to the lab",
+        "Feeds CAD design, milling and printing"
+      ],
+      "images": {
+        "hero": "assets/images/products/aident-ai-30.jpg",
+        "card": "assets/images/products/aident-ai-30-card.jpg",
+        "gallery": [
+          {
+            "src": "assets/images/products/aident-ai-30.jpg",
+            "alt": "Aident AI-30 intraoral scanner wand with its scanning tip and AIDENT logo",
+            "credit": "Aident"
+          },
+          {
+            "src": "assets/images/products/source/aident-ai-30/02-side.jpg",
+            "alt": "AI-30 wand from the side, showing the button and the slim neck",
+            "credit": "Aident"
+          },
+          {
+            "src": "assets/images/products/source/aident-ai-30/03-scene.jpg",
+            "alt": "AI-30 intraoral scanner product scene",
+            "credit": "Aident"
+          }
+        ],
+        "background": "light"
+      },
+      "model3d": {
+        "type": "procedural",
+        "builder": "ios",
+        "glb": null,
+        "dimensionsMm": {
+          "w": 120,
+          "h": 300,
+          "d": 120
+        },
+        "dimensionsNote": "Aident publishes no dimensions. The wand is modelled at about 255 mm long from the product photo, standing in an illustrative cradle.",
+        "views": {},
+        "label": "Aident"
+      },
+      "sources": {
+        "official": "https://www.aident3d.com/3d-scanner/intraoral-scanner/dental-mouth-scanner.html",
+        "supporting": [
+          "https://www.aident3d.com/uploads/46840/files/1.pdf"
+        ]
+      },
+      "officialAssets": {
+        "images": [
+          "https://www.aident3d.com/uploads/46840/dental-mouth-scanner275de.jpg"
+        ],
+        "video": null,
+        "models3d": [],
+        "usageRights": "Official images downloaded from the manufacturer's website at IDT's request (2026-10-31) and shown with credit. Confirm reseller usage rights with the manufacturer."
+      },
+      "confidence": "verified",
+      "identificationEvidence": "Matches the official AI-30 image: a slim white wand with a silver ring between the neck and the handle, one round button with a green status light, the green AIDENT logo and a grey scanning tip.",
+      "missingInformation": [
+        "Scan technology, field of view, dimensions, connection (wired or wireless), PC requirements and power are not published.",
+        "Whether a cradle or cart is included is not stated; the cradle in the 3D model is illustrative.",
+        "Price, lead time, regional certification (CE/FDA) and local warranty terms from IDT."
+      ]
+    },
+    {
       "id": "neunorton-s9",
       "verb": "SINTER",
       "highlights": [{ "label": "Max. temperature", "value": "1700", "unit": "°C" }, { "label": "Crowns per cycle", "value": "25", "unit": "max." }, { "label": "Programs", "value": "100", "unit": "" }],
-      "order": 3,
+      "order": 5,
       "featured": true,
       "manufacturer": "NeunoRton",
       "manufacturerLegalName": "Zhongshan NeunoRton Intelligent Manufacturing Technology Co., Ltd.",
@@ -604,7 +788,7 @@
       "id": "neunorton-m9",
       "verb": "SINTER",
       "highlights": [{ "label": "Temp. accuracy", "value": "±1", "unit": "°C" }, { "label": "Crucible layers", "value": "3", "unit": "× 100 mm" }, { "label": "Weight", "value": "50", "unit": "kg" }],
-      "order": 4,
+      "order": 6,
       "featured": false,
       "manufacturer": "NeunoRton",
       "manufacturerLegalName": "Zhongshan NeunoRton Intelligent Manufacturing Technology Co., Ltd.",
@@ -704,7 +888,7 @@
           "unit": "max."
         }
       ],
-      "order": 4,
+      "order": 7,
       "featured": false,
       "manufacturer": "Zahndent",
       "manufacturerLegalName": "Zhejiang Zahndent Biotechnology Co., Ltd. (per marketplace supplier listings)",
@@ -925,7 +1109,7 @@
       "id": "neunorton-m5",
       "verb": "FIRE",
       "highlights": [{ "label": "Max. temperature", "value": "1200", "unit": "°C" }, { "label": "Max. vacuum", "value": "−98", "unit": "kPa" }, { "label": "Program segments", "value": "100", "unit": "" }],
-      "order": 5,
+      "order": 8,
       "featured": true,
       "manufacturer": "NeunoRton",
       "manufacturerLegalName": "Zhongshan NeunoRton Intelligent Manufacturing Technology Co., Ltd.",
@@ -1005,6 +1189,238 @@
         "The manufacturer's site files the M5 under the 'Zirconia Sintering Furnace' category, but the specification (1200 °C, vacuum) is for a porcelain furnace. It is categorised here as Porcelain Firing.",
         "Firing-tray dimensions and the number of storable programs (as opposed to segments) are not stated.",
         "Price and IDT warranty terms."
+      ]
+    },
+    {
+      "id": "creality-halot-x1",
+      "verb": "PRINT",
+      "highlights": [
+        {
+          "label": "LCD resolution",
+          "value": "16K",
+          "unit": ""
+        },
+        {
+          "label": "Max. speed",
+          "value": "170",
+          "unit": "mm/h"
+        },
+        {
+          "label": "Pixel size",
+          "value": "14×19",
+          "unit": "μm"
+        }
+      ],
+      "order": 9,
+      "featured": true,
+      "manufacturer": "Creality",
+      "manufacturerLegalName": "Shenzhen Creality 3D Technology Co., Ltd.",
+      "name": "HALOT-X1 16K Resin 3D Printer",
+      "shortName": "HALOT-X1",
+      "model": "HALOT-X1",
+      "category": "printing",
+      "categoryLabel": "Dental 3D Printing",
+      "tagline": "High-speed 16K resin printing up to 170 mm/h, with automatic resin feed and no levelling.",
+      "description": "Creality presents the HALOT-X1 as a high-speed 16K resin 3D printer: \"Scale Perfection, Simple Start.\" A 10.1-inch 16K mono LCD (15120 × 6230 px, 14 × 19 μm pixels) and a 92-zone honeycomb light source print at up to 170 mm/h in a 211.68 × 118.37 × 200 mm build volume. A top-down motion structure moves the vat and light source while the build plate stays still. The printer arrives pre-levelled, and the AFU system feeds, weighs and heats resin automatically, with RFID recognition for Creality resins. For a dental lab it suits models, trays and other 405 nm resin parts.",
+      "labValue": [
+        "16K resolution with 14 × 19 μm pixels for crisp margins and contacts on printed models.",
+        "Up to 170 mm/h, so full-arch models print in a short time.",
+        "Pre-levelled, with quick-release plates and automatic resin feed, so there is little set-up between jobs.",
+        "Prints any 405 nm resin; Creality resins load their parameters automatically by RFID."
+      ],
+      "features": [
+        {
+          "title": "16K mono LCD",
+          "text": "10.1-inch screen, 15120 × 6230 px, 14 × 19 μm pixel size."
+        },
+        {
+          "title": "92-zone intelligent exposure",
+          "text": "The honeycomb matrix light source lights only the zones in use, which Creality says saves energy, improves accuracy and extends screen life."
+        },
+        {
+          "title": "Top-down motion",
+          "text": "The resin vat and light source move while the build plate stays still, on dual linear rails and lead screws."
+        },
+        {
+          "title": "Leveling-free & quick release",
+          "text": "Ships pre-levelled; the build plate pops out with a twist of its handles for scraper-free removal."
+        },
+        {
+          "title": "Smart AFU resin management",
+          "text": "Automatic resin feed in and out, level and weight monitoring, RFID resin recognition and resin heating to 30–35 °C."
+        },
+        {
+          "title": "Stable chamber",
+          "text": "Passive thermal circulation keeps the chamber temperature stable; a lid sensor stops the printer while the lid is open."
+        }
+      ],
+      "specs": [
+        {
+          "group": "Printing",
+          "label": "Technology",
+          "value": "LCD (MSLA)"
+        },
+        {
+          "group": "Printing",
+          "label": "Light source",
+          "value": "Honeycomb matrix, 92-zone intelligent exposure"
+        },
+        {
+          "group": "Printing",
+          "label": "Exposure intensity",
+          "value": "6500 μW/cm² (+10%)"
+        },
+        {
+          "group": "Printing",
+          "label": "LCD",
+          "value": "10.1-inch 16K mono (15120 × 6230 px)"
+        },
+        {
+          "group": "Printing",
+          "label": "Pixel size",
+          "value": "14 × 19 μm"
+        },
+        {
+          "group": "Printing",
+          "label": "Build volume",
+          "value": "211.68 × 118.37 × 200 mm"
+        },
+        {
+          "group": "Printing",
+          "label": "Layer thickness",
+          "value": "0.01–0.2 mm"
+        },
+        {
+          "group": "Printing",
+          "label": "Z-axis accuracy",
+          "value": "0.01 mm"
+        },
+        {
+          "group": "Printing",
+          "label": "Printing speed",
+          "value": "Max. 170 mm/h"
+        },
+        {
+          "group": "Printing",
+          "label": "Resin",
+          "value": "405 nm UV resin (RFID recognition for Creality resins)"
+        },
+        {
+          "group": "Control",
+          "label": "Touch screen",
+          "value": "3.98-inch capacitive"
+        },
+        {
+          "group": "Control",
+          "label": "Slicing software",
+          "value": "HALOT BOX / CHITUBOX (3 months of CHITUBOX Pro included)"
+        },
+        {
+          "group": "Control",
+          "label": "Data transfer",
+          "value": "USB / Wi-Fi"
+        },
+        {
+          "group": "Installation",
+          "label": "Machine size",
+          "value": "344 × 331 × 434 mm"
+        },
+        {
+          "group": "Installation",
+          "label": "Package size",
+          "value": "430 × 420 × 535 mm"
+        },
+        {
+          "group": "Installation",
+          "label": "Net / gross weight",
+          "value": "12.93 kg / 16.19 kg"
+        },
+        {
+          "group": "Installation",
+          "label": "Input voltage",
+          "value": "100–120 V / 200–240 V, 50–60 Hz"
+        },
+        {
+          "group": "Installation",
+          "label": "Power",
+          "value": "350 W"
+        }
+      ],
+      "workflow": [
+        "Receives STL from CAD or the intraoral scanner",
+        "Prints models, trays and guides in 405 nm resin",
+        "Parts are washed and post-cured"
+      ],
+      "images": {
+        "hero": "assets/images/products/creality-halot-x1.jpg",
+        "card": "assets/images/products/creality-halot-x1-card.jpg",
+        "gallery": [
+          {
+            "src": "assets/images/products/creality-halot-x1.jpg",
+            "alt": "Creality HALOT-X1 resin 3D printer, three-quarter view with amber lid and touch screen",
+            "credit": "Creality"
+          },
+          {
+            "src": "assets/images/products/source/creality-halot-x1/02-front.png",
+            "alt": "HALOT-X1 front view: amber UV lid over the white base",
+            "credit": "Creality"
+          },
+          {
+            "src": "assets/images/products/source/creality-halot-x1/03-lid-open.jpg",
+            "alt": "HALOT-X1 with its lid opened upward, showing the build plate and rails",
+            "credit": "Creality"
+          },
+          {
+            "src": "assets/images/products/source/creality-halot-x1/04-with-afu.jpg",
+            "alt": "HALOT-X1 with the AFU automatic resin feeding unit",
+            "credit": "Creality"
+          }
+        ],
+        "background": "light"
+      },
+      "model3d": {
+        "type": "procedural",
+        "builder": "halot",
+        "glb": null,
+        "dimensionsMm": {
+          "w": 331,
+          "h": 434,
+          "d": 344
+        },
+        "dimensionsNote": "Published as 344 × 331 × 434 mm; the front view (331 wide × 434 high, screen included) matches.",
+        "views": {
+          "front": {
+            "src": "assets/images/products/source/creality-halot-x1/02-front.png",
+            "rect": [
+              0.2604,
+              0.1927,
+              0.7292,
+              0.8104
+            ]
+          }
+        },
+        "label": "Creality"
+      },
+      "sources": {
+        "official": "https://www.creality.com/products/halot-x1",
+        "supporting": [
+          "https://store.creality.com/products/halot-x1-resin-3d-printer"
+        ]
+      },
+      "officialAssets": {
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0893/0603/8637/files/10002_be749196-e911-450b-8408-bc2c834404ce.jpg"
+        ],
+        "video": null,
+        "models3d": [],
+        "usageRights": "Official images downloaded from the manufacturer's website at IDT's request (2026-10-31) and shown with credit. Confirm reseller usage rights with the manufacturer."
+      },
+      "confidence": "verified",
+      "identificationEvidence": "Matches the official HALOT-X1 images: a white base printed HALOT-X1, an amber translucent UV lid with rounded edges and a small touch screen on top.",
+      "missingInformation": [
+        "Creality markets the HALOT-X1 as a general resin printer; it does not list dental resins or dental certification. Confirm the dental resins IDT will supply and validate them on this printer.",
+        "The AFU resin unit is shown as a combo option; confirm what is in IDT's package.",
+        "Price, lead time and local warranty terms from IDT."
       ]
     }
   ]

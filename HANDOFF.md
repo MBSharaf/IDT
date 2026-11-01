@@ -335,3 +335,10 @@ The site now has 9 products.
 - ZDM-5T Pro: catalogue values replace the website's: 17 tools, 2.5 kW Haozhi / 3.0 kW, 12,000–60,000 RPM, 0.02 mm,
   630 × 480 × 670 mm, 111/148 kg (+109 kg accessories), PEEK + Co-Cr, 2 yr (spindle 18 mo), options (chiller, camera).
 - ZDS-08: matched; added ±1 °C, automatic fast cooling, power-off memory, Wi-Fi monitoring.
+
+## Checked against the NeunoRton product catalogue (2026-11-01)
+- Source: the NeunoRton catalogue PDF the client supplied (Chinese/English, 40 two-page spreads; product pages are images, read by rendering them).
+  M5 is on page 3, S9 on page 4, M9 on page 7. Its other furnaces (M7, K9, C9, Ultra) are not on the site.
+- M5: matched. Thermocouple is in a ceramic corundum tube; vacuum-line filter added. The Chinese table's "80 mbar" is not published.
+- S9: matched. Added power-off memory, staged fast cooling, warranty (1 year machine, 6 months wear parts).
+- M9: the catalogue settles 1700 °C (flag removed), heating rate <100 °C/min, fastest cycle 3.5 h; now `verified`.

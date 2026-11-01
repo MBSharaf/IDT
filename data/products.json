@@ -893,7 +893,23 @@
     {
       "id": "neunorton-s9",
       "verb": "SINTER",
-      "highlights": [{ "label": "Max. temperature", "value": "1700", "unit": "°C" }, { "label": "Crowns per cycle", "value": "25", "unit": "max." }, { "label": "Programs", "value": "100", "unit": "" }],
+      "highlights": [
+        {
+          "label": "Max. temperature",
+          "value": "1700",
+          "unit": "°C"
+        },
+        {
+          "label": "Crowns per cycle",
+          "value": "25",
+          "unit": "max."
+        },
+        {
+          "label": "Programs",
+          "value": "100",
+          "unit": ""
+        }
+      ],
       "order": 5,
       "featured": true,
       "manufacturer": "NeunoRton",
@@ -909,42 +925,147 @@
         "Speed cycles mean urgent zirconia cases can leave the lab sooner.",
         "Holds three crucible layers at once, for up to 25 single crowns per cycle.",
         "Ships with 100 programs, including presets for common zirconia blocks.",
-        "The NeunoRton app shows cycle progress on a phone and sends a notification if a fault occurs."
+        "The NeunoRton app shows cycle progress on a phone and sends a notification if a fault occurs.",
+        "Power-off memory resumes the program from any temperature on any curve.",
+        "Fast cooling: the chamber opens automatically in stages during cool-down."
       ],
       "features": [
-        { "title": "1700 °C maximum", "text": "For sintering translucent zirconia at high temperature." },
-        { "title": "All-round heating", "text": "Three MoSi₂ (silicon-molybdenum) elements for an even temperature across the chamber." },
-        { "title": "PID control ±1 °C", "text": "Intelligent PID temperature control." },
-        { "title": "Electric lifting table", "text": "Motorised lift that makes loading the crucibles easier." },
-        { "title": "100 programs", "text": "Programs shown as graphs and tables, with presets for common zirconia." },
-        { "title": "7-inch HD touch screen", "text": "Large touch interface with a mobile app for remote monitoring." }
+        {
+          "title": "1700 °C maximum",
+          "text": "For sintering translucent zirconia at high temperature."
+        },
+        {
+          "title": "All-round heating",
+          "text": "Three MoSi₂ (silicon-molybdenum) elements for an even temperature across the chamber."
+        },
+        {
+          "title": "PID control ±1 °C",
+          "text": "Intelligent PID temperature control."
+        },
+        {
+          "title": "Electric lifting table",
+          "text": "Motorised lift that makes loading the crucibles easier."
+        },
+        {
+          "title": "100 programs",
+          "text": "Programs shown as graphs and tables, with presets for common zirconia."
+        },
+        {
+          "title": "7-inch HD touch screen",
+          "text": "Large touch interface with a mobile app for remote monitoring."
+        }
       ],
       "specs": [
-        { "group": "Thermal", "label": "Max. sintering temperature", "value": "1700 °C" },
-        { "group": "Thermal", "label": "Heating rate", "value": "≤100 °C/min" },
-        { "group": "Thermal", "label": "Temperature accuracy", "value": "±1 °C" },
-        { "group": "Thermal", "label": "Fastest sintering cycle", "value": "2 h (incl. heating, holding, cooling)" },
-        { "group": "Thermal", "label": "Heating elements", "value": "3 × dental-grade MoSi₂" },
-        { "group": "Capacity", "label": "Crucible", "value": "Ø100 × 35 mm, up to 3 layers" },
-        { "group": "Capacity", "label": "Load", "value": "Up to 25 single crowns" },
-        { "group": "Control", "label": "Display", "value": "7-inch HD touch screen" },
-        { "group": "Control", "label": "Programs", "value": "100" },
-        { "group": "Electrical", "label": "Max. power", "value": "2500 W" },
-        { "group": "Electrical", "label": "Power supply", "value": "220 V or 110 V, 50/60 Hz" },
-        { "group": "Physical", "label": "Dimensions", "value": "498 × 346 × 811 mm" },
-        { "group": "Physical", "label": "Weight", "value": "70 kg" }
+        {
+          "group": "Thermal",
+          "label": "Max. sintering temperature",
+          "value": "1700 °C"
+        },
+        {
+          "group": "Thermal",
+          "label": "Heating rate",
+          "value": "≤100 °C/min"
+        },
+        {
+          "group": "Thermal",
+          "label": "Temperature accuracy",
+          "value": "±1 °C"
+        },
+        {
+          "group": "Thermal",
+          "label": "Fastest sintering cycle",
+          "value": "2 h (incl. heating, holding, cooling)"
+        },
+        {
+          "group": "Thermal",
+          "label": "Heating elements",
+          "value": "3 × dental-grade MoSi₂"
+        },
+        {
+          "group": "Capacity",
+          "label": "Crucible",
+          "value": "Ø100 × 35 mm, up to 3 layers"
+        },
+        {
+          "group": "Capacity",
+          "label": "Load",
+          "value": "Up to 25 single crowns"
+        },
+        {
+          "group": "Control",
+          "label": "Display",
+          "value": "7-inch HD touch screen"
+        },
+        {
+          "group": "Control",
+          "label": "Programs",
+          "value": "100"
+        },
+        {
+          "group": "Electrical",
+          "label": "Max. power",
+          "value": "2500 W"
+        },
+        {
+          "group": "Electrical",
+          "label": "Power supply",
+          "value": "220 V or 110 V, 50/60 Hz"
+        },
+        {
+          "group": "Physical",
+          "label": "Dimensions",
+          "value": "498 × 346 × 811 mm"
+        },
+        {
+          "group": "Physical",
+          "label": "Weight",
+          "value": "70 kg"
+        },
+        {
+          "group": "Support",
+          "label": "Warranty (manufacturer)",
+          "value": "1 year machine · 6 months wear parts"
+        }
       ],
-      "workflow": ["Receives milled zirconia from the ZDM-E5", "Speed-sinters to final density", "Restorations then go on to staining and glaze firing"],
+      "workflow": [
+        "Receives milled zirconia from the ZDM-E5",
+        "Speed-sinters to final density",
+        "Restorations then go on to staining and glaze firing"
+      ],
       "images": {
         "hero": "assets/images/products/neunorton-s9.jpg",
         "card": "assets/images/products/neunorton-s9-card.jpg",
         "gallery": [
-          { "src": "assets/images/products/neunorton-s9.jpg", "alt": "NeunoRton S9 sintering furnace with lifting table lowered and touch screen", "uploadRef": "upload #6" },
-          { "src": "assets/images/products/source/neunorton-s9/02-68cb5760c4325_.jpg", "alt": "S9 front view: hood, open chamber with crucible stack, touch display", "credit": "NeunoRton" },
-          { "src": "assets/images/products/source/neunorton-s9/03-68cb5760e6881_.jpg", "alt": "S9 three-quarter view from the right", "credit": "NeunoRton" },
-          { "src": "assets/images/products/source/neunorton-s9/05-68cb57613332a_.jpg", "alt": "S9 side view: rear column, hood, lifting table and slanted console", "credit": "NeunoRton" },
-          { "src": "assets/images/products/source/neunorton-s9/06-68cb57664644f_.jpg", "alt": "S9 from above: vented hood top and glass loading plate", "credit": "NeunoRton" },
-          { "src": "assets/images/products/source/neunorton-s9/04-68cb57611a791_.jpg", "alt": "S9 rear panel with ventilation slots", "credit": "NeunoRton" }
+          {
+            "src": "assets/images/products/neunorton-s9.jpg",
+            "alt": "NeunoRton S9 sintering furnace with lifting table lowered and touch screen",
+            "uploadRef": "upload #6"
+          },
+          {
+            "src": "assets/images/products/source/neunorton-s9/02-68cb5760c4325_.jpg",
+            "alt": "S9 front view: hood, open chamber with crucible stack, touch display",
+            "credit": "NeunoRton"
+          },
+          {
+            "src": "assets/images/products/source/neunorton-s9/03-68cb5760e6881_.jpg",
+            "alt": "S9 three-quarter view from the right",
+            "credit": "NeunoRton"
+          },
+          {
+            "src": "assets/images/products/source/neunorton-s9/05-68cb57613332a_.jpg",
+            "alt": "S9 side view: rear column, hood, lifting table and slanted console",
+            "credit": "NeunoRton"
+          },
+          {
+            "src": "assets/images/products/source/neunorton-s9/06-68cb57664644f_.jpg",
+            "alt": "S9 from above: vented hood top and glass loading plate",
+            "credit": "NeunoRton"
+          },
+          {
+            "src": "assets/images/products/source/neunorton-s9/04-68cb57611a791_.jpg",
+            "alt": "S9 rear panel with ventilation slots",
+            "credit": "NeunoRton"
+          }
         ],
         "background": "light"
       },
@@ -952,23 +1073,59 @@
         "type": "procedural",
         "builder": "s9",
         "glb": null,
-        "dimensionsMm": { "w": 346, "h": 811, "d": 498 },
+        "dimensionsMm": {
+          "w": 346,
+          "h": 811,
+          "d": 498
+        },
         "dimensionsNote": "The spec lists 498 × 346 × 811 mm. NeunoRton's orthographic renders confirm width = 346 mm, depth = 498 mm and height = 811 mm.",
         "views": {
-          "front": { "src": "assets/images/products/source/neunorton-s9/02-68cb5760c4325_.jpg", "rect": [0.42, 0.10375, 0.74, 0.825] },
-          "left": { "src": "assets/images/products/source/neunorton-s9/05-68cb57613332a_.jpg", "rect": [0.27, 0.1375, 0.69, 0.83375] },
-          "right": { "mirror": "left" },
-          "back": { "src": "assets/images/products/source/neunorton-s9/04-68cb57611a791_.jpg", "rect": [0.41625, 0.15125, 0.73125, 0.88375] }
+          "front": {
+            "src": "assets/images/products/source/neunorton-s9/02-68cb5760c4325_.jpg",
+            "rect": [
+              0.42,
+              0.10375,
+              0.74,
+              0.825
+            ]
+          },
+          "left": {
+            "src": "assets/images/products/source/neunorton-s9/05-68cb57613332a_.jpg",
+            "rect": [
+              0.27,
+              0.1375,
+              0.69,
+              0.83375
+            ]
+          },
+          "right": {
+            "mirror": "left"
+          },
+          "back": {
+            "src": "assets/images/products/source/neunorton-s9/04-68cb57611a791_.jpg",
+            "rect": [
+              0.41625,
+              0.15125,
+              0.73125,
+              0.88375
+            ]
+          }
         },
         "label": "NeunoRton",
         "modelBadge": "S9"
       },
       "sources": {
         "official": "https://www.neunorton.com/zirconia-sintering-furnace/s9-zirconia-sintering-furnace.html",
-        "supporting": ["https://www.neunorton.com/products/", "https://www.youtube.com/@NeunoRton"]
+        "supporting": [
+          "https://www.neunorton.com/products/",
+          "https://www.youtube.com/@NeunoRton"
+        ],
+        "catalogue": "NeunoRton product catalogue (Zhongshan NeunoRton Intelligent Manufacturing Technology), page 4"
       },
       "officialAssets": {
-        "images": ["https://www.neunorton.com/data/watermark/main/20250918/68cb576078e70_.jpg"],
+        "images": [
+          "https://www.neunorton.com/data/watermark/main/20250918/68cb576078e70_.jpg"
+        ],
         "video": null,
         "models3d": [],
         "usageRights": "Official images downloaded from the manufacturer's website at IDT's request (2026-10-10) and shown with credit. Confirm reseller usage rights with the manufacturer."
@@ -976,7 +1133,8 @@
       "confidence": "verified",
       "identificationEvidence": "The 'S9' mark is printed on the control panel, and the curved top housing and lift design match the official S9 imagery. Sibling models C9 and K9 look similar but carry their own model marks.",
       "missingInformation": [
-        "The official description says the process 'can be completed within one hour', but the specifications state 2 hours. Only the 2-hour figure is published.",
+        "The official website says the process 'can be completed within one hour', but the specifications and the NeunoRton catalogue both state 2 hours, so 2 hours is shown.",
+        "The catalogue's English text calls the heating elements 'silicon-carbon rods', but its Chinese text says silicon-molybdenum (MoSi₂), as the official website does. MoSi₂ is shown.",
         "The official page does not give the chamber dimensions; only the crucible size is listed.",
         "Certifications claimed on the brand's channel (CE MDR, FDA, ISO 13485) are self-reported. Verify them before publishing.",
         "Price and IDT warranty terms."
@@ -985,7 +1143,23 @@
     {
       "id": "neunorton-m9",
       "verb": "SINTER",
-      "highlights": [{ "label": "Temp. accuracy", "value": "±1", "unit": "°C" }, { "label": "Crucible layers", "value": "3", "unit": "× 100 mm" }, { "label": "Weight", "value": "50", "unit": "kg" }],
+      "highlights": [
+        {
+          "label": "Temp. accuracy",
+          "value": "±1",
+          "unit": "°C"
+        },
+        {
+          "label": "Crucible layers",
+          "value": "3",
+          "unit": "× 100 mm"
+        },
+        {
+          "label": "Weight",
+          "value": "50",
+          "unit": "kg"
+        }
+      ],
       "order": 6,
       "featured": false,
       "manufacturer": "NeunoRton",
@@ -1004,35 +1178,127 @@
         "Smaller footprint than the S9, at 361 × 360 × 555 mm."
       ],
       "features": [
-        { "title": "MoSi₂ heating elements", "text": "Dental-specific silicon-molybdenum elements that the manufacturer says do not contaminate restorations." },
-        { "title": "PID control ±1 °C", "text": "Intelligent PID temperature control." },
-        { "title": "Three crucible layers", "text": "100 × 100 × 35 mm per layer." },
-        { "title": "Power-off memory", "text": "Resumes from any temperature at any point on the curve." },
-        { "title": "Drying function", "text": "Removes residual moisture before high-temperature sintering." },
-        { "title": "7-inch HD touch screen", "text": "Touch control for programming and monitoring." }
+        {
+          "title": "MoSi₂ heating elements",
+          "text": "Dental-specific silicon-molybdenum elements that the manufacturer says do not contaminate restorations."
+        },
+        {
+          "title": "PID control ±1 °C",
+          "text": "Intelligent PID temperature control."
+        },
+        {
+          "title": "Three crucible layers",
+          "text": "100 × 100 × 35 mm per layer."
+        },
+        {
+          "title": "Power-off memory",
+          "text": "Resumes from any temperature at any point on the curve."
+        },
+        {
+          "title": "Drying function",
+          "text": "Removes residual moisture before high-temperature sintering."
+        },
+        {
+          "title": "7-inch HD touch screen",
+          "text": "Touch control for programming and monitoring."
+        }
       ],
       "specs": [
-        { "group": "Thermal", "label": "Max. sintering temperature", "value": "1700 °C", "flag": "To be confirmed with the manufacturer: the source page also mentions 1560 °C" },
-        { "group": "Thermal", "label": "Temperature accuracy", "value": "±1 °C" },
-        { "group": "Thermal", "label": "Heating elements", "value": "MoSi₂ (silicon-molybdenum)" },
-        { "group": "Capacity", "label": "Crucible", "value": "100 × 100 × 35 mm, up to 3 layers" },
-        { "group": "Control", "label": "Display", "value": "7-inch HD touch screen" },
-        { "group": "Electrical", "label": "Max. power", "value": "2500 W" },
-        { "group": "Electrical", "label": "Power supply", "value": "220 V or 110 V, 50/60 Hz" },
-        { "group": "Physical", "label": "Dimensions", "value": "361 × 360 × 555 mm" },
-        { "group": "Physical", "label": "Weight", "value": "50 kg" },
-        { "group": "Support", "label": "Warranty (manufacturer)", "value": "1 year machine · 6 months consumables" }
+        {
+          "group": "Thermal",
+          "label": "Max. sintering temperature",
+          "value": "1700 °C"
+        },
+        {
+          "group": "Thermal",
+          "label": "Heating rate",
+          "value": "<100 °C/min"
+        },
+        {
+          "group": "Thermal",
+          "label": "Temperature accuracy",
+          "value": "±1 °C"
+        },
+        {
+          "group": "Thermal",
+          "label": "Fastest sintering cycle",
+          "value": "3.5 h (incl. heating, holding, cooling)"
+        },
+        {
+          "group": "Thermal",
+          "label": "Heating elements",
+          "value": "MoSi₂ (silicon-molybdenum)"
+        },
+        {
+          "group": "Capacity",
+          "label": "Crucible",
+          "value": "100 × 100 × 35 mm, up to 3 layers"
+        },
+        {
+          "group": "Control",
+          "label": "Display",
+          "value": "7-inch HD touch screen"
+        },
+        {
+          "group": "Electrical",
+          "label": "Max. power",
+          "value": "2500 W"
+        },
+        {
+          "group": "Electrical",
+          "label": "Power supply",
+          "value": "220 V or 110 V, 50/60 Hz"
+        },
+        {
+          "group": "Physical",
+          "label": "Dimensions",
+          "value": "361 × 360 × 555 mm"
+        },
+        {
+          "group": "Physical",
+          "label": "Weight",
+          "value": "50 kg"
+        },
+        {
+          "group": "Support",
+          "label": "Warranty (manufacturer)",
+          "value": "1 year machine · 6 months consumables"
+        }
       ],
-      "workflow": ["Receives milled zirconia", "Sinters to final density", "Restorations then go on to glaze firing"],
+      "workflow": [
+        "Receives milled zirconia",
+        "Sinters to final density",
+        "Restorations then go on to glaze firing"
+      ],
       "images": {
         "hero": "assets/images/products/neunorton-m9.jpg",
         "card": "assets/images/products/neunorton-m9-card.jpg",
         "gallery": [
-          { "src": "assets/images/products/neunorton-m9.jpg", "alt": "NeunoRton M9 front-loading sintering furnace with touch display", "uploadRef": "upload #5" },
-          { "src": "assets/images/products/source/neunorton-m9/02-68d0adc0d4751_.jpg", "alt": "M9 three-quarter view from the left, showing the door hinges", "credit": "NeunoRton" },
-          { "src": "assets/images/products/source/neunorton-m9/03-68d0adc0e71a7_.jpg", "alt": "M9 three-quarter view from the right, with side cable glands", "credit": "NeunoRton" },
-          { "src": "assets/images/products/source/neunorton-m9/04-68d0adc1096e2_.jpg", "alt": "M9 from above: vented top, door and console", "credit": "NeunoRton" },
-          { "src": "assets/images/products/source/neunorton-m9/05-68d0adc123634_.jpg", "alt": "M9 left side view", "credit": "NeunoRton" }
+          {
+            "src": "assets/images/products/neunorton-m9.jpg",
+            "alt": "NeunoRton M9 front-loading sintering furnace with touch display",
+            "uploadRef": "upload #5"
+          },
+          {
+            "src": "assets/images/products/source/neunorton-m9/02-68d0adc0d4751_.jpg",
+            "alt": "M9 three-quarter view from the left, showing the door hinges",
+            "credit": "NeunoRton"
+          },
+          {
+            "src": "assets/images/products/source/neunorton-m9/03-68d0adc0e71a7_.jpg",
+            "alt": "M9 three-quarter view from the right, with side cable glands",
+            "credit": "NeunoRton"
+          },
+          {
+            "src": "assets/images/products/source/neunorton-m9/04-68d0adc1096e2_.jpg",
+            "alt": "M9 from above: vented top, door and console",
+            "credit": "NeunoRton"
+          },
+          {
+            "src": "assets/images/products/source/neunorton-m9/05-68d0adc123634_.jpg",
+            "alt": "M9 left side view",
+            "credit": "NeunoRton"
+          }
         ],
         "background": "light"
       },
@@ -1040,30 +1306,55 @@
         "type": "procedural",
         "builder": "m9",
         "glb": null,
-        "dimensionsMm": { "w": 361, "h": 555, "d": 360 },
+        "dimensionsMm": {
+          "w": 361,
+          "h": 555,
+          "d": 360
+        },
         "views": {
-          "front": { "src": "assets/images/products/source/neunorton-m9/01-68d0adc0b9c01_.jpg", "rect": [0.3225, 0.16625, 0.7325, 0.79375] },
-          "left": { "src": "assets/images/products/source/neunorton-m9/05-68d0adc123634_.jpg", "rect": [0.31875, 0.2775, 0.70875, 0.88125] }
+          "front": {
+            "src": "assets/images/products/source/neunorton-m9/01-68d0adc0b9c01_.jpg",
+            "rect": [
+              0.3225,
+              0.16625,
+              0.7325,
+              0.79375
+            ]
+          },
+          "left": {
+            "src": "assets/images/products/source/neunorton-m9/05-68d0adc123634_.jpg",
+            "rect": [
+              0.31875,
+              0.2775,
+              0.70875,
+              0.88125
+            ]
+          }
         },
         "label": "NeunoRton"
       },
       "sources": {
         "official": "https://www.neunorton.com/zirconia-sintering-furnace/m9.html",
-        "supporting": ["https://www.neunorton.com/products/"]
+        "supporting": [
+          "https://www.neunorton.com/products/"
+        ],
+        "catalogue": "NeunoRton product catalogue (Zhongshan NeunoRton Intelligent Manufacturing Technology), page 7"
       },
       "officialAssets": {
-        "images": ["https://www.neunorton.com/data/watermark/main/20250922/68d0adc0b9c01_.jpg"],
+        "images": [
+          "https://www.neunorton.com/data/watermark/main/20250922/68d0adc0b9c01_.jpg"
+        ],
         "video": null,
         "models3d": [],
         "usageRights": "Official images downloaded from the manufacturer's website at IDT's request (2026-10-10) and shown with credit. Confirm reseller usage rights with the manufacturer."
       },
-      "confidence": "partially-verified",
-      "identificationEvidence": "The uploaded image is identical in composition to the official M9 product image (front door with handle, warning label and a clock reading 20:09 on the touch screen), so the model ID is secure. However, the official text contradicts itself, so some specifications are withheld.",
+      "confidence": "verified",
+      "identificationEvidence": "The uploaded image is identical in composition to the official M9 product image (front door with handle, warning label and a clock reading 20:09 on the touch screen), so the model ID is secure. The NeunoRton catalogue (page 7) shows the same furnace and settles the specifications that the official web text contradicted.",
       "missingInformation": [
-        "Maximum temperature: the title and spec table say 1700 °C, but the body text says 1560 °C. 1700 °C is shown with a 'to be confirmed' flag.",
-        "The official text mentions an 'electrically driven lifting table', a 'cylindrical chamber' and 'forced cooling: the furnace opens step by step'. These appear to be copied from the lift-type models and conflict with the front-door box design in the photo, so they are not published.",
-        "Heating rate is given as both '<100 °C/min' and '10o °C/min', and fastest cycle as both '3.5 hours' and 'under 2.5 hours'. Neither is published.",
-        "Number of programs is not stated."
+        "The official web text mentions an 'electrically driven lifting table', a 'cylindrical chamber' and 'forced cooling: the furnace opens step by step'. These appear to be copied from the lift-type models, conflict with the front-door box design, and are not in the catalogue, so they are not published.",
+        "The drying function comes from the official website; the catalogue does not mention it.",
+        "Number of programs is not stated.",
+        "Price and IDT warranty terms."
       ]
     },
     {
@@ -1321,7 +1612,23 @@
     {
       "id": "neunorton-m5",
       "verb": "FIRE",
-      "highlights": [{ "label": "Max. temperature", "value": "1200", "unit": "°C" }, { "label": "Max. vacuum", "value": "−98", "unit": "kPa" }, { "label": "Program segments", "value": "100", "unit": "" }],
+      "highlights": [
+        {
+          "label": "Max. temperature",
+          "value": "1200",
+          "unit": "°C"
+        },
+        {
+          "label": "Max. vacuum",
+          "value": "−98",
+          "unit": "kPa"
+        },
+        {
+          "label": "Program segments",
+          "value": "100",
+          "unit": ""
+        }
+      ],
       "order": 8,
       "featured": true,
       "manufacturer": "NeunoRton",
@@ -1337,40 +1644,131 @@
         "Heating from all sides gives a uniform temperature field, so fired results are more consistent.",
         "Built-in programs for major porcelain brands reduce manual programming.",
         "The oil-free vacuum pump is described as maintenance-free and quiet.",
-        "At 20 kg, the furnace fits on a technician's bench."
+        "At 20 kg, the furnace fits on a technician's bench.",
+        "A filter in the vacuum line protects the pump and valves, so they last longer."
       ],
       "features": [
-        { "title": "Vacuum firing", "text": "Imported vacuum sensor and an oil-free pump that reaches −98 kPa." },
-        { "title": "Multi-stage heating", "text": "Can fire glass ceramics." },
-        { "title": "Built-in porcelain programs", "text": "For Ivoclar, Vita and Noritake materials." },
-        { "title": "PID control ±1 °C", "text": "S-type thermocouple for precise control." },
-        { "title": "Lifting chamber", "text": "The lift design keeps the body compact." },
-        { "title": "7-inch HD touch screen", "text": "Shows firing curves visually, with icon-based buttons." }
+        {
+          "title": "Vacuum firing",
+          "text": "Imported vacuum sensor and an oil-free pump that reaches −98 kPa."
+        },
+        {
+          "title": "Multi-stage heating",
+          "text": "Can fire glass ceramics."
+        },
+        {
+          "title": "Built-in porcelain programs",
+          "text": "For Ivoclar, Vita and Noritake materials."
+        },
+        {
+          "title": "PID control ±1 °C",
+          "text": "S-type thermocouple for precise control."
+        },
+        {
+          "title": "Lifting chamber",
+          "text": "The lift design keeps the body compact."
+        },
+        {
+          "title": "7-inch HD touch screen",
+          "text": "Shows firing curves visually, with icon-based buttons."
+        }
       ],
       "specs": [
-        { "group": "Thermal", "label": "Max. operating temperature", "value": "1200 °C" },
-        { "group": "Thermal", "label": "Temperature accuracy", "value": "±1 °C" },
-        { "group": "Thermal", "label": "Thermocouple", "value": "S-type" },
-        { "group": "Thermal", "label": "Heating element", "value": "Dental-specific high-purity heating wire" },
-        { "group": "Vacuum", "label": "Max. vacuum", "value": "−98 kPa" },
-        { "group": "Capacity", "label": "Chamber size", "value": "100 × 90 mm" },
-        { "group": "Control", "label": "Program segments", "value": "100" },
-        { "group": "Control", "label": "Display", "value": "7-inch HD touch screen" },
-        { "group": "Electrical", "label": "Rated power", "value": "1500 W" },
-        { "group": "Electrical", "label": "Input voltage", "value": "220 V or 110 V, 50/60 Hz" },
-        { "group": "Physical", "label": "Dimensions", "value": "329 × 290 × 541 mm" },
-        { "group": "Physical", "label": "Weight", "value": "20 kg" }
+        {
+          "group": "Thermal",
+          "label": "Max. operating temperature",
+          "value": "1200 °C"
+        },
+        {
+          "group": "Thermal",
+          "label": "Temperature accuracy",
+          "value": "±1 °C"
+        },
+        {
+          "group": "Thermal",
+          "label": "Thermocouple",
+          "value": "S-type, in a ceramic corundum protection tube"
+        },
+        {
+          "group": "Thermal",
+          "label": "Heating element",
+          "value": "Dental-specific high-purity heating wire"
+        },
+        {
+          "group": "Vacuum",
+          "label": "Max. vacuum",
+          "value": "−98 kPa"
+        },
+        {
+          "group": "Capacity",
+          "label": "Chamber size",
+          "value": "100 × 90 mm"
+        },
+        {
+          "group": "Control",
+          "label": "Program segments",
+          "value": "100"
+        },
+        {
+          "group": "Control",
+          "label": "Display",
+          "value": "7-inch HD touch screen"
+        },
+        {
+          "group": "Electrical",
+          "label": "Rated power",
+          "value": "1500 W"
+        },
+        {
+          "group": "Electrical",
+          "label": "Input voltage",
+          "value": "220 V or 110 V, 50/60 Hz"
+        },
+        {
+          "group": "Physical",
+          "label": "Dimensions",
+          "value": "329 × 290 × 541 mm"
+        },
+        {
+          "group": "Physical",
+          "label": "Weight",
+          "value": "20 kg"
+        }
       ],
-      "workflow": ["Receives sintered or pressed restorations", "Fires layering ceramics, stains and glaze under vacuum", "Restorations are then ready for finishing and dispatch"],
+      "workflow": [
+        "Receives sintered or pressed restorations",
+        "Fires layering ceramics, stains and glaze under vacuum",
+        "Restorations are then ready for finishing and dispatch"
+      ],
       "images": {
         "hero": "assets/images/products/neunorton-m5.jpg",
         "card": "assets/images/products/neunorton-m5-card.jpg",
         "gallery": [
-          { "src": "assets/images/products/neunorton-m5.jpg", "alt": "NeunoRton M5 porcelain furnace with raised firing chamber, firing tray and touch display showing a firing curve", "uploadRef": "upload #3" },
-          { "src": "assets/images/products/source/neunorton-m5/02-68d0ac84cc229_.jpg", "alt": "M5 three-quarter view from the left: cylindrical hood, column vents, tilted console", "credit": "NeunoRton" },
-          { "src": "assets/images/products/source/neunorton-m5/03-68d0ac84e89f2_.jpg", "alt": "M5 three-quarter view from the right", "credit": "NeunoRton" },
-          { "src": "assets/images/products/source/neunorton-m5/04-68d0ac852d90d_.jpg", "alt": "M5 from above: radial vents on the hood top", "credit": "NeunoRton" },
-          { "src": "assets/images/products/source/neunorton-m5/06-68d0ac8b59dd1_.jpg", "alt": "M5 rear three-quarter view: vented column and power inlet", "credit": "NeunoRton" }
+          {
+            "src": "assets/images/products/neunorton-m5.jpg",
+            "alt": "NeunoRton M5 porcelain furnace with raised firing chamber, firing tray and touch display showing a firing curve",
+            "uploadRef": "upload #3"
+          },
+          {
+            "src": "assets/images/products/source/neunorton-m5/02-68d0ac84cc229_.jpg",
+            "alt": "M5 three-quarter view from the left: cylindrical hood, column vents, tilted console",
+            "credit": "NeunoRton"
+          },
+          {
+            "src": "assets/images/products/source/neunorton-m5/03-68d0ac84e89f2_.jpg",
+            "alt": "M5 three-quarter view from the right",
+            "credit": "NeunoRton"
+          },
+          {
+            "src": "assets/images/products/source/neunorton-m5/04-68d0ac852d90d_.jpg",
+            "alt": "M5 from above: radial vents on the hood top",
+            "credit": "NeunoRton"
+          },
+          {
+            "src": "assets/images/products/source/neunorton-m5/06-68d0ac8b59dd1_.jpg",
+            "alt": "M5 rear three-quarter view: vented column and power inlet",
+            "credit": "NeunoRton"
+          }
         ],
         "background": "light"
       },
@@ -1378,20 +1776,45 @@
         "type": "procedural",
         "builder": "m5",
         "glb": null,
-        "dimensionsMm": { "w": 290, "h": 541, "d": 329 },
+        "dimensionsMm": {
+          "w": 290,
+          "h": 541,
+          "d": 329
+        },
         "dimensionsNote": "The spec lists 329 × 290 × 541 mm. NeunoRton's orthographic front render has the same pixel scale on both axes only with width = 290 mm, so the order is depth × width × height.",
         "views": {
-          "front": { "src": "assets/images/products/source/neunorton-m5/01-68d0ac8510f63_.jpg", "rect": [0.37, 0.16625, 0.7275, 0.84375] },
-          "back": { "src": "assets/images/products/source/neunorton-m5/05-68d0ac8572a1a_.jpg", "rect": [0.3825, 0.125, 0.73875, 0.79] }
+          "front": {
+            "src": "assets/images/products/source/neunorton-m5/01-68d0ac8510f63_.jpg",
+            "rect": [
+              0.37,
+              0.16625,
+              0.7275,
+              0.84375
+            ]
+          },
+          "back": {
+            "src": "assets/images/products/source/neunorton-m5/05-68d0ac8572a1a_.jpg",
+            "rect": [
+              0.3825,
+              0.125,
+              0.73875,
+              0.79
+            ]
+          }
         },
         "label": "NeunoRton"
       },
       "sources": {
         "official": "https://www.neunorton.com/porcelain-furnace/m5.html",
-        "supporting": ["https://www.neunorton.com/products/"]
+        "supporting": [
+          "https://www.neunorton.com/products/"
+        ],
+        "catalogue": "NeunoRton product catalogue (Zhongshan NeunoRton Intelligent Manufacturing Technology), page 3"
       },
       "officialAssets": {
-        "images": ["https://www.neunorton.com/data/watermark/main/20250922/68d0ac8510f63_.jpg"],
+        "images": [
+          "https://www.neunorton.com/data/watermark/main/20250922/68d0ac8510f63_.jpg"
+        ],
         "video": null,
         "models3d": [],
         "usageRights": "Official images downloaded from the manufacturer's website at IDT's request (2026-10-10) and shown with credit. Confirm reseller usage rights with the manufacturer."
@@ -1400,6 +1823,8 @@
       "identificationEvidence": "The cylindrical lifting hood with a heat-warning label, the separate base with a firing-curve touch display and the row of six blue control icons match the official M5 imagery.",
       "missingInformation": [
         "The manufacturer's site files the M5 under the 'Zirconia Sintering Furnace' category, but the specification (1200 °C, vacuum) is for a porcelain furnace. It is categorised here as Porcelain Firing.",
+        "The catalogue's Chinese table also lists a vacuum degree of '80 mbar', which is missing from its English table and does not match −98 kPa. It is not published.",
+        "The catalogue names Vita and Ivoclar programs; the official website also names Noritake.",
         "Firing-tray dimensions and the number of storable programs (as opposed to segments) are not stated.",
         "Price and IDT warranty terms."
       ]

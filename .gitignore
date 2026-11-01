@@ -17,3 +17,7 @@ desktop.ini
 # Load-test output (JMeter dashboards, .jtl files)
 perf/results/
 *.jtl
+
+# Upload package built by tools/build-deploy.mjs
+/رفع المشروع/
+/رفع المشروع.zip

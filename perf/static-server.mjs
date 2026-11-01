@@ -25,7 +25,9 @@ const PORT = arg('port', 8080);
 const MAX_CONN = arg('max-conn', 0);
 const WORKERS = MAX_CONN ? 1 : arg('workers', 4);
 const CACHE = arg('cache', 0);
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+// --root <folder> serves another folder, e.g. the upload package from tools/build-deploy.mjs.
+const rootArg = process.argv.indexOf('--root');
+const ROOT = rootArg > 0 ? path.resolve(process.argv[rootArg + 1]) : path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 const MIME = {
   '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript',

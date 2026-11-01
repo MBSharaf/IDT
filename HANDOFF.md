@@ -350,3 +350,6 @@ The site now has 9 products.
   - The site is about 0.52 MB per visit and has no errors at 1,000 simultaneous users locally.
   - SmarterASP's ASP.NET Basic plan caps the site at 200 connections, which gives 503s on any spike. Recommend Advance or higher plus Cloudflare.
   - Reviews used to call Google Apps Script once per visit (30 concurrent executions max). They now come from `data/reviews.json`; refresh it with `node tools/sync-reviews.mjs` after approving reviews. The live script is used only if the file is missing.
+- Upload package: `node tools/build-deploy.mjs` builds the "رفع المشروع" folder and "رفع المشروع.zip" (both git-ignored).
+  - They hold only the files the live site needs: pages, web.config, css, js, data, and the assets actually referenced (about 5.7 MB instead of 88 MB).
+  - Upload the zip to SmarterASP and extract it in the site root.

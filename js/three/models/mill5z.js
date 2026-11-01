@@ -1,4 +1,4 @@
-// Zahndent ZDM-5Z milling machine — 480 (W) × 635 (H) × 625 (D) mm.
+// Zahndent ZDM-5T Pro milling machine (same housing as the ZDM-5Z) — 480 (W) × 635 (H) × 625 (D) mm.
 // Front layout comes from Zahndent's straight front product photo (5Z-2), which is photo-projected;
 // sides and back take the grey housing colour. The window door is hinged along its lower edge and
 // swings outward, as in Zahndent's photo; behind it sits the milling chamber.

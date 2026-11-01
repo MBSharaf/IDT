@@ -126,13 +126,13 @@
           "unit": "mm"
         },
         {
-          "label": "Max. spindle speed",
-          "value": "60,000",
-          "unit": "RPM"
+          "label": "Spindle power",
+          "value": "2.2",
+          "unit": "kW"
         },
         {
           "label": "Tool positions",
-          "value": "6",
+          "value": "12",
           "unit": "auto-change"
         }
       ],
@@ -140,39 +140,39 @@
       "featured": false,
       "manufacturer": "Zahndent",
       "manufacturerLegalName": "Zhejiang Zahndent Biotechnology Co., Ltd. (per marketplace supplier listings)",
-      "name": "ZDM-5Z Dental Lab Milling Machine",
-      "shortName": "ZDM-5Z",
-      "model": "ZDM-5Z",
+      "name": "ZDM-5T Pro Dental Lab Milling Machine",
+      "shortName": "ZDM-5T Pro",
+      "model": "ZDM-5T Pro",
       "category": "milling",
       "categoryLabel": "CAD/CAM Milling",
-      "tagline": "Efficient five-axis dry milling for zirconia, PMMA and wax, driven by servo motors.",
-      "description": "Zahndent presents the ZDM-5Z as an efficient zirconia milling machine for dental laboratories. It dry-mills crowns, copings, bridges and inlays/onlays from 98 mm discs in five axes, with servo motors on every axis, a water-cooled 1.2 kW spindle up to 60,000 RPM and an automatic six-bur tool changer. A touch screen sits above the milling window, and the window door swings open from its lower edge for loading. A water chiller is supplied with the machine; CAM is HyperDent.",
+      "tagline": "Wet and dry five-axis milling for zirconia, titanium, glass ceramic, PMMA and wax, with a 12-tool changer.",
+      "description": "Zahndent's ZDM-5T, sold as the 5T Pro, is a five-axis dental lab milling machine that works both dry and wet. Besides zirconia, PMMA and wax it mills titanium and lithium disilicate glass ceramic, from 98 mm discs, glass-ceramic blocks and pre-milled titanium rods. Servo motors drive every axis; a water-cooled 2.2 kW spindle runs up to 60,000 RPM and an automatic changer holds 12 tools with 6 mm shanks. It covers crowns and bridges through abutments, partial frameworks, surgical guides, models and full dentures. A touch screen sits above the milling window, and the window door folds open from its lower edge for loading. A water chiller, water tank and jigs for ceramic and titanium come with the machine; CAM is HyperDent.",
       "labValue": [
-        "Servo-driven axes with a published positioning accuracy of 0.002 mm, for precise margins on zirconia work.",
-        "Zahndent states an average crown time of 8 to 15 minutes in zirconia or PMMA and 5 to 8 minutes in wax.",
-        "Automatic six-bur tool change lets jobs run unattended.",
-        "Ships with its own water chiller, a set of burs (0.6, 1.0 and 2.0 mm) and a wax block, so it is ready to mill on delivery."
+        "One machine for dry zirconia and PMMA work and wet milling of glass ceramic and titanium.",
+        "Custom abutments, pre-milled titanium abutments and partial frameworks can be made in-house instead of outsourced.",
+        "A 12-tool magazine with automatic change lets long jobs with several materials run unattended.",
+        "Zahndent states an average crown time of 8 to 15 minutes in zirconia or PMMA, 5 to 8 minutes in wax and 20 to 25 minutes in titanium."
       ],
       "features": [
         {
+          "title": "Dry and wet milling",
+          "text": "Dry milling for zirconia, PMMA and wax; wet milling for lithium disilicate glass ceramic and titanium."
+        },
+        {
           "title": "5-axis machining",
-          "text": "A axis ±360° and B axis +25° to −115° (as published), for undercuts and complex anatomy."
+          "text": "A axis ±360° and B axis +25° to −115° (as published), for undercuts, abutments and complex anatomy."
+        },
+        {
+          "title": "2.2 kW water-cooled spindle",
+          "text": "20,000–60,000 RPM, cooled by the supplied water chiller."
+        },
+        {
+          "title": "12-tool magazine",
+          "text": "Automatic tool change across 12 positions, 6 mm shank."
         },
         {
           "title": "Servo motor drive",
-          "text": "Servo motors drive the axes; Zahndent lists extremely high accuracy and extraordinary stability among the main features."
-        },
-        {
-          "title": "Water-cooled spindle",
-          "text": "1.2 kW, 20,000–60,000 RPM, cooled by the supplied water chiller."
-        },
-        {
-          "title": "Six-bur magazine",
-          "text": "Automatic tool change across six positions, 4 mm shank."
-        },
-        {
-          "title": "Dry milling",
-          "text": "Configured for dry milling of zirconia, PMMA and wax."
+          "text": "Servo motors on every axis, with a published positioning accuracy of 0.002 mm."
         },
         {
           "title": "Touch operation & HyperDent",
@@ -188,27 +188,28 @@
         {
           "group": "Machining",
           "label": "Milling mode",
-          "value": "Dry"
+          "value": "Dry / wet"
         },
         {
           "group": "Machining",
           "label": "Millable materials",
-          "value": "Zirconia, PMMA, wax"
+          "value": "Titanium, zirconia, PMMA, wax, lithium disilicate"
         },
         {
           "group": "Machining",
           "label": "Indications",
-          "value": "Crown, coping, bridge, inlay/onlay"
+          "value": "Crown, coping, bridge, inlay/onlay, veneer, pre-milled abutment, custom abutment, partial framework, surgical guide, model, full denture"
         },
         {
           "group": "Machining",
           "label": "Rotation range",
-          "value": "A ±360° · B +25° / −115°"
+          "value": "A ±360° · B +25° / −115°",
+          "flag": "The page writes \"B: +25° -115° 60°\"; Zahndent's ZAHN-5T page gives B +25° / −30°. Confirm with Zahndent."
         },
         {
           "group": "Machining",
           "label": "Average milling time (crown)",
-          "value": "Zirconia 8–15 min · PMMA 8–15 min · Wax 5–8 min"
+          "value": "Zirconia 8–15 min · PMMA 8–15 min · Wax 5–8 min · Titanium 20–25 min"
         },
         {
           "group": "Machining",
@@ -223,7 +224,7 @@
         {
           "group": "Spindle",
           "label": "Spindle power",
-          "value": "1.2 kW"
+          "value": "2.2 kW"
         },
         {
           "group": "Spindle",
@@ -238,12 +239,13 @@
         {
           "group": "Tooling",
           "label": "Tool positions",
-          "value": "6"
+          "value": "12",
+          "flag": "Zahndent's ZAHN-5T page lists 17; confirm the magazine size for the unit IDT supplies."
         },
         {
           "group": "Tooling",
           "label": "Tool shank diameter",
-          "value": "4 mm"
+          "value": "6 mm"
         },
         {
           "group": "Tooling",
@@ -252,13 +254,13 @@
         },
         {
           "group": "Tooling",
-          "label": "Workpiece",
-          "value": "98 mm discs"
+          "label": "Workpieces",
+          "value": "98 mm discs, glass-ceramic blocks, pre-milled titanium rods"
         },
         {
           "group": "Installation",
           "label": "Machine total power",
-          "value": "1.8 kW"
+          "value": "2.7 kW"
         },
         {
           "group": "Installation",
@@ -273,23 +275,23 @@
         {
           "group": "Installation",
           "label": "External dimensions (L × W × H)",
-          "value": "625 × 480 × 635 mm",
-          "flag": "Units are not stated on the page; millimetres assumed (they match the front view)."
+          "value": "625 × 480 × 635 mm"
         },
         {
           "group": "Installation",
-          "label": "Packing dimensions",
-          "value": "830 × 750 × 950 mm"
+          "label": "Packing",
+          "value": "Plywood case 820 × 750 × 900 mm"
         },
         {
           "group": "Installation",
           "label": "Net / gross weight",
-          "value": "125 kg / 148 kg"
+          "value": "125 kg / 143 kg",
+          "flag": "The spec table gives 125 / 148 kg; the packing list gives 125 / 143 kg."
         },
         {
           "group": "Installation",
-          "label": "Water chiller",
-          "value": "576 × 390 × 480 mm · 11 kg"
+          "label": "Machine table (optional)",
+          "value": "Plywood case 820 × 750 × 900 mm · 62 kg / 80 kg"
         },
         {
           "group": "Software & support",
@@ -309,7 +311,7 @@
         {
           "group": "Software & support",
           "label": "Standard accessories",
-          "value": "Water chiller, burs 0.6 / 1.0 / 2.0 mm, wax block"
+          "value": "Water chiller, water tank, burs 0.6 / 1.0 / 2.0 mm, wax block, 2 jigs for ceramic / titanium"
         },
         {
           "group": "Software & support",
@@ -319,7 +321,7 @@
       ],
       "workflow": [
         "Receives CAM toolpaths from HyperDent",
-        "Mills restorations from 98 mm discs",
+        "Mills zirconia, PMMA and wax dry; glass ceramic and titanium wet",
         "Hands zirconia work on to a sintering furnace"
       ],
       "images": {
@@ -328,37 +330,37 @@
         "gallery": [
           {
             "src": "assets/images/products/zahndent-zdm-5z.jpg",
-            "alt": "Zahndent ZDM-5Z milling machine, front view with touch screen above the milling window",
+            "alt": "Zahndent ZDM-5T Pro milling machine, front view with touch screen above the milling window",
             "credit": "Zahndent"
           },
           {
             "src": "assets/images/products/source/zahndent-zdm-5z/06-photo.jpg",
-            "alt": "ZDM-5Z in a lab, three-quarter view of the grey housing and black glass front",
+            "alt": "ZDM-5T Pro in a lab, three-quarter view of the grey housing and black glass front",
             "credit": "Zahndent"
           },
           {
             "src": "assets/images/products/source/zahndent-zdm-5z/07-door-open.jpg",
-            "alt": "ZDM-5Z with its window door swung open from the lower edge, showing the disc fixture",
+            "alt": "ZDM-5T Pro with its window door folded open from the lower edge, showing the disc fixture",
             "credit": "Zahndent"
           },
           {
             "src": "assets/images/products/source/zahndent-zdm-5z/05-detail-01.jpg",
-            "alt": "Inside the ZDM-5Z: disc fixture, tool magazine and spindle",
+            "alt": "Inside the milling chamber: disc fixture, tool magazine and spindle",
             "credit": "Zahndent"
           },
           {
             "src": "assets/images/products/source/zahndent-zdm-5z/02-board-6.jpg",
-            "alt": "ZDM-5Z with a milled zirconia disc: 90° engraving for more flexible milling",
+            "alt": "Milled zirconia disc: 90° engraving for more flexible milling",
             "credit": "Zahndent"
           },
           {
             "src": "assets/images/products/source/zahndent-zdm-5z/03-board-7.jpg",
-            "alt": "ZDM-5Z and a nested disc: 20° tilt for better material use",
+            "alt": "Nested disc: 20° tilt for better material use",
             "credit": "Zahndent"
           },
           {
             "src": "assets/images/products/source/zahndent-zdm-5z/04-board-8.jpg",
-            "alt": "ZDM-5Z disc fixture and six-bur tool magazine",
+            "alt": "Disc fixture and tool magazine",
             "credit": "Zahndent"
           }
         ],
@@ -373,7 +375,7 @@
           "h": 635,
           "d": 625
         },
-        "dimensionsNote": "Published as 625 × 480 × 635 (L × W × H) without units; the front view's width-to-height ratio (0.755) matches 480 × 635 mm.",
+        "dimensionsNote": "Published as 625 × 480 × 635 mm (L × W × H); the front view's width-to-height ratio (0.755) matches 480 × 635 mm.",
         "views": {
           "front": {
             "src": "assets/images/products/source/zahndent-zdm-5z/01-5z-2.jpg",
@@ -388,9 +390,10 @@
         "label": "Zahndent"
       },
       "sources": {
-        "official": "https://www.zahndent.com/product/dental-lab-milling-machine-zdm-5z/",
+        "official": "https://www.zahndent.com/product/dental-lab-milling-machines-zdm-5t/",
         "supporting": [
-          "https://www.zahndent.com/product-category/dental-milling-machine/"
+          "https://www.zahndent.com/product/dental-lab-milling-machines-zdm-5t-abs/",
+          "https://www.zahndent.com/product/dental-lab-milling-machine-zdm-5z/"
         ]
       },
       "officialAssets": {
@@ -402,10 +405,10 @@
         "usageRights": "Official images downloaded from the manufacturer's website at IDT's request (2026-10-31) and shown with credit. Confirm reseller usage rights with the manufacturer."
       },
       "confidence": "verified",
-      "identificationEvidence": "The front matches the official ZDM-5Z product image: a grey housing frame around a black glass front, a small touch screen at the top with a round power button and two USB ports beside it, a landscape milling window below and the Zahndent wordmark at the bottom.",
+      "identificationEvidence": "IDT identified the machine as the 5T Pro (2026-11-01). Zahndent's ZDM-5T page uses detail images named \"ZDM-5T-PRO\", and its main photo shows the same housing as the photos used here: a grey frame around a black glass front, a touch screen at the top with a round power button and two USB ports, a landscape milling window and the Zahndent wordmark.",
       "missingInformation": [
-        "The page gives the external dimensions, spindle speed and shank diameter without units.",
-        "The page lists a related model as ZAHN-5Z; confirm with Zahndent that this is the same machine.",
+        "B-axis range and magazine size differ between Zahndent's ZDM-5T and ZAHN-5T pages; confirm for the supplied unit.",
+        "Gallery photos come from Zahndent's ZDM-5Z page, which shows the same housing.",
         "Price, lead time, regional certification (CE/FDA) and local warranty terms from IDT."
       ]
     },

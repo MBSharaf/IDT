@@ -319,3 +319,10 @@ The site now has 9 products.
 - Theme: `--c-black` / `--c-white` are the background / text roles and swap in `[data-theme=light]` (css/tokens.css);
   `--ink` / `--paper` never swap; gold used as text goes through `--c-gold-text`. RTL uses logical CSS properties.
 - The giant decorative words (MILL, SCAN…), model names and the Pharosline credit stay in English.
+
+## ZDM-5Z → ZDM-5T Pro (2026-11-01)
+- IDT confirmed the second Zahndent mill is the **5T Pro**. The product (id still `zahndent-zdm-5z`, so links and
+  reviews keep working) now uses the specs of Zahndent's ZDM-5T page
+  (https://www.zahndent.com/product/dental-lab-milling-machines-zdm-5t/, detail images named "ZDM-5T-PRO"):
+  dry/wet, titanium + glass ceramic, 2.2 kW spindle, 12 tools, 6 mm shank. Same housing as the ZDM-5Z, so the
+  3D model and photos are unchanged. Flags: B-axis range and magazine size (ZAHN-5T page says 17), weight.

@@ -25,7 +25,7 @@
       "category": "milling",
       "categoryLabel": "CAD/CAM Milling",
       "tagline": "The all-in-one starter mill: five-axis dry milling for zirconia, PMMA, wax and PEEK.",
-      "description": "Zahndent presents the ZDM-E5 as an all-in-one starter milling machine for dental laboratories. It mills crowns, copings, bridges and inlays/onlays from 98 mm discs in five axes, using a water-cooled 1.2 kW Haozhi spindle that reaches 60,000 RPM and an automatic six-position tool changer. It is operated from a touch display, and the window door at the front opens upward for loading. CAM is HyperDent.",
+      "description": "Zahndent presents the ZDM-E5 as an all-in-one starter milling machine for dental laboratories. It mills crowns, copings, bridges and inlays/onlays from 98 mm discs in five axes, using a water-cooled 1.2 kW Haozhi spindle that reaches 60,000 RPM and an automatic six-position tool changer. It is operated from a touch display, and the window door at the front is hinged at its lower edge and folds outward for loading. CAM is HyperDent.",
       "labValue": [
         "An entry point into in-house milling: zirconia, PMMA, wax and PEEK without outsourcing.",
         "Automatic tool change across six positions lets long jobs run unattended; Zahndent states each DC-coated bur carves about 600 teeth.",
@@ -75,7 +75,7 @@
           { "src": "assets/images/products/zahndent-zdm-e5.jpg", "alt": "Zahndent ZDM-E5 milling machine, three-quarter view with touch display and lit milling chamber", "uploadRef": "upload #2" },
           { "src": "assets/images/products/zahndent-zdm-e5-cabinet.jpg", "alt": "Zahndent ZDM-E5 on an IDT-branded lab cabinet", "uploadRef": "upload #1" },
           { "src": "assets/images/products/source/zahndent-zdm-e5/07-detail-04.jpg", "alt": "Official Zahndent front view of the ZDM-E5", "credit": "Zahndent" },
-          { "src": "assets/images/products/source/zahndent-zdm-e5/03-photo-b.jpg", "alt": "ZDM-E5 with its window door opened upward, left side visible", "credit": "Zahndent" },
+          { "src": "assets/images/products/source/zahndent-zdm-e5/03-photo-b.jpg", "alt": "ZDM-E5 with its window door open, left side visible", "credit": "Zahndent" },
           { "src": "assets/images/products/source/zahndent-zdm-e5/06-detail-02.jpg", "alt": "Inside the ZDM-E5 milling chamber: disc holder and spindle with bur", "credit": "Zahndent" },
           { "src": "assets/images/products/source/zahndent-zdm-e5/09-detail-08.jpg", "alt": "Six-position automatic tool magazine", "credit": "Zahndent" },
           { "src": "assets/images/products/source/zahndent-zdm-e5/08-detail-06.jpg", "alt": "PMMA discs milled on the ZDM-E5 and the Haozhi spindle", "credit": "Zahndent" }

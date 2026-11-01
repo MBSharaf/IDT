@@ -1,8 +1,8 @@
 // Zahndent ZDM-E5 milling machine — modelled at 539 (W) × 668 (H) × 637 (D) mm.
 // Front layout and proportions come from Zahndent's orthographic front render (detail page image 04),
 // which is photo-projected. Height and depth follow the spec sheet; width follows the render's aspect
-// (the sheet's 494 mm does not match Zahndent's own front view). The window door is hinged at the top
-// and swings outward, as shown in Zahndent's product photo; behind it sits the milling chamber.
+// (the sheet's 494 mm does not match Zahndent's own front view). The window door is hinged along its
+// bottom edge and folds outward; behind it sits the milling chamber.
 import * as THREE from 'three';
 import { mats } from '../materials.js';
 import { createProjector } from '../projection.js';
@@ -65,13 +65,13 @@ export async function build(cfg) {
   lamp.position.set(cxm, winY1 - mm(20), cz);
   g.add(lamp);
 
-  // Window door, hinged along its top edge (projected: frame, glass and handle strip from the render).
+  // Window door, hinged along its bottom edge (projected: frame, glass and handle strip from the render).
   const hinge = new THREE.Group();
-  at(hinge, 0, ledgeY0, front);
+  at(hinge, 0, doorY0, front);
   g.add(hinge);
   const doorH = ledgeY0 - doorY0;
   const door = rbox(W - mm(36), doorH, mm(14), mm(5), shell);
-  hinge.add(at(door, 0, -doorH / 2, mm(7)));
+  hinge.add(at(door, 0, doorH / 2, mm(7)));
 
   // Feet.
   for (const sx of [-1, 1]) for (const z of [mm(-250), mm(250)]) {
@@ -99,7 +99,7 @@ export async function build(cfg) {
     toggle() { open = !open; return open; },
     update(dt) {
       p = lerpTo(p, open ? 1 : 0, 2.4, dt);
-      hinge.rotation.x = -1.05 * p;
+      hinge.rotation.x = 1.2 * p; // top edge folds out towards the viewer
       lamp.intensity = 0.35 * p;
     },
   };

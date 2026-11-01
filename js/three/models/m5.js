@@ -2,6 +2,7 @@
 // The published "329 × 290 × 541 mm" is depth × width × height: the orthographic front render has the
 // same pixel scale on both axes only with W = 290 mm. Geometry is measured from the front (01) and
 // back (05) renders, which are photo-projected; the sides use the white shell with modelled vent slots.
+// The hood is fixed; the firing table lifts up into it on the lead screw.
 import * as THREE from 'three';
 import { mats } from '../materials.js';
 import { createProjector } from '../projection.js';
@@ -31,7 +32,11 @@ export async function build(cfg) {
   }
 
   // Base with rounded corners; the tilted touch console stands proud of its front.
-  g.add(at(rbox(W, baseTop - mm(8), D - mm(14), mm(18), shell), 0, mm(8) + (baseTop - mm(8)) / 2, -mm(7)));
+  // Plain white base: the front photo would print the firing table onto its top edge, which shows once
+  // the table lifts (the console in front carries the projected screen).
+  const base = rbox(W, baseTop - mm(8), D - mm(14), mm(18), new THREE.MeshStandardMaterial({ color: 0xeeeeec, roughness: 0.5 }));
+  base.userData.project = false;
+  g.add(at(base, 0, mm(8) + (baseTop - mm(8)) / 2, -mm(7)));
   const consoleGroup = new THREE.Group();
   at(consoleGroup, 0, mm(66), D / 2 - mm(10));
   consoleGroup.rotation.x = -0.1;
@@ -46,15 +51,18 @@ export async function build(cfg) {
   // Lift neck under the hood (grey cover with the drive screw).
   g.add(at(rbox(mm(163), hoodY0 - baseTop, mm(40), mm(10), shell), 0, (baseTop + hoodY0) / 2, colZ1 + mm(18)));
 
-  // Firing platform: black seal ring + refractory pedestal, centred under the hood.
+  // Firing table: black seal ring + refractory pedestal, centred under the hood. It rides the lead screw
+  // on the neck and lifts up into the fixed hood (moves as one group).
+  const table = new THREE.Group();
+  g.add(table);
   const ring = cyl(mm(76), mm(77), mm(10), mats.blackGloss(), 80);
   ring.userData.project = false;
-  g.add(at(ring, 0, baseTop + mm(5), hoodZ));
-  g.add(at(cyl(mm(66), mm(68), mm(10), shell, 64), 0, baseTop + mm(13), hoodZ));
-  g.add(at(cyl(mm(58), mm(62), mm(22), shell, 64), 0, baseTop + mm(26), hoodZ));
-  g.add(at(cyl(mm(44), mm(58), mm(40), shell, 64), 0, baseTop + mm(57), hoodZ));
+  table.add(at(ring, 0, baseTop + mm(5), hoodZ));
+  table.add(at(cyl(mm(66), mm(68), mm(10), shell, 64), 0, baseTop + mm(13), hoodZ));
+  table.add(at(cyl(mm(58), mm(62), mm(22), shell, 64), 0, baseTop + mm(26), hoodZ));
+  table.add(at(cyl(mm(44), mm(58), mm(40), shell, 64), 0, baseTop + mm(57), hoodZ));
 
-  // Cylindrical lifting hood (lowers onto the platform).
+  // Cylindrical firing hood, fixed to the column.
   const hood = new THREE.Group();
   g.add(hood);
   hood.add(at(cyl(hoodR, hoodR, H - hoodY0, shell, 64), 0, (H + hoodY0) / 2, hoodZ));
@@ -77,14 +85,15 @@ export async function build(cfg) {
   const glow = new THREE.PointLight(0xffa64d, 0, 0.5, 2);
   glow.position.set(0, hoodY0 - mm(20), hoodZ);
   g.add(glow);
-  const travel = hoodY0 - (baseTop + mm(12));
+  // The seal ring closes against the hood's mouth.
+  const travel = hoodY0 - (baseTop + mm(10));
   let closed = false, p = 0;
   g.userData.demo = {
-    label: 'Lower hood',
+    label: 'Lift table',
     toggle() { closed = !closed; return closed; },
     update(dt) {
       p = lerpTo(p, closed ? 1 : 0, 2.2, dt);
-      hood.position.y = -travel * p;
+      table.position.y = travel * p;
       glow.intensity = 0.2 * p;
     },
   };

@@ -1,27 +1,22 @@
 // Reviews service — same Google Apps Script web app as inquiries (see integrations/google-sheets/).
-// Visitors submit reviews (stored as "Pending"); only rows set to "Approved" in the sheet are returned here.
+// Visitors submit reviews (stored as "Pending"); only rows set to "Approved" in the sheet are shown.
+// Approved reviews are read from data/reviews.json, a copy made by `node tools/sync-reviews.mjs`, so a
+// traffic spike never reaches Google's limit of 30 simultaneous script runs. The live script is only
+// asked when that file is missing.
 import { INQUIRY_ENDPOINT } from './inquiry.js';
 
-const CACHE_KEY = 'idt-reviews-v1';
-const CACHE_MS = 5 * 60 * 1000;
+const toList = (d) => (Array.isArray(d?.reviews) ? d.reviews : []);
 let inflight = null;
 
-/** Approved reviews, newest first. Cached for a few minutes per visitor to keep pages fast. */
+/** Approved reviews, newest first. */
 export function getApprovedReviews() {
-  if (!INQUIRY_ENDPOINT) return Promise.resolve([]);
-  try {
-    const cached = JSON.parse(sessionStorage.getItem(CACHE_KEY) || 'null');
-    if (cached && Date.now() - cached.t < CACHE_MS) return Promise.resolve(cached.reviews);
-  } catch { /* storage unavailable */ }
   if (!inflight) {
-    inflight = fetch(`${INQUIRY_ENDPOINT}?action=reviews`)
-      .then((r) => r.json())
-      .then((d) => {
-        const reviews = Array.isArray(d.reviews) ? d.reviews : [];
-        try { sessionStorage.setItem(CACHE_KEY, JSON.stringify({ t: Date.now(), reviews })); } catch { /* ignore */ }
-        return reviews;
-      })
-      .catch(() => []);
+    inflight = fetch('data/reviews.json', { cache: 'no-cache' })
+      .then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+      .then(toList)
+      .catch(() => (INQUIRY_ENDPOINT
+        ? fetch(`${INQUIRY_ENDPOINT}?action=reviews`).then((r) => r.json()).then(toList).catch(() => [])
+        : []));
   }
   return inflight;
 }

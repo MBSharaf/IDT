@@ -194,7 +194,7 @@ footer { font-size: 0.85rem; color: var(--muted); display: grid; gap: 6px; }
     <h2 id="h-third">The reviews and contact form under a spike</h2>
     <p>The reviews and contact form go through a Google Apps Script web app. The home and product pages ask it for approved reviews once per visitor, and Google allows <a href="https://developers.google.com/apps-script/guides/services/quotas" target="_blank" rel="noopener">30 simultaneous executions</a> per account. This service was not load-tested, because it belongs to Google.</p>
     <ul class="plain">
-      <li><strong>Reviews:</strong> with 5,000 visitors arriving together, most review requests will be refused at the peak. The pages still work; the reviews section just stays empty for those visitors.</li>
+      <li><strong>Reviews (fixed after this test):</strong> before the fix, with 5,000 visitors arriving together, most review requests would have been refused at the peak and the reviews section would have stayed empty for those visitors. The site now reads approved reviews from a file on its own host (<code>data/reviews.json</code>), so visitors never call Google for them.</li>
       <li><strong>Contact form:</strong> an inquiry sent during the peak may not reach the Google Sheet. The site already handles this: it tells the customer and offers to send the same inquiry by e-mail or WhatsApp, so the lead is not silently lost.</li>
     </ul>
   </section>
@@ -205,7 +205,7 @@ footer { font-size: 0.85rem; color: var(--muted); display: grid; gap: 6px; }
       <li><strong>Choose ASP.NET Advance ($4.95/mo) or higher, not Basic.</strong>Basic's 200-connection limit is the one thing that turns a traffic spike into error pages. Advance and Premium list unlimited concurrent connections (SmarterASP plans page, 1 Nov 2026).</li>
       <li><strong>Put Cloudflare's free plan in front of SmarterASP.</strong>At Namecheap, change the domain's nameservers to the two Cloudflare gives you. In Cloudflare, point the domain at SmarterASP's IP address, set SSL to "Full (strict)" (SmarterASP includes a free SSL certificate), and add a cache rule to cache everything. Cloudflare then serves almost all of the 0.52&nbsp;MB per visitor from its own network.</li>
       <li><strong>Upload <code>web.config</code> with the site.</strong>It is now in the repository root. It turns on gzip, lets browsers and Cloudflare reuse pages for 1 hour and photos for 7 days, and registers <code>.webp</code> and <code>.json</code>. Without that, IIS can return 404 for the product photos and the product data.</li>
-      <li><strong>Stop asking Google for reviews on every visit.</strong>Publish approved reviews as a small file on the site, refreshed when a review is approved, so the reviews section no longer depends on Google's 30-execution limit. The contact form can stay as it is.</li>
+      <li><strong>Done: reviews no longer call Google on every visit.</strong>Approved reviews are now served from <code>data/reviews.json</code>. After approving a review in the sheet, run <code>node tools/sync-reviews.mjs</code> and upload that file. The contact form stays as it is.</li>
       <li><strong>Test the real host before announcing the site.</strong>Ask SmarterASP support in writing first: an unannounced load test looks like an attack and can get the account suspended. Then run the same test plan from a cloud service that accepts JMeter files (for example BlazeMeter or Azure Load Testing), in steps of 100, 500, 1,000 and then 5,000 users, against the Cloudflare address.</li>
     </ol>
   </section>

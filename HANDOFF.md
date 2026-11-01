@@ -349,4 +349,4 @@ The site now has 9 products.
 - Findings:
   - The site is about 0.52 MB per visit and has no errors at 1,000 simultaneous users locally.
   - SmarterASP's ASP.NET Basic plan caps the site at 200 connections, which gives 503s on any spike. Recommend Advance or higher plus Cloudflare.
-  - Reviews call Google Apps Script once per visit (30 concurrent executions max). Serving reviews as a static file is a pending improvement.
+  - Reviews used to call Google Apps Script once per visit (30 concurrent executions max). They now come from `data/reviews.json`; refresh it with `node tools/sync-reviews.mjs` after approving reviews. The live script is used only if the file is missing.

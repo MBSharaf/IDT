@@ -25,11 +25,12 @@ To check the deployment, open the URL in a browser. You should see `{"ok":true,"
 ## Reviews (moderated)
 
 - **Submission:** visitors use **Write a review** on the home page or a product page. Each review lands in the **Reviews** tab with Status **Pending**.
-- **Approval:** set Status to **Approved** (the drop-down highlights it in gold). The review appears on the site, newest first.
+- **Approval:** set Status to **Approved** (the drop-down highlights it in gold).
+- **Publishing:** the site reads approved reviews from `data/reviews.json`, not from the sheet, so a traffic spike can't hit Google's limit of 30 simultaneous script runs. After approving, run `node tools/sync-reviews.mjs` and upload the updated `data/reviews.json` (or commit it). Reviews then show newest first:
   - On the home page: all approved reviews.
   - On product pages: only reviews for that product.
-- **Delay:** visitors' browsers cache the list for 5 minutes, so an approval can take up to 5 minutes to show.
-- **Rejected:** **Rejected**, or deleting the row, keeps a review hidden.
+- **Fallback:** if `data/reviews.json` is missing from the server, the site asks the sheet directly, as it did before.
+- **Rejected:** **Rejected**, or deleting the row, keeps a review hidden. Run the sync again to remove it from the site.
 - **Privacy:** the e-mail column and the hidden Product ID column are never shown publicly.
 
 ## Behaviour

@@ -342,3 +342,11 @@ The site now has 9 products.
 - M5: matched. Thermocouple is in a ceramic corundum tube; vacuum-line filter added. The Chinese table's "80 mbar" is not published.
 - S9: matched. Added power-off memory, staged fast cooling, warranty (1 year machine, 6 months wear parts).
 - M9: the catalogue settles 1700 °C (flag removed), heating rate <100 °C/min, fastest cycle 3.5 h; now `verified`.
+
+## Load test and hosting (2026-11-01)
+- Moving to SmarterASP.NET (IIS 10), with the domain at Namecheap. `web.config` in the root holds the IIS settings: gzip, cache lifetimes, and MIME types for .webp/.json.
+- JMeter plan and tools are in `perf/` (see `perf/README.md`); the report is `perf/load-test-report.html`.
+- Findings:
+  - The site is about 0.52 MB per visit and has no errors at 1,000 simultaneous users locally.
+  - SmarterASP's ASP.NET Basic plan caps the site at 200 connections, which gives 503s on any spike. Recommend Advance or higher plus Cloudflare.
+  - Reviews call Google Apps Script once per visit (30 concurrent executions max). Serving reviews as a static file is a pending improvement.

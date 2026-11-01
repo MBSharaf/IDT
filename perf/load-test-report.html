@@ -1,0 +1,243 @@
+<title>IDT Website Load Test</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column with full-width data tables; verdict first, evidence after. */
+:root {
+  --bg: #F6F5F1; --surface: #FFFFFF; --fg: #1B1C1F; --muted: #5E6068; --line: #DEDCD4;
+  --accent: #9A7224; --accent-soft: #F1E7D2;
+  --good: #2E7D4F; --good-soft: #E1F1E6; --warn: #A66A00; --warn-soft: #FBEBCF; --bad: #B3362C; --bad-soft: #F8DEDA;
+  --bar: #C9A55A; --bar-bad: #C8473C;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #141518; --surface: #1C1E22; --fg: #ECEAE4; --muted: #A2A3A9; --line: #33353B;
+  --accent: #D9AD55; --accent-soft: #3A3122;
+  --good: #6FCB92; --good-soft: #1D3326; --warn: #E8B04B; --warn-soft: #3A2E17; --bad: #F08A80; --bad-soft: #3E2220;
+  --bar: #D9AD55; --bar-bad: #E0685C; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #141518; --surface: #1C1E22; --fg: #ECEAE4; --muted: #A2A3A9; --line: #33353B;
+  --accent: #D9AD55; --accent-soft: #3A3122;
+  --good: #6FCB92; --good-soft: #1D3326; --warn: #E8B04B; --warn-soft: #3A2E17; --bad: #F08A80; --bad-soft: #3E2220;
+  --bar: #D9AD55; --bar-bad: #E0685C; color-scheme: dark; }
+
+body { background: var(--bg); color: var(--fg); font: 16px/1.6 var(--body); }
+.wrap { max-width: 920px; margin: 0 auto; padding-block: 48px 72px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 56px; }
+section { display: grid; gap: 16px; min-width: 0; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2rem, 5vw, 2.9rem); font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-size: 1.55rem; font-weight: 700; padding-top: 8px; border-top: 1px solid var(--line); }
+h3 { font-size: 1.1rem; font-weight: 700; }
+p { margin: 0; max-width: 68ch; }
+.eyebrow { font: 500 0.78rem/1 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+.lede { font-size: 1.15rem; color: var(--muted); }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 24px; font: 0.85rem/1.4 var(--mono); color: var(--muted); }
+code, .num { font-family: var(--mono); font-size: 0.9em; }
+.num { font-variant-numeric: tabular-nums; }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.verdict { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 24px; display: grid; gap: 14px; }
+.verdict p { max-width: none; }
+.big { font-family: var(--display); font-weight: 700; font-size: 1.35rem; line-height: 1.3; }
+
+.plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.plan { border-radius: 10px; padding: 18px; display: grid; gap: 8px; align-content: start; border: 1px solid var(--line); background: var(--surface); }
+.plan h3 { font-size: 1rem; }
+.pill { justify-self: start; font: 600 0.75rem/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; padding: 6px 9px; border-radius: 99px; }
+.pill.bad { background: var(--bad-soft); color: var(--bad); }
+.pill.warn { background: var(--warn-soft); color: var(--warn); }
+.pill.good { background: var(--good-soft); color: var(--good); }
+.plan p { font-size: 0.93rem; color: var(--muted); }
+
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 0.92rem; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; white-space: nowrap; }
+td.wrap-ok { white-space: normal; min-width: 220px; }
+th { font: 500 0.74rem/1.3 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td.r, th.r { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+tr.group td { background: var(--accent-soft); font-weight: 600; font-size: 0.85rem; }
+.ok { color: var(--good); } .mid { color: var(--warn); } .ko { color: var(--bad); }
+
+.chart { display: grid; gap: 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px; }
+.row { display: grid; grid-template-columns: minmax(150px, 210px) 1fr 64px; gap: 12px; align-items: center; font-size: 0.88rem; }
+.track { height: 16px; background: var(--bg); border-radius: 3px; position: relative; overflow: hidden; }
+.fill { position: absolute; inset: 0 auto 0 0; background: var(--bar); border-radius: 3px; }
+.fill.bad { background: var(--bar-bad); }
+.axis { display: grid; grid-template-columns: minmax(150px, 210px) 1fr 64px; gap: 12px; font: 0.72rem var(--mono); color: var(--muted); }
+.axis span:nth-child(2) { display: flex; justify-content: space-between; }
+.caption { font-size: 0.85rem; color: var(--muted); }
+
+ol.steps { margin: 0; padding-left: 1.3em; display: grid; gap: 14px; max-width: 72ch; }
+ol.steps li::marker { font-family: var(--mono); color: var(--accent); }
+ol.steps strong { display: block; }
+ul.plain { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; max-width: 72ch; }
+pre { margin: 0; overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; font: 0.82rem/1.55 var(--mono); }
+.note { border-left: 3px solid var(--warn); padding: 4px 0 4px 14px; color: var(--muted); font-size: 0.93rem; max-width: 72ch; }
+footer { font-size: 0.85rem; color: var(--muted); display: grid; gap: 6px; }
+
+@media (max-width: 560px) {
+  .row, .axis { grid-template-columns: 1fr 52px; }
+  .row > :first-child, .axis > :first-child { grid-column: 1 / -1; }
+  .axis > :first-child { display: none; }
+}
+@media (prefers-reduced-motion: no-preference) { .fill { transition: width .4s ease; } }
+</style>
+
+<div class="wrap">
+  <header style="display:grid;gap:16px">
+    <div class="eyebrow">Performance test · Apache JMeter 5.6.3</div>
+    <h1>What happens when 5,000 visitors open the IDT website at once</h1>
+    <p class="lede">A first-visit load test of the IDT catalogue site, and what the results mean for hosting it on SmarterASP.NET behind a Namecheap domain.</p>
+    <div class="meta"><span>Tested 1 Nov 2026</span><span>Site version c07a9b7</span><span>9 test runs · 1.2 million requests</span></div>
+  </header>
+
+  <section class="verdict" aria-labelledby="v">
+    <div class="eyebrow" id="v">Verdict</div>
+    <p class="big">The website itself is light and fast. Whether 5,000 visitors at once get through depends on the hosting plan and on putting Cloudflare in front of it.</p>
+    <p>On SmarterASP's cheapest plan, which allows 200 connections at a time, most of those 5,000 visitors would see an error page. On a plan with unlimited connections plus the free Cloudflare CDN, the same spike is routine. The changes needed cost a few dollars a month and about an hour of setup.</p>
+  </section>
+
+  <section aria-labelledby="h-plans">
+    <h2 id="h-plans">5,000 visitors in the same minute, by setup</h2>
+    <div class="plans">
+      <div class="plan">
+        <span class="pill bad">Fails</span>
+        <h3>SmarterASP .NET Basic ($2.95/mo)</h3>
+        <p>Capped at 200 concurrent connections. Only about 200 visitors can be connected at any moment; the rest get <strong>503 Service Unavailable</strong>. In our model of this plan, 1,000 visitors in 10 seconds already failed 80% of requests.</p>
+      </div>
+      <div class="plan">
+        <span class="pill warn">Slow, probably survives</span>
+        <h3>Advance ($4.95) or Premium ($7.95), no CDN</h3>
+        <p>No connection cap. The limit becomes the shared server's network and CPU: 5,000 home-page loads are about 2.4&nbsp;GB, which needs roughly 1.9&nbsp;Gbit/s to deliver in 10 seconds or 320&nbsp;Mbit/s over a minute. Expect pages that take several seconds or more to load at the peak.</p>
+      </div>
+      <div class="plan">
+        <span class="pill good">Handles it</span>
+        <h3>Advance or above + Cloudflare (free)</h3>
+        <p>Cloudflare serves the images, CSS and JavaScript from its own network. SmarterASP then sees a small fraction of the traffic. SmarterASP lists this setup as "Cloudflare CDN Ready". This is the recommended setup.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-site">
+    <h2 id="h-site">How heavy the site is</h2>
+    <p>Every page was opened in Chromium (1366 × 768, scrolled to the bottom) and every file it requested from the IDT host was recorded. A first-time visitor's journey is Home → Products → one product page → Contact.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Page</th><th class="r">Requests</th><th class="r">Size</th><th class="r">Gzipped</th><th class="r">New bytes in a visit</th></tr></thead>
+        <tbody>
+          <tr><td>Home</td><td class="r">48</td><td class="r">678 KB</td><td class="r">477 KB</td><td class="r">477 KB</td></tr>
+          <tr><td>Products</td><td class="r">22</td><td class="r">303 KB</td><td class="r">160 KB</td><td class="r">28 KB</td></tr>
+          <tr><td>Product (ZDM-E5)</td><td class="r">32</td><td class="r">429 KB</td><td class="r">242 KB</td><td class="r">7 KB</td></tr>
+          <tr><td>Contact</td><td class="r">18</td><td class="r">221 KB</td><td class="r">74 KB</td><td class="r">5 KB</td></tr>
+          <tr class="group"><td>Whole visit</td><td class="r">120 (56 reach the server)</td><td class="r"></td><td class="r"></td><td class="r">≈ 0.52 MB</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>About half a megabyte per visitor is light for a site with 3D product viewers. The heavy part is the home page: 48 files in the first second, including the 3D models' reference photos. The 3D engine (three.js), the animation library and the fonts load from public CDNs, not from IDT's host, so they are not counted here.</p>
+  </section>
+
+  <section aria-labelledby="h-results">
+    <h2 id="h-results">Test results</h2>
+    <p>Each virtual user made one full visit with a browser cache, waiting 3–6 seconds between pages. All users started within 10 seconds, which is the "everyone opens it at once" case. The test server behaves like IIS 10, the web server SmarterASP uses: gzip, ETag and Last-Modified, and no cache headers by default.</p>
+
+    <div class="chart" role="img" aria-label="Failed requests per scenario: 0% at 1000 users, 2.8% at 1500, 3.5% at 2000, 13.7% at 2500, 16.8% at 5000; Basic plan model 29.6% at 300 users and 80.3% at 1000 users.">
+      <h3>Failed requests by scenario</h3>
+      <div class="row"><span>1,000 users</span><span class="track"><span class="fill" style="width:0.4%"></span></span><span class="num">0%</span></div>
+      <div class="row"><span>1,500 users</span><span class="track"><span class="fill" style="width:2.76%"></span></span><span class="num">2.8%</span></div>
+      <div class="row"><span>2,000 users</span><span class="track"><span class="fill" style="width:3.52%"></span></span><span class="num">3.5%</span></div>
+      <div class="row"><span>2,500 users</span><span class="track"><span class="fill" style="width:13.71%"></span></span><span class="num">13.7%</span></div>
+      <div class="row"><span>5,000 users</span><span class="track"><span class="fill" style="width:16.76%"></span></span><span class="num">16.8%</span></div>
+      <div class="row"><span>Basic plan · 300 users</span><span class="track"><span class="fill bad" style="width:29.64%"></span></span><span class="num">29.6%</span></div>
+      <div class="row"><span>Basic plan · 1,000 users</span><span class="track"><span class="fill bad" style="width:80.25%"></span></span><span class="num">80.3%</span></div>
+      <div class="axis" aria-hidden="true"><span></span><span><span>0%</span><span>25%</span><span>50%</span><span>75%</span><span>100%</span></span><span></span></div>
+      <p class="caption">Gold bars: server with no connection limit. Red bars: the same server limited to 200 connections, like the Basic plan. Above 1,000 users the gold-bar errors come from the test PC, not the site (see below).</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Scenario</th><th class="r">Requests</th><th class="r">Failed</th><th class="r">Home page load, average</th><th class="r">Home page load, 95%</th><th class="r">Home loads with errors</th><th class="r">Peak rate</th></tr></thead>
+        <tbody>
+          <tr class="group"><td colspan="7">No connection limit (Advance / Premium)</td></tr>
+          <tr><td>1,000 users in 10 s</td><td class="r">56,000</td><td class="r ok">0.00%</td><td class="r">0.25 s</td><td class="r">1.4 s</td><td class="r ok">0%</td><td class="r">2,138 req/s</td></tr>
+          <tr><td>1,500 users in 10 s</td><td class="r">85,703</td><td class="r mid">2.76%</td><td class="r">0.9 s</td><td class="r">2.6 s</td><td class="r mid">4%</td><td class="r">2,604 req/s</td></tr>
+          <tr><td>2,000 users in 10 s</td><td class="r">115,073</td><td class="r mid">3.52%</td><td class="r">1.6 s</td><td class="r">3.9 s</td><td class="r ko">15%</td><td class="r">3,143 req/s</td></tr>
+          <tr><td>2,500 users in 10 s</td><td class="r">154,340</td><td class="r ko">13.71%</td><td class="r">12.3 s</td><td class="r">27.2 s</td><td class="r ko">27%</td><td class="r">2,327 req/s</td></tr>
+          <tr><td>5,000 users in 10 s</td><td class="r">318,812</td><td class="r ko">16.76%</td><td class="r">2.5 s</td><td class="r">8.2 s</td><td class="r ko">41%</td><td class="r">6,670 req/s</td></tr>
+          <tr class="group"><td colspan="7">Limited to 200 connections (Basic plan model)</td></tr>
+          <tr><td>300 users in 10 s</td><td class="r">21,010</td><td class="r ko">29.64%</td><td class="r">0.05 s</td><td class="r">0.1 s</td><td class="r ko">33%</td><td class="r">804 req/s</td></tr>
+          <tr><td>1,000 users in 10 s</td><td class="r">101,366</td><td class="r ko">80.25%</td><td class="r">4.0 s</td><td class="r">13.9 s</td><td class="r ko">80%</td><td class="r">1,740 req/s</td></tr>
+          <tr><td>300 users over 60 s</td><td class="r">16,800</td><td class="r ok">0.00%</td><td class="r">0.04 s</td><td class="r">0.06 s</td><td class="r ok">0%</td><td class="r">224 req/s</td></tr>
+          <tr><td>600 users over 60 s</td><td class="r">33,600</td><td class="r ok">0.00%</td><td class="r">0.04 s</td><td class="r">0.08 s</td><td class="r ok">0%</td><td class="r">440 req/s</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="caption">"Home page load" is all 48 home-page files fetched one after another. A real browser fetches several at once, so its page loads are faster. The Basic-plan failures were all <code>503 Service Unavailable</code>, which is what IIS returns when a site reaches its connection limit.</p>
+
+    <h3>Reading the results</h3>
+    <ul class="plain">
+      <li><strong>Up to 1,000 simultaneous visitors, the site is flawless.</strong> There were no errors, a typical file arrived in under 5&nbsp;ms, and a full home page took a quarter of a second.</li>
+      <li><strong>Above 1,000, the test PC became the bottleneck.</strong> Every error in the gold-bar runs was "connection refused" on this one Windows PC. It was running 5,000 JMeter users and the web server at the same time, and its CPU hit 100%. A single machine cannot simulate 5,000 real visitors. That figure has to be measured on the real host with a cloud load generator (see the last step below).</li>
+      <li><strong>The 200-connection cap is the clearest finding.</strong> It cannot absorb a spike: 300 visitors arriving within 10 seconds already lost a third of their home pages. The same plan handled 600 visitors spread over a minute without a single error. So Basic is fine for normal traffic and fails on a launch, a campaign or a viral post.</li>
+      <li><strong>The real cap is lower than this test suggests.</strong> Browsers on HTTP/1.1 open up to 6 connections per visitor, and IIS keeps idle connections open for up to 2 minutes, so 200 connections can mean as few as about 33 visitors loading pages at once.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="h-third">
+    <h2 id="h-third">The reviews and contact form under a spike</h2>
+    <p>The reviews and contact form go through a Google Apps Script web app. The home and product pages ask it for approved reviews once per visitor, and Google allows <a href="https://developers.google.com/apps-script/guides/services/quotas" target="_blank" rel="noopener">30 simultaneous executions</a> per account. This service was not load-tested, because it belongs to Google.</p>
+    <ul class="plain">
+      <li><strong>Reviews:</strong> with 5,000 visitors arriving together, most review requests will be refused at the peak. The pages still work; the reviews section just stays empty for those visitors.</li>
+      <li><strong>Contact form:</strong> an inquiry sent during the peak may not reach the Google Sheet. The site already handles this: it tells the customer and offers to send the same inquiry by e-mail or WhatsApp, so the lead is not silently lost.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="h-rec">
+    <h2 id="h-rec">What to do before launch</h2>
+    <ol class="steps">
+      <li><strong>Choose ASP.NET Advance ($4.95/mo) or higher, not Basic.</strong>Basic's 200-connection limit is the one thing that turns a traffic spike into error pages. Advance and Premium list unlimited concurrent connections (SmarterASP plans page, 1 Nov 2026).</li>
+      <li><strong>Put Cloudflare's free plan in front of SmarterASP.</strong>At Namecheap, change the domain's nameservers to the two Cloudflare gives you. In Cloudflare, point the domain at SmarterASP's IP address, set SSL to "Full (strict)" (SmarterASP includes a free SSL certificate), and add a cache rule to cache everything. Cloudflare then serves almost all of the 0.52&nbsp;MB per visitor from its own network.</li>
+      <li><strong>Upload <code>web.config</code> with the site.</strong>It is now in the repository root. It turns on gzip, lets browsers and Cloudflare reuse pages for 1 hour and photos for 7 days, and registers <code>.webp</code> and <code>.json</code>. Without that, IIS can return 404 for the product photos and the product data.</li>
+      <li><strong>Stop asking Google for reviews on every visit.</strong>Publish approved reviews as a small file on the site, refreshed when a review is approved, so the reviews section no longer depends on Google's 30-execution limit. The contact form can stay as it is.</li>
+      <li><strong>Test the real host before announcing the site.</strong>Ask SmarterASP support in writing first: an unannounced load test looks like an attack and can get the account suspended. Then run the same test plan from a cloud service that accepts JMeter files (for example BlazeMeter or Azure Load Testing), in steps of 100, 500, 1,000 and then 5,000 users, against the Cloudflare address.</li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="h-run">
+    <h2 id="h-run">Running the test again</h2>
+    <p>The test plan and helper files are in <code>perf/</code> in the repository. <code>perf/README.md</code> has the full instructions.</p>
+    <pre>node perf/build-jmx.mjs                                  # rebuild the plan after pages change
+node perf/static-server.mjs --port 8080                  # IIS-like local server
+node perf/static-server.mjs --port 8082 --max-conn 200   # Basic-plan model
+
+jmeter -n -t perf/idt-load-test.jmx -Jhost=127.0.0.1 -Jport=8080 \
+  -Jusers=1000 -Jrampup=10 -l results.jtl -e -o report/
+
+# against the live site (only with SmarterASP's written permission):
+jmeter -n -t perf/idt-load-test.jmx -Jprotocol=https -Jport=443 \
+  -Jhost=www.your-domain.com -Jusers=100 -Jrampup=60 -l live.jtl -e -o live-report/</pre>
+  </section>
+
+  <section aria-labelledby="h-limits">
+    <h2 id="h-limits">Limits of this test</h2>
+    <ul class="plain">
+      <li>The site was not yet on SmarterASP, so it ran on a local server that copies IIS 10's default behaviour. Network distance, TLS and other customers on the shared server were not part of it.</li>
+      <li>The test generator and the server shared one PC (12 threads, 16 GB). Results above 1,000 simultaneous users measure that PC as much as the site.</li>
+      <li>SmarterASP does not publish CPU limits or network port speed for shared plans. The bandwidth figures above are calculations, not measurements.</li>
+      <li>Third-party services (Google Fonts, cdnjs, jsDelivr, Google Apps Script) were left out on purpose. Load testing them would put traffic on systems that IDT doesn't own.</li>
+      <li>JMeter fetches a page's files one at a time per user. Real browsers fetch about six at once, so the page-load times here are pessimistic, and the connection counts are optimistic.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <span>Sources: SmarterASP.NET <a href="https://www.smarterasp.net/hosting_plans" target="_blank" rel="noopener">hosting plans</a>, <a href="https://www.smarterasp.net/semi_dedi" target="_blank" rel="noopener">semi-dedicated plans</a> and <a href="https://www.smarterasp.net/unlimited_policy" target="_blank" rel="noopener">unlimited policy</a>; Google <a href="https://developers.google.com/apps-script/guides/services/quotas" target="_blank" rel="noopener">Apps Script quotas</a>. All read on 1 Nov 2026; plan details can change.</span>
+    <span>Test tools: Apache JMeter 5.6.3 on Eclipse Temurin 21. The test plan is <code>perf/idt-load-test.jmx</code> in the IDT repository.</span>
+  </footer>
+</div>

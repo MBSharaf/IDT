@@ -134,6 +134,7 @@ function render(p, products, categories) {
           <h2 id="src-title" style="margin:1rem 0 1.4rem">${t('Where the data comes from.')}</h2>
           <ul>
             <li><a href="${esc(p.sources.official)}" target="_blank" rel="noopener">${t('Official {maker} product page', { maker: esc(p.manufacturer) })} ↗</a></li>
+            ${p.sources.catalogue ? `<li>${t('Manufacturer catalogue')}: <bdi>${esc(p.sources.catalogue)}</bdi></li>` : ''}
             ${p.sources.supporting.map((s) => `<li><a href="${esc(s)}" target="_blank" rel="noopener" dir="ltr">${esc(shortUrl(s))} ↗</a></li>`).join('')}
           </ul>
         </div>

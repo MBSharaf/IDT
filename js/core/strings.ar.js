@@ -155,6 +155,7 @@ export const AR = {
   'Interactive 3D model': 'موديل 3D تفاعلي',
   'Where the data comes from.': 'البيانات جاية منين.',
   'Official {maker} product page': 'صفحة المنتج الرسمية عند {maker}',
+  'Manufacturer catalogue': 'كتالوج الشركة المصنّعة',
   'About this 3D model.': 'عن موديل الـ 3D ده.',
   'IDT built this model from {maker}’s official {views} views{dims}. Its surfaces are textured by projecting those views onto the geometry. Areas no official view shows{rear} are simplified, and interiors are illustrative. Rely on the product photos and specifications for exact details.': 'IDT عملت الموديل ده من صور {maker} الرسمية ({views}){dims}. ألوان أسطحه جاية من إسقاط الصور دي على الشكل نفسه. الأجزاء اللي مفيش صورة رسمية بتوضّحها{rear} متبسّطة، والأجزاء اللي جوه توضيحية بس. للتفاصيل الدقيقة ارجع لصور المنتج والمواصفات.',
   ', at {w} × {h} × {d} mm (W × H × D)': '، بمقاس {w} × {h} × {d} مم (عرض × ارتفاع × عمق)',

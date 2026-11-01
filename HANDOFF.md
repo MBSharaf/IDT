@@ -326,3 +326,12 @@ The site now has 9 products.
   (https://www.zahndent.com/product/dental-lab-milling-machines-zdm-5t/, detail images named "ZDM-5T-PRO"):
   dry/wet, titanium + glass ceramic, 2.2 kW spindle, 12 tools, 6 mm shank. Same housing as the ZDM-5Z, so the
   3D model and photos are unchanged. Flags: B-axis range and magazine size (ZAHN-5T page says 17), weight.
+
+## Checked against Zahndent's 2026 catalogue (2026-11-01)
+- The user supplied "2026 Zahndent Dental Equipments Catalogue (English)" as the trusted reference (not in the repo).
+  It covers the Zahndent products only (ZDM-E5 p.11–12, ZDM-5T Pro p.19–20, ZDS-08 p.29–32); Aident, NeunoRton
+  and Creality are not in it. Products now carry `sources.catalogue`, shown under Sources on the product page.
+- ZDM-E5: 10 tools (was 6), HyperDENT + MillBox, rotation range, no calibration (absolute servo), packing/weight + accessories.
+- ZDM-5T Pro: catalogue values replace the website's: 17 tools, 2.5 kW Haozhi / 3.0 kW, 12,000–60,000 RPM, 0.02 mm,
+  630 × 480 × 670 mm, 111/148 kg (+109 kg accessories), PEEK + Co-Cr, 2 yr (spindle 18 mo), options (chiller, camera).
+- ZDS-08: matched; added ±1 °C, automatic fast cooling, power-off memory, Wi-Fi monitoring.

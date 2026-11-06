@@ -353,3 +353,9 @@ The site now has 9 products.
 - Upload package: `node tools/build-deploy.mjs` builds the "رفع المشروع" folder and "رفع المشروع.zip" (both git-ignored).
   - They hold only the files the live site needs: pages, web.config, css, js, data, and the assets actually referenced (about 5.7 MB instead of 88 MB).
   - Upload the zip to SmarterASP and extract it in the site root.
+
+## Live site (2026-11-06)
+- Live at https://idtglobaltrade.com on SmarterASP (W60-US trial, expires 2026-12-31). Files are in /IDT.
+- The domain is at Namecheap, with nameservers ns1/ns2/ns3.site4now.net, so DNS records are managed in SmarterASP's DNS section. Cloudflare is not set up yet.
+- Free Let's Encrypt SSL covers the root and www. web.config forces HTTPS, except /.well-known/.
+- To update the site: upload the changed files to /IDT, or `node tools/build-deploy.mjs` and upload and unzip the package, then delete the zip.
